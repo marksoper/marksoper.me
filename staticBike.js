@@ -1,6 +1,6 @@
 
-var mainIndex = function() {
-  
+var mainBike = function() {
+
   var canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
 
@@ -96,4 +96,4 @@ var mainIndex = function() {
 
 };
 
-window.onload = mainIndex;
+window.onload = mainBike;
