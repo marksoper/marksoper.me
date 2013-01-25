@@ -1,0 +1,19 @@
+
+div#container {
+  position:relative;
+}
+
+div#header {
+  position: absolute;
+  text-align:center;
+  width:100%;
+}
+
+div#header h1 {
+  margin:5px 0px;
+}
+  
+canvas {
+  position:absolute;
+}
+
