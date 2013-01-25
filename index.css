@@ -4,7 +4,6 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   padding:0;
   text-align: center;
-  font-size:16pt;
 }
 
 div {
@@ -13,7 +12,7 @@ div {
 }
 
 h1 {
-  font-size: 24pt;
+  font-size: x-large;
 }
 
 p {
