@@ -83,6 +83,10 @@ h1 {
 
 @media screen and (max-width: 479px) {
 
+  body {
+    min-height: 480px;
+  }
+
   h1 {
     margin-bottom: 3%;
     font-size: 100%;
