@@ -84,9 +84,8 @@ h1 {
 @media screen and (max-width: 479px) {
 
   h1 {
-    font-weight: normal;
     margin-bottom: 3%;
-    font-size: 90%;
+    font-size: 100%;
   }
 
   .header {
@@ -109,7 +108,7 @@ h1 {
   }
 
   .header li {
-    font-size: 80%  ;
+    font-size: 88%  ;
     display: inline;
     margin-left:5%;
     margin-right:5%;
