@@ -30,6 +30,15 @@ a {
   text-decoration: none;
 }
 
+.header li {
+  display: inline;
+}
+
 .title a {
   color:#000000;
 }
+
+.contactDiv img {
+  height: 60px;
+}
+
