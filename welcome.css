@@ -1,36 +1,4 @@
 
-
-
-body {
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-body, div, p, ul, li, canvas {
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  list-style-type: none;
-}
-
-h1 {
-  white-space: nowrap;
-}
-
-.canvasContainer {
-  z-index: -1;
-  position: absolute;
-  left: 0;
-  right: 0;
-}
-
-.header a, .footer a {
-  color: #0000cc;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
 .footer {
   text-align:right;
   position:absolute;
@@ -39,16 +7,6 @@ h1 {
   color: #444444;
   margin-top: 70%;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -77,12 +35,7 @@ h1 {
 }
 
 
-
-
-
-
-
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 479px), screen and (max-height: 400px) {
 
   body {
     min-height: 480px;
@@ -129,14 +82,6 @@ h1 {
 
 }
 
-
-@media screen and (max-height: 400px) {
-
-  .footer {
-    display:none;
-  }
-
-}
 
 
 

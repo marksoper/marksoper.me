@@ -1,5 +1,5 @@
 
-var mainBike = function() {
+var welcomeMain = function() {
 
   var canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
@@ -107,15 +107,7 @@ var mainBike = function() {
     canvasResizing = false;
   });
 
-  // for debugging
-  window.context = context;
-
 };
 
-window.addEventListener("load",function() {
-  setTimeout(function(){
-    window.scrollTo(0, 0);
-  }, 0);
-});
+window.addEventListener("load", welcomeMain);
 
-window.onload = mainBike;
