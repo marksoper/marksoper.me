@@ -4,10 +4,14 @@
   margin: 0 auto;
 }
 
+.body {
+   width: 90%;
+   margin: 3% auto;
+}
+
 .project {
   border-top: 1px solid #333333;
   overflow: hidden;
-  width: 90%;
   margin: 50px auto;
   clear: both;
 }
