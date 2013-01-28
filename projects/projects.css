@@ -5,7 +5,7 @@
 }
 
 .nav li {
-  margin:2% 4% 0% 0;
+  margin:2% 4% 0 0;
   font-weight: bold;
   font-size: 120%;
 }
@@ -22,20 +22,12 @@
   clear: both;
 }
 
-.projectImage {
-  padding-top: 2%;
-  width: 32%;
-  float: left;
-}
+
 
 .projectImage img {
   width: 90%;
 }
 
-.projectText {
-  width: 68%;
-  float: right;
-}
 
 .projectRole {
   color: #333333;
@@ -49,11 +41,40 @@
 
 @media screen and (min-width:480px) {
 
+  .header li {
+    display: inline;
+  }
+
+  .projectImage {
+    padding-top: 2%;
+    width: 32%;
+    float: left;
+  }
+
+  .projectText {
+    width: 68%;
+    float: right;
+  }
 
 }
 
 
 @media screen and (max-width: 479px), screen and (max-height: 400px) {
+
+  .header, .bio {
+    text-align: center;
+  }
+
+  .projectImage {
+    padding-top: 2%;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .projectText {
+    width: 90%;
+    margin: 0 auto;
+  }
 
   
 }
