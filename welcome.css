@@ -8,8 +8,12 @@
   margin-top: 70%;
 }
 
+.nav ul {
+  margin-top:3%;
+}
+
 .nav li {
-  margin:0 0 0% 4%;
+  margin:0 0 0 4%;
   font-weight: bold;
   font-size: 120%;
 }
