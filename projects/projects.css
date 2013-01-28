@@ -4,6 +4,12 @@
   margin: 0 auto;
 }
 
+.nav li {
+  margin:0 4% 0% 0;
+  font-weight: bold;
+  font-size: 120%;
+}
+
 .body {
    width: 90%;
    margin: 3% auto;
