@@ -10,6 +10,11 @@
   font-size: 120%;
 }
 
+.nav img {
+  height: 34px;
+  margin: 0 0 -11px 0;
+}
+
 .body {
    width: 90%;
    margin: 3% auto;
@@ -22,7 +27,15 @@
   clear: both;
 }
 
+.contactList img {
+  height: 60px;
+  margin-bottom:-5px;
+}
 
+.contactList img.big {
+  height: 50px;
+  margin-top:-5px;
+}
 
 .projectImage img {
   width: 90%;
