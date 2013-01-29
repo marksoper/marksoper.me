@@ -49,10 +49,6 @@
 }
 
 
-
-
-
-
 .projectImage img {
   width: 90%;
 }
@@ -86,6 +82,10 @@
 
 @media screen and (max-width: 479px), screen and (max-height: 400px) {
 
+  .header {
+    font-size: 110%;
+    padding: 2% 0;
+  }
 
   .projectImage {
     padding-top: 2%;
