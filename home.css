@@ -1,0 +1,47 @@
+
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.caption {
+  text-align:right;
+  position:absolute;
+  bottom:10%;
+  right:10%;
+  color: #444444;
+  margin-top: 70%;
+}
+
+
+.canvasContainer {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+@media screen and (min-width:480px) {
+
+
+
+
+
+}
+
+
+@media screen and (max-width: 479px), screen and (max-height: 400px) {
+
+  .caption {
+    display: none;
+  }
+
+
+}
+
+
+
+
+
