@@ -38,6 +38,12 @@
     margin-bottom: 5%;
   }
 
+  .canvasContainer {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
 
 }
 
@@ -85,6 +91,13 @@
 
   .footer {
     display: none;
+  }
+
+  .canvasContainer {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 
 }
