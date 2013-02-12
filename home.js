@@ -109,5 +109,14 @@ var welcomeMain = function() {
 
 };
 
+var welcomeVideo = function() {
+
+  var video = document.querySelector("#ms");
+
+  video.play();
+
+};
+
+window.addEventListener("load", welcomeVideo);
 window.addEventListener("load", welcomeMain);
 
