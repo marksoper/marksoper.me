@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>Mark Soper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="site.css">
+    <link rel="stylesheet" href="home.css">
+    <script src="lib/gen.js"></script>
+    <script src="lib/colorKeywords.js"></script>
+    <script src="site.js"></script>
+    <script src="home.js"></script>
+    <meta name="google-site-verification" content="6YXZ1036vup-2-zvMJeExqUQEn_2qXLrGAksTNTCvBM" />
+  </head>
+
+  <body>
+      
+    <div class="header">
+
+      <div class="title">
+        <h1>Mark Soper</h1>
+      </div>
+
+      <div class="nav">
+        <div class="navItem">
+          <a href="http://blog.soper.me" title="Mark Soper - Blog">
+            Blog
+          </a>
+        </div>
+        <div class="navItem">
+          <a href="about" title="Mark Soper - About">
+            About
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="caption">
+
+      <p>
+        <a href="http://genjs.co/demos/bike/staticBike.html" title="Bicycle: Generative Art Using Gen.js Javascript Library">
+          <em>Bicycle</em>
+        </a>
+      </p>
+
+      <p>
+        HTML5 Canvas
+      </p>
+
+      <p>
+        Gen.js
+      </p>
+
+    </div>
+
+    <div class="canvasContainer">
+      <canvas id="canvas">
+      </canvas>
+    </div>
+
+  </body>
+
+</html>

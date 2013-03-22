@@ -56,3 +56,118 @@ h1 {
 
 
 
+
+.title a {
+  color: #000000;
+}
+
+.contact {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact ul {
+  list-style-type: none;
+}
+
+.contact li {
+  margin:3% auto;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.contact img {
+  height: 34px;
+  margin: 0 0 -11px 0;
+}
+
+.projects {
+   width: 90%;
+   margin: 3% auto;
+}
+
+.projects p {
+  margin-top: 2%;
+}
+
+.bio {
+  margin: 3% auto;
+  padding: 0 5%;
+}
+
+.bio p {
+  margin: 2% auto;
+}
+
+.project {
+  border-top: 1px solid #333333;
+  overflow: hidden;
+  margin: 5% auto;
+  padding: 2.5% 0 0 0;
+  clear: both;
+}
+
+
+.projectImage img {
+  width: 90%;
+}
+
+
+.projectRole {
+  color: #333333;
+  font-style: italic;
+}
+
+.body p {
+  margin: 3% 0;
+}
+
+
+@media screen and (min-width:480px) {
+
+  .bio p {
+    margin: 2% auto;
+  }
+
+  .projectImage {
+    padding-top: 2%;
+    width: 32%;
+    float: left;
+  }
+
+  .projectText {
+    width: 68%;
+    float: right;
+  }
+
+}
+
+
+@media screen and (max-width: 479px), screen and (max-height: 400px) {
+
+  .header {
+    font-size: 110%;
+    padding: 2% 0;
+  }
+
+  .bio p {
+    margin: 4% auto;
+  }
+
+  .projectImage {
+    padding-top: 2%;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .projectText {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  
+}
+
+
+
