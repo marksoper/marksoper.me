@@ -101,7 +101,7 @@ pre {
     margin-top:6px;
     float:left;
     clear:left;
-    width:560px;
+    padding-right:0px;
 }
 .articleSection {
     margin:20px 0px;
@@ -111,8 +111,8 @@ pre {
     margin-bottom: 25px;
     padding:10px 0;
 }
-.articleDate{
-    margin-top:50px;
+.articleDate {
+    margin-top:10px;
     float:right;
     clear:right;
     width:100px;
