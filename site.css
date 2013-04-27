@@ -20,6 +20,7 @@ h1 {
 
 .header {
   width: 100%;
+  text-align: center;
   font-size: 120%;
   overflow: hidden;
   background-color: #f2f2f2;
@@ -36,25 +37,6 @@ h1 {
 .header .title a {
   color:#000000;
 }
-
-.header .nav {
-  float: right;
-  text-align: right;
-  margin-right: 5%;
-  min-width: 50%;
-}
-
-.header .nav .navItem {
-  font-weight: bold;
-  margin-left: 10%;
-  float: right;
-}
-
-.header .nav .navItem a {
-  color: #000099;
-}
-
-
 
 
 .title a {
@@ -152,7 +134,7 @@ h1 {
   }
 
   .bio p {
-    margin: 4% auto;
+    margin: 2% auto;
   }
 
   .projectImage {
