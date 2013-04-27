@@ -5,7 +5,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-body, div, p, ul, li, canvas, h1 {
+body, div, p, ul, li, canvas, h1, h2 {
   margin: 0;
   padding: 0;
 }
@@ -24,7 +24,6 @@ h2 {
 
 .header {
   width: 100%;
-  text-align: center;
   font-size: 120%;
   overflow: hidden;
   background-color: #f2f2f2;
@@ -42,9 +41,12 @@ h2 {
   color:#000000;
 }
 
-
 .title a {
   color: #000000;
+}
+
+.header .profession, .header .location {
+  font-size: 80%;
 }
 
 .contact {
@@ -56,10 +58,15 @@ h2 {
 
 .contact ul, .blog ul {
   list-style-type: none;
+  margin: 10px auto;
+}
+
+.contact h2, .blog h2, .projects h2 {
+  text-decoration: underline;
 }
 
 .contact li {
-  margin:1% auto;
+  margin:0 auto 6% auto;
   font-weight: bold;
   font-size: 120%;
 }
@@ -73,6 +80,11 @@ h2 {
 
 }
 
+.blog li {
+  margin:2% auto;
+  font-size: 110%;
+}
+
 .projects {
    width: 90%;
    margin: 3% auto;
@@ -83,6 +95,7 @@ h2 {
 }
 
 .bio {
+  font-size:110%;
   margin: 3% auto;
   padding: 0 5%;
 }
@@ -91,10 +104,13 @@ h2 {
   margin: 2% auto;
 }
 
+.bio a {
+  font-weight: bold;
+}
+
 .project {
-  border-top: 1px solid #333333;
   overflow: hidden;
-  margin: 5% auto;
+  margin: 2% auto 6% auto;
   padding: 2.5% 0 0 0;
   clear: both;
 }
