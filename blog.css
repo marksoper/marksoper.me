@@ -1,0 +1,162 @@
+body {
+    font-size: 16px;
+    line-height: 24px;
+    background: #ffffff;
+    color: #252525;
+    -webkit-text-size-adjust: 100%;
+    font-family: helvetica,arial,freesans,clean,sans-serif;
+}
+div {
+    overflow:hidden;
+    margin:0;
+    padding:0;
+}
+div.container {
+    width: 680px;
+    margin: 0 auto 3% auto;
+    padding: 0 5%;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px 0px 5px 0px;
+}
+.tags {
+    font-weight: bold;
+}
+.tags ul {
+    font-weight: normal;
+    list-style-type: none;
+    display: inline;
+    padding: 0;
+}
+.tags ul li {
+    display: inline;
+    margin-right:10px;
+}
+#nav {
+    border-right: solid #ccc 1px;
+    font-weight: bold;
+    float: left;
+    margin: 5px 0 0 50px;
+    padding: 0 0 0 8px;
+    width: 120px;
+    list-style-type: none;
+}
+#nav li {
+    margin: 0 0 1em 0;
+}
+#nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+#nav ul li {
+    margin: 0;
+    font-weight: normal;
+}
+ul.articles {
+    margin: 0 0;
+    padding: 0;
+    list-style-type: none;
+}
+a {
+    text-decoration:none;
+}
+a:hover {
+    color:#4433ff;
+    }
+
+#mainTitle {
+    margin-top:0px;
+    margin-bottom:20px;
+}
+.container h1 {
+    line-height:32px;
+    font-size:24px;
+    margin-top:40px;
+}
+.container h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    line-height:120%;
+    font-size:200%;
+}
+.container h3 {
+    line-height:24px;
+    font-size:18px;
+}
+.postDate {
+    color:#666666;
+    text-decoration:italic;
+    font-size:14px;
+    font-weight:bold;
+    line-height:20px;
+    margin:10px 0 0 0;
+}
+.moreArticle {
+    font-weight:bold;
+}
+.moreArticle a {
+    text-decoration:underline;
+}
+pre {
+    font-size:12px;
+    font-family: Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace
+}
+.articleTitle {
+    margin-top:6px;
+    float:left;
+    clear:left;
+    width:560px;
+}
+.articleSection {
+    margin:20px 0px;
+}
+.articleHeader {
+    margin-top:-20px;
+    padding:10px 0;
+}
+.articleDate{
+    margin-top:50px;
+    float:right;
+    clear:right;
+    width:100px;
+    text-align:right;
+}
+.articleWeekday {
+    color:#999999;
+    font-size:14px;
+    line-height:16px;
+} 
+.articleYear {
+    color:#999999;
+    font-size:14px;
+    line-height:15px;
+}
+.articleDay {
+    color:#440000;
+    font-size:20px;
+    line-height:28px;
+    }
+.dateDivider {
+    color:#aaaaaa;
+}
+.blogTitleOnArticle {
+    margin-top:3px;
+    text-decoration:underline;
+    font-size:14px;
+}
+.blogTitleOnArticle a {
+    color:#004455;
+}
+.blogTitleOnArticle a:visited {
+    color:#004455;
+}
+.blogTitleOnArticle a:hover {
+    color:#006677;
+}
+.articleHeaderImage {
+    width:540px;
+    text-align:center;
+}
+#contactList img {
+    width:46px;
+}

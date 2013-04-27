@@ -28,7 +28,7 @@ h2 {
   overflow: hidden;
   background-color: #f2f2f2;
   border-bottom: 1px solid #d2d2d2;
-  margin: 0 auto;
+  margin: 0 auto 3% auto;
   padding: 1% 0;
 }
 
@@ -53,7 +53,7 @@ h2 {
   float: left;
   width: 280px;
   padding: 0 5%;
-  margin: 0 auto 5% auto;
+  margin: 2% auto;
 }
 
 .contact ul, .blog ul {
@@ -78,7 +78,7 @@ h2 {
 
 .blog {
   padding: 0 5%;
-  margin: 0 auto;
+  margin: 2% auto;
   float: left;
 }
 
@@ -99,7 +99,7 @@ h2 {
 
 .bio {
   font-size:110%;
-  margin: 3% auto;
+  margin: 2% auto;
   padding: 0 5%;
 }
 
