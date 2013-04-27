@@ -45,8 +45,8 @@ h1 {
 
 .contact {
   width: 100%;
+  padding: 0 5%;
   margin: 0 auto;
-  text-align: center;
 }
 
 .contact ul {
@@ -54,7 +54,7 @@ h1 {
 }
 
 .contact li {
-  margin:3% auto;
+  margin:1% auto;
   font-weight: bold;
   font-size: 120%;
 }
