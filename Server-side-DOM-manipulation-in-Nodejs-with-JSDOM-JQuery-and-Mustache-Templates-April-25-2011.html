@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+        <title>Server-side DOM manipulation in Node.js with JSDOM, JQuery, and Mustache Templates</title>
+        <link rel="stylesheet" type="text/css" href="media/style.css" /> 
+	
+
+<script src="http://www.google.com/jsapi?key=ABQIAAAA013Fbnk_R3bj8DpYypMVuRR3TWqof-ahEEWSSYuqjUDLpyA16RTz1Z5kkEnfyCYN5myulmJrDZF7tA" type="text/javascript"></script> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="media/js/ga.js"></script>
+<script src="/media/js/ready.js" type="text/javascript"></script>
+    </head> 
+    <body> 
+        <ul id="nav">
+    <li><a href="http://soper.me">Home</a></li>
+
+    <li>
+      <a href="http://soper.me/about">About</a>
+    </li>
+
+    <li>
+
+   <div id="contact">
+       <ul id="contactList">
+         <li>
+           <div class="contactDiv" >
+             <a href="http://feeds.feedburner.com/MarkSopersBlog" title="Subscribe to Mark Soper's Blog">
+               <img src="/media/images/rss.png" alt="RSS Logo" />
+             </a>
+           </div>
+         </li>
+         <li>
+           <div class="contactDiv">
+             <a href="http://github.com/marksoper" title="Mark Soper on Github">
+               <img src="/media/images/gh.png" alt="Github logo" style="margin-left:-6px;width:64px"/>
+             </a>
+           </div>
+         </li>
+         <li>
+           <div class="contactDiv">
+             <a href="http://www.linkedin.com/in/marksoper" title="Mark Soper on LinkedIn">
+               <img src="/media/images/li.gif" alt="LinkedIn logo" />
+             </a>
+           </div>
+         </li>
+         <li>
+           <div class="contactDiv">
+             <a href="https://profiles.google.com/masoper" title="Mark Soper's Google Profile">
+               <img src="/media/images/gm.png" alt="Google Mail Logo" />
+             </a>
+           </div>
+         </li>
+         <li>
+           <div class="contactDiv">
+             <a href="http://twitter.com/marksoper" title="Mark Soper on Twitter">
+               <img src="/media/images/tw.png" alt="Twitter logo" />
+             </a>
+           </div>
+         </li>
+         <li>
+           <div class="contactDiv">
+             <a href="http://www.facebook.com/masoper" title="Mark Soper on Facebook">
+               <img src="/media/images/fb.png" alt="Facebook Logo" />
+             </a>
+           </div>
+         </li>
+         <li>
+           <div class="contactDiv">
+             <a href="http://www.flickr.com/marksoper" title="Mark Soper on Flickr">
+               <img src="/media/images/fl.png" alt="Flickr Logo" />
+             </a>
+           </div>
+         </li>
+       </ul>
+   </div>
+
+   </li>    
+
+
+        <li>Tags
+        <ul>
+                    <li><a href="backbone.html">backbone</a></li>
+                    <li><a href="javascript.html">javascript</a></li>
+                    <li><a href="python.html">python</a></li>
+                    <li><a href="nlp.html">nlp</a></li>
+                    <li><a href="opencalais.html">opencalais</a></li>
+                    <li><a href="job search.html">job search</a></li>
+                    <li><a href="startups.html">startups</a></li>
+                    <li><a href="personalization.html">personalization</a></li>
+                    <li><a href="news reader.html">news reader</a></li>
+                    <li><a href="static site.html">static site</a></li>
+                    <li><a href="petrify.html">petrify</a></li>
+                    <li><a href="node.js.html">node.js</a></li>
+                    <li><a href="logging.html">logging</a></li>
+                    <li><a href="analytics.html">analytics</a></li>
+                    <li><a href="real-time.html">real-time</a></li>
+                    <li><a href="api.html">api</a></li>
+                    <li><a href="fitness.html">fitness</a></li>
+                    <li><a href="runkeeper.html">runkeeper</a></li>
+                    <li><a href="family.html">family</a></li>
+                    <li><a href="personal.html">personal</a></li>
+                    <li><a href="jsdom.html">jsdom</a></li>
+                    <li><a href="jquery.html">jquery</a></li>
+                    <li><a href="mustache.html">mustache</a></li>
+                    <li><a href="DOM.html">DOM</a></li>
+                    <li><a href="TED.html">TED</a></li>
+                    <li><a href="technology.html">technology</a></li>
+                    <li><a href="creativity.html">creativity</a></li>
+                    <li><a href="inspiration.html">inspiration</a></li>
+                    <li><a href="mobile web.html">mobile web</a></li>
+                    <li><a href="jquery mobile.html">jquery mobile</a></li>
+                </ul>
+    </li>
+    
+</ul>
+
+
+
+
+
+
+
+        <div class="container">
+	    <div class="blogTitleOnArticle">
+	      <a href="/">Mark Soper's Blog</a>
+	    </div>
+                          <div class="articleHeader">
+		<div class="articleTitle">
+                  <h1>Server-side DOM manipulation in Node.js with JSDOM, JQuery, and Mustache Templates</h1>
+		</div>
+
+		<div class="articleDate">
+                  <div class="articleWeekday">
+                    Tuesday
+                  </div>
+                  <div class="articleDay">
+                    Apr 26
+                  </div>
+                  <div class="articleYear">
+                    2011
+                  </div>
+		</div>
+	      </div>
+             
+                <div class="tags">
+                    <ul>
+                                            <li><a href="javascript.html">javascript</a></li>
+                                            <li><a href="node.js.html">node.js</a></li>
+                                            <li><a href="jsdom.html">jsdom</a></li>
+                                            <li><a href="jquery.html">jquery</a></li>
+                                            <li><a href="mustache.html">mustache</a></li>
+                                            <li><a href="DOM.html">DOM</a></li>
+                                          </ul>
+                </div>
+                
+
+<p>I recently finished a mobile web development contract based on <a href="http://nodejs.org" title="Node.js">Node.js</a>.
+Looking around for but not finding a javascript-compatible template system like python&#039;s <a href="http://makotemplates.com">Mako</a>, I came 
+across Nodejitsu&#039;s <a href="https://github.com/tmpvar/jsdom" title="server-side DOM implementation JSDOM">JSDOM</a>-based <a href="http://blog.nodejitsu.com/micro-templates-are-dead" title="Nodejitsu&#039;s JSDOM-based Weld">Weld</a> approach to rendering HTML content via DOM manipulation on the server.
+What an awesome idea:  <b>Write your original rendering code in JQuery and the JQuery you&#039;ll
+need for AJAX in browser is already done</b>.  Not much out there one this yet, so I&#039;ll go through my process here.</p>
+
+<p>The <a href="http://blog.nodejitsu.com/micro-templates-are-dead" title="Nodejitsu&#039;s JSDOM-based Weld">Nodejitsu article</a> mentioned above is a great place to start.  Weld adds a data-DOM mapper to <a href="https://github.com/tmpvar/jsdom" title="server-side DOM implementation JSDOM">JSDOM&#039;s server-side DOM implementation</a>.  I chose a different JSDOM-based approach that maps data to HTML in atomic blocks and then places those blocks into the DOM - using a <a href="http://mustache.github.com/" title="Mustache templates">Mustache template</a> for each block of HTML I&#039;d want to be replaceable (e.g. via AJAX on client).  With either approach, in order to realize the benefit of server/browser code re-use, such HTML blocks will have to be sent to the browser.  In the approach described here, that might involve using <a href="http://icanhazjs.com/" title="ICanHaz.js client-side Mustache templates">ICanHaz.js</a>, which I hope to cover this in a follow-up post.</p>
+
+<p><a href="http://blog.soper.me/media/demos/Server-Side-DOM-Manipulation-In-Nodejs.tar.gz" title="Download Server-side DOM manipulation in Node.js with JSDOM, JQuery, and Mustache"><b>Download this code</b></a></p>
+
+<p><a href="http://dev.soper.me/media/html/Album-Demo-Server-side-DOM-manipulation-in-Node.js-with-JSDOM-and-JQuery.html" title="Demo Output for Server-side DOM manipulation in Node.js with JSDOM, JQuery, and Mustache"><b>Demo Output</b></a></p>
+
+<h3>Handling the request in Node.js (product_demo.js)</h3>
+
+<pre>
+require.paths.unshift(&#039;/usr/local/lib/node_modules&#039;);
+var http = require(&#039;http&#039;),
+    fs = require(&#039;fs&#039;),
+    jsdom = require(&#039;jsdom&#039;),
+    // correction made on May 4, 2011, removing this unnecessary require: flow = require(&#039;flow&#039;),
+    mustache = require(&#039;mustache&#039;);
+
+var products = require(&#039;./fixtures/products_fixture&#039;);
+
+var productSummaryTemplate = fs.readFileSync(&#039;component_templates/product_summary.html&#039;,&#039;utf-8&#039;);
+
+http.createServer(function(request,response) {
+        var page_template = fs.readFileSync(&#039;page_templates/product_list.html&#039;,&#039;utf-8&#039;);
+        var document = jsdom.jsdom(page_template);
+        var window = document.createWindow();
+        jsdom.jQueryify(window, &#039;./jquery.js&#039;, function() {
+                window.$(&#039;html&#039;).html(page_template);
+                window.$(&#039;h2&#039;).html(&quot;Content Added to DOM by Node.js Server&quot;);
+                for (var i=0; i &lt; products.length; i++) {
+                    productSummaryHtml = mustache.to_html(productSummaryTemplate, products[i]);
+                    window.$(&#039;#productList&#039;).append(productSummaryHtml);
+                }
+                response.writeHead(200, {&#039;Content-Type&#039;: &#039;text/html&#039;});
+                response.end(&quot;&lt;!DOCTYPE html&gt;\n&quot; + window.$(&#039;html&#039;).html());
+            });
+    }).listen(8078);
+
+</pre>
+
+<h3>Plain HTML template to be fleshed out via JQuery in the DOM (page_templates/product_list.html)</h3>
+
+<pre>
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;                                                                                                 
+      Album Demo - Server-side DOM manipulation in Node.js with JSDOM and JQuery                            
+    &lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;                                                                                                    
+      Album Demo - Server-side DOM manipulation in Node.js with JSDOM and JQuery                            
+    &lt;/h1&gt;
+    &lt;h2&gt;                                                                                                    
+      !!! This will be overwritten  !!!                                                                     
+    &lt;/h2&gt;
+    &lt;ul id=&quot;productList&quot; style=&quot;list-style:none&quot;&gt;
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+
+<h3>Mustache template component to be applied to the DOM via JQuery (component_templates/product_summary.html)</h3>
+
+<pre>
+&lt;li style=&quot;list-style:none&quot;&gt;
+  &lt;div class=&quot;album&quot; style=&quot;width:360px&quot;&gt;
+    &lt;div class=&quot;albumCover&quot; style=&quot;float:left;clear:left;width:100px;&quot;&gt;
+      &lt;img src=&quot;{{ coverUrl }}&quot; style=&quot;width:100px&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;albumMeta&quot; style=&quot;float:right;clear:right;width:240px;&quot;&gt;
+      &lt;div class=&quot;albumName&quot;&gt;
+        &lt;em&gt;{{ name }}&lt;/em&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;albumArtist&quot;&gt;
+        {{ artist }}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+
+</pre>
+
+<h3>Example data (fixtures/productsFixture.js)</h3>
+
+<pre>
+exports.products_fixtures = module.exports =
+    [{&quot;id&quot;:123,
+      &quot;name&quot;:&quot;Tried By 12&quot;,
+      &quot;artist&quot;:&quot;East Flatbush Project&quot;,
+      &quot;coverUrl&quot;:&quot;/media/images/flatbush.jpg&quot;},
+    {&quot;id&quot;:456,
+     &quot;name&quot;:&quot;Cymande&quot;,
+     &quot;artist&quot;:&quot;Cymande&quot;,
+     &quot;coverUrl&quot;:&quot;/media/images/cymande.jpg&quot;},
+    {&quot;id&quot;:789,
+     &quot;name&quot;:&quot;Rock&#039;N&#039;Roll Gumbo&quot;,
+     &quot;artist&quot;:&quot;Professor Longhair&quot;,
+     &quot;coverUrl&quot;:&quot;/media/images/longhair.jpg&quot;}];
+
+</pre>
+
+<p>A follow-up piece covering javascript-DOM code sharing between browser and server coming soon.</p>
+            
+	    <div id="disqus_thread"></div>
+
+<script>
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'marksopersblog'; // required: replace example with your forum shortname
+
+// The following are highly recommended additional parameters. Remove the slashes in front to use.
+var disqus_identifier = window.location.href;
+var disqus_url = window.location.href;
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </div>
+	
+<script src="/media/js/mixpanel1.js" type="text/javascript"></script>
+<script src="/media/js/mixpanel2.js" type="text/javascript"></script>
+
+    </body>
+</html>

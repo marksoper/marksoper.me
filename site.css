@@ -18,6 +18,10 @@ h1 {
   font-size: 100%;
 }
 
+h2 {
+  font-size: 112%;
+}
+
 .header {
   width: 100%;
   text-align: center;
@@ -44,12 +48,13 @@ h1 {
 }
 
 .contact {
-  width: 100%;
+  float: left;
+  width: 280px;
   padding: 0 5%;
   margin: 0 auto;
 }
 
-.contact ul {
+.contact ul, .blog ul {
   list-style-type: none;
 }
 
@@ -62,6 +67,10 @@ h1 {
 .contact img {
   height: 34px;
   margin: 0 0 -11px 0;
+}
+
+.blog {
+
 }
 
 .projects {
