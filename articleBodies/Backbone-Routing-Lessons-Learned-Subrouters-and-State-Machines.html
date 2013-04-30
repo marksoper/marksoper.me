@@ -1,0 +1,69 @@
+
+	    <div class="blogTitleOnArticle">
+	      <a href="/">Mark Soper's Blog</a>
+	    </div>
+                          <div class="articleHeader">
+		<div class="articleTitle">
+                  <h1>Backbone Routing Lessons Learned: Subrouters and State Machines</h1>
+		</div>
+
+		<div class="articleDate">
+                  <div class="articleWeekday">
+                    Monday
+                  </div>
+                  <div class="articleDay">
+                    Jan 14
+                  </div>
+                  <div class="articleYear">
+                    2013
+                  </div>
+		</div>
+	      </div>
+             
+                <div class="tags">
+                    <ul>
+                                            <li><a href="backbone.html">backbone</a></li>
+                                            <li><a href="javascript.html">javascript</a></li>
+                                          </ul>
+                </div>
+                
+
+<p>I&#039;ve had the opportunity to help four early-stage mobile app startup teams build their first products over the past two years.  Backbone has become a familiar tool in the process.  Here I talk about what I&#039;ve learned in using and extending Backbone.Router.</p>
+
+<h2>Front-end Frameworks: Where are we at today?</h2>
+
+<p>One reason for choosing Backbone over the last few years has been the perception that the right front-end patterns haven&#039;t really emerged yet.  If you&#039;re building backend services you have platforms like Rails with established patterns that have survived a very competitive evolution over the better part of a decade.  It hasn&#039;t been clear how to best structure front-end apps, so using the low-level, unopinionated Backbone library and rolling a bunch of things yourself on top of it has felt like a good approach until winning patterns emerge.</p>
+
+<p>My sense is that winning patterns for aspects of rich client development not covered in Backbone have begun to emerge and can be seen in places like <a href="http://emberjs.com/">Ember</a> and <a href="http://angularjs.org">Angular</a>, though we may not be close to annointing anything the Rails of the front-end at this point.  My friend <a href="https://plus.google.com/114224244165847207434/posts" title="Daniel Rinehart on Google+">Daniel Rinehart</a> suggested the other day that Backbone by itself is increasingly seen as too low-level for complex apps without standardizing on plug-ins like <a href="https://github.com/marionettejs/backbone.marionette" title="Marionette on Github">Marionette</a> to complete the picture.</p>
+
+<p>I&#039;d love to be involved in a more comprehensive discussion of the state of frameworks today, but will save that for another time and move on to a couple of extensions to Backbone I&#039;ve helped put in place, and how those might inform an understanding of emerging front-end patterns.</p>
+
+<h2>Subrouting: A Key to Code Organization for Complex Apps</h2>
+
+<p>Backbone&#039;s notion of a single router for an app works well for small apps.  This approach doesn&#039;t scale well as the complexity of the app grows.  We had a situation where we wanted to break a large app into app components that could be developed, tested, and perhaps even deployed independently.</p>
+
+<p>For example, consider extending the ubiquitous ToDo app to allow the user to invite a friend to collaborate on a Note.  You&#039;d have to enhance the core of the app to support multiple users, but you&#039;d also need to implement some kind of invitation process that might involve a couple of steps: plug in to the source of the friend&#039;s contact info, choose the friend, author the invite, send the invite, get notified upon receipt, etc. You may want a route associated with each step.  You may not be sure yet where in the overall UI this process will be initiated, maybe from within a Note, maybe during the onboarding process, maybe the UI/UX designer needs flexibility to move the feature around as design evolves.  Tying the interim routes internal to the invite process to your overall routing scheme can inhibit flexibility moving forward.</p>
+
+<p>My experience with Backbone is that the router is the main point of control for the app, and that one main router encourages the route-handling views across the entire app to evolve interdependently.  If your app is at a stage where it benefits from separation of concerns, moving to a subrouter model can be the key to getting that benefit.  <a href="http://www.geekdave.com/?p=13" title="MODULE-SPECIFIC SUBROUTES IN BACKBONE">Dave Cadwallader&#039;s blog post</a> does a good job of explaining this with examples, and <a href="https://gist.github.com/1235317" title="Backbone Subrouter">Tim Branyen offers a subrouter implementation</a> as part of his Backbone Boilerplate work.</p>
+
+<h2>Router as a State Machine</h2>
+
+<p>Web-influenced design/development teams tend to frame the app as a set of views, each generally represented by a route, and use the router as the way to transition from view to view.  You might think of the router as a state machine, defining a set of valid states and providing a transition mechanism between them.  There are two concerns in looking at Backbone&#039;s Router this way.</p>
+
+<h3>1. Routes Prefer to be independent of transitions</h3>
+
+<p>WheThere are lots of ways to maintain state from route to route, but they&#039;re usually not pretty.  You can store state to something globally available like an app object, try to maintain the state in models where data belongs, use url parameters, etc. but when you have to allow for routes to be triggered both with and without browser refresh, things get much more complicated.</p>
+
+<h3>2. Lots of Useful States Aren&#039;t Routes</h3>
+
+<p>Confusing routes with states is problematic.  Routes are meant to be distinct entry points into the experience: bookmarkable, sharable, and be navigable through forward and back buttons, a subset of the states that might be useful in modeling an app.  We realized that we had a bunch of states we wanted to be handle in a standardized way, meaning that we didn&#039;t want each view to have to (re)implement them.  For example: situations where the user&#039;s being notified (like an error) or being asked for something (like approval to commit an action).</p>
+
+<p>We found that we tended to solve problems like I/O error handling on a one-off basis in each view, duplicating a bunch of ajax error handling callbacks in slightly different ways in each view.  So we wanted a standardized way to deal with errors and other notifications.  The notion of using a state machine for routing came to us from Ember, brought to my attention by the <a href="http://javascriptjabber.com/034-jsj-ember-js/" title="Javascript Jabber Podcast Covers Ember">Javascript Jabber Podcast on Ember</a> - an awesome podcast series by the way!</p>
+
+<p>We implemented a state machine approach, details of which are described below.  As a result we were able to centralize common error handling logic - like logging.  And common logic that makes a lot of sense in the router - like logging whenever route transitions occur - can now be re-purposed to handling error states giving a more complete representation of a users activity through the app.  Decoupling the notion of application states, units of user experience that are worth considering discretely, from formal routes was a win, making the overall app much simpler, more reliable, and easier to reason about.</p>
+
+<h2>A Solution: Extending the Backbone Router to Address these Issues</h2>
+
+<script src="https://gist.github.com/4531770.js"></script>
+            
+            

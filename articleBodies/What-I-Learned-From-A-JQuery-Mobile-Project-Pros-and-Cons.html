@@ -1,0 +1,54 @@
+
+                          <div class="articleHeader">
+		<div class="articleTitle">
+                  <h1>What I Learned from a JQuery Mobile Project - Pros and Cons</h1>
+		</div>
+
+		<div class="articleDate">
+                  <div class="articleWeekday">
+                    Wednesday
+                  </div>
+                  <div class="articleDay">
+                    May 4
+                  </div>
+                  <div class="articleYear">
+                    2011
+                  </div>
+		</div>
+	      </div>
+             
+                <div class="tags">
+                    <ul>
+                                            <li><a href="mobile web.html">mobile web</a></li>
+                                            <li><a href="jquery mobile.html">jquery mobile</a></li>
+                                          </ul>
+                </div>
+                
+
+<p>I used <a href="http://jquerymobile.com" title="JQuery Mobile">JQuery Mobile</a> in a 4-week project building a basic mobile web app on Node.js.  Here&#039;s what I learned about it, what I liked and didn&#039;t like.</p>
+
+<p>JQuery Mobile is a mobile interface system based on the JQuery UI and JQuery javascript libraries.  It&#039;s main goals are:</p>
+
+<ul>
+<li> <b>Device and Browser Independence</b> - allow you to write one app that will run on any smartphone or tablet </li>
+<li> <b>Provide Touch Interaction</b> - layer touch interaction on top of your app without hassle </li>
+<li> <b>CSS/HTML Markup Oriented</b> - you can build powerful mobile web apps by modifying your HTML and CSS only with little Javasript coding required - if more flexibility is required, the underlying JQuery library makes for familiar Javascript customization.
+</li></ul>
+
+<p>I found JQuery Mobile very easy to learn.  Getting started with a basic page is easy using a <a href="http://jquerymobile.com/demos/1.0a4.1/#docs/pages/docs-pages.html" title="JQuery Mobile Boilerplate Template">boilerplate template</a>.  The <a href="http://jquerymobile.com/demos/1.0a4.1/" title="JQuery Mobile Demos &amp; Docs">demos/docs section</a> gives you an easy index to figuring out how to work with links, buttons, forms, etc.</p>
+
+<p>JQuery Mobile gave us a number of wins in this project:
+<ul>
+<li>The default page template gave us a decent-looking shell layout for the app</li>
+<li>The out-of-the-box forms, links, and buttons were easy to set up, have a standard iPhone-inspired aesthetic, and are easily customized </li>
+<li>Touch interaction worked out-of-the-box with no work required</li>
+<ul></ul></ul></p>
+
+<p>During the course of the project, I developed a serious concern about the <a href="http://jquerymobile.com/demos/1.0a4.1/#docs/pages/docs-navmodel.html" title="JQuery Mobile Navigation Docs">JQuery Mobile navigation and linking scheme</a>.  The default in JQuery Mobile is that it will take over navigation and apply its own Ajax navigation to all links unless you do something like use a <em>rel=external</em> attribute in the link tag.  Though this configuration is easy to do, in order to use JQuery Mobile as intended, you may have to rethink your navigation scheme and introduce a new organizational aspect involving how pages are grouped together for multi-page loads.</p>
+
+<p>At times I noticed unpredictable behavior in using the browser back button and in manually (by entering url in address bar) navigating to other pages on the site.
+While writing this, I visited a half-dozen pages in the <a href="http://jquerymobile.com/demos/1.0a4.1/" title="JQuery Mobile Demos">demos</a> section and then tried to get back to the <a href="http://jquerymobile.com" title="JQuery Mobile">root</a> using the back button and manually entering the url using Chrome 11.  Neither method worked.  Either the root page redirected to the demos page, or the browser tried unsuccessfully to load the root page via an AJAX call.  I had to switch over to Safari to access the root page and get into the forum to submit <a href="http://forum.jquery.com/topic/navigation-problem-on-jquery-mobile-website-s-root-page-after-visiting-demos-page" title="Mark Soper&#039;s post on JQuery forum about root page navigation problem">a post about this problem</a>.
+I&#039;d recommend taking a close look at the navigation and linking model for any site involving more that a couple of pages. 
+My experience suggests that the model can cause some unexpected dependencies between pages that can make navigation problematic if not handled carefully.</p>
+            
+
