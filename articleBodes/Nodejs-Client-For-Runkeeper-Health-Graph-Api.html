@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+        <title>Node.js Client for Runkeeper&#039;s Health Graph API</title>
+        <link rel="stylesheet" type="text/css" href="media/style.css" /> 
+	
+
+<script src="http://www.google.com/jsapi?key=ABQIAAAA013Fbnk_R3bj8DpYypMVuRR3TWqof-ahEEWSSYuqjUDLpyA16RTz1Z5kkEnfyCYN5myulmJrDZF7tA" type="text/javascript"></script> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="media/js/ga.js"></script>
+<script src="/media/js/ready.js" type="text/javascript"></script>
+    </head> 
+    <body> 
+        <ul id="nav">
+    <li><a href="http://soper.me">Home</a></li>
+
+    <li>
+      <a href="http://soper.me/about">About</a>
+    </li>
+
+    <li>
+
+   <div id="contact">
+       <ul id="contactList">
+         <li>
+           <div class="contactDiv" >
+             <a href="http://feeds.feedburner.com/MarkSopersBlog" title="Subscribe to Mark Soper's Blog">
+               <img src="/media/images/rss.png" alt="RSS Logo" />
+             </a>
+           </div>
+         </li>
+         <li>
+           <div class="contactDiv">
+             <a href="http://github.com/marksoper" title="Mark Soper on Github">
+               <img src="/media/images/gh.png" alt="Github logo" style="margin-left:-6px;width:64px"/>
+             </a>
+           </div>
+         </li>
+         <li>
+           <div class="contactDiv">
+             <a href="http://www.linkedin.com/in/marksoper" title="Mark Soper on LinkedIn">
+               <img src="/media/images/li.gif" alt="LinkedIn logo" />
+             </a>
+           </div>
+         </li>
+         <li>
+           <div class="contactDiv">
+             <a href="https://profiles.google.com/masoper" title="Mark Soper's Google Profile">
+               <img src="/media/images/gm.png" alt="Google Mail Logo" />
+             </a>
+           </div>
+         </li>
+         <li>
+           <div class="contactDiv">
+             <a href="http://twitter.com/marksoper" title="Mark Soper on Twitter">
+               <img src="/media/images/tw.png" alt="Twitter logo" />
+             </a>
+           </div>
+         </li>
+         <li>
+           <div class="contactDiv">
+             <a href="http://www.facebook.com/masoper" title="Mark Soper on Facebook">
+               <img src="/media/images/fb.png" alt="Facebook Logo" />
+             </a>
+           </div>
+         </li>
+         <li>
+           <div class="contactDiv">
+             <a href="http://www.flickr.com/marksoper" title="Mark Soper on Flickr">
+               <img src="/media/images/fl.png" alt="Flickr Logo" />
+             </a>
+           </div>
+         </li>
+       </ul>
+   </div>
+
+   </li>    
+
+
+        <li>Tags
+        <ul>
+                    <li><a href="backbone.html">backbone</a></li>
+                    <li><a href="javascript.html">javascript</a></li>
+                    <li><a href="python.html">python</a></li>
+                    <li><a href="nlp.html">nlp</a></li>
+                    <li><a href="opencalais.html">opencalais</a></li>
+                    <li><a href="job search.html">job search</a></li>
+                    <li><a href="startups.html">startups</a></li>
+                    <li><a href="personalization.html">personalization</a></li>
+                    <li><a href="news reader.html">news reader</a></li>
+                    <li><a href="static site.html">static site</a></li>
+                    <li><a href="petrify.html">petrify</a></li>
+                    <li><a href="node.js.html">node.js</a></li>
+                    <li><a href="logging.html">logging</a></li>
+                    <li><a href="analytics.html">analytics</a></li>
+                    <li><a href="real-time.html">real-time</a></li>
+                    <li><a href="api.html">api</a></li>
+                    <li><a href="fitness.html">fitness</a></li>
+                    <li><a href="runkeeper.html">runkeeper</a></li>
+                    <li><a href="family.html">family</a></li>
+                    <li><a href="personal.html">personal</a></li>
+                    <li><a href="jsdom.html">jsdom</a></li>
+                    <li><a href="jquery.html">jquery</a></li>
+                    <li><a href="mustache.html">mustache</a></li>
+                    <li><a href="DOM.html">DOM</a></li>
+                    <li><a href="TED.html">TED</a></li>
+                    <li><a href="technology.html">technology</a></li>
+                    <li><a href="creativity.html">creativity</a></li>
+                    <li><a href="inspiration.html">inspiration</a></li>
+                    <li><a href="mobile web.html">mobile web</a></li>
+                    <li><a href="jquery mobile.html">jquery mobile</a></li>
+                </ul>
+    </li>
+    
+</ul>
+
+
+
+
+
+
+
+        <div class="container">
+	    <div class="blogTitleOnArticle">
+	      <a href="/">Mark Soper's Blog</a>
+	    </div>
+                          <div class="articleHeader">
+		<div class="articleTitle">
+                  <h1>Node.js Client for Runkeeper&#039;s Health Graph API</h1>
+		</div>
+
+		<div class="articleDate">
+                  <div class="articleWeekday">
+                    Thursday
+                  </div>
+                  <div class="articleDay">
+                    Aug 25
+                  </div>
+                  <div class="articleYear">
+                    2011
+                  </div>
+		</div>
+	      </div>
+             
+                <div class="tags">
+                    <ul>
+                                            <li><a href="javascript.html">javascript</a></li>
+                                            <li><a href="node.js.html">node.js</a></li>
+                                            <li><a href="api.html">api</a></li>
+                                            <li><a href="fitness.html">fitness</a></li>
+                                            <li><a href="runkeeper.html">runkeeper</a></li>
+                                          </ul>
+                </div>
+                
+
+<p><a href="http://runkeeper.com" title="Runkeeper">Runkeeper</a> is a service that improves your fitness experience through the mobile device you probably already carry when you go for a run,
+bike ride, etc.  It tracks your workout in a bunch of helpful ways, but really excels at making solo sports 
+training a more social experience.  Runkeeper is used heavily by a group of Boston tech cyclists and on a recent ride we cooked up
+an idea for a service that combines charitable donation with fitness training in a new way.
+With the recently announced <a href="http://blog.runkeeper.com/new-feature/health-graph" title="Runkeeper Health Graph API">Health Graph API</a>
+opening Runkeeper to development, we set out to hack something up.</p>
+
+<h2>Why Node.js for a Startup Project?</h2>
+
+<p>Having used <a href="http://blog.soper.me/Server-side-DOM-manipulation-in-Nodejs-with-JSDOM-JQuery-and-Mustache-Templates-April-25-2011.html" title="Server-side DOM manipulation in Node.js with JSDOM, JQuery, and Mustache Templates">Node.js for a couple of contract projects</a>, it seemed well-suited for this,
+a startupish side-project with a lot of uncertainty about the target we&#039;re trying to hit.
+<a href="https://github.com/joyent/node" title="Node.js on Github">Node.js</a> is great for this situation because it means I can think about the overall architecture for the service in a single,
+javascript-based context.  Why is this valuable?  For example, decisions like whether to build a single-page app or a render 
+pages more traditionally from the server can be made with less concern for future switching-costs because (if done carefully) 
+most of the page-building logic can be re-used between browser and server.</p>
+
+<h2>Creating a Node.js Module for the API</h2>
+
+<p>We needed to create a way to bind to the <a href="http://developer.runkeeper.com/healthgraph" title="Health Graph API Home">Health Graph API</a> from Node.js, so it made sense to package this wrapper as an open-source Node.js module.  The <a href="https://github.com/marksoper/node-runkeeper" title="Node.js Client for Runkeeper Health Graph API">Node.js Client for the Runkeeper Health Graph API</a> is now available in an immature but functional state <a href="https://github.com/marksoper/node-runkeeper" title="Install Node.js Client for Runkeeper from Github">via Github</a>, with npm distribution likely to follow. I welcome comments, feedback, bug reports, enhancement pull requests, etc.</p>
+
+<h2>What&#039;s the Startup Idea?</h2>
+
+<p>We&#039;re keeping the idea very hush-hush.
+The only thing we can talk about right now is that the user experience will not require
+or even encourage the wearing of mobile phone outfits for long endurance workouts.</p>
+
+<p><a href="http://blog.runkeeper.com/" title="Jason Jacobs of Runkeeper">
+<img src="/media/images/Jason-Jacobs.png"> <br>
+</a></p>
+            
+	    <div id="disqus_thread"></div>
+
+<script>
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'marksopersblog'; // required: replace example with your forum shortname
+
+// The following are highly recommended additional parameters. Remove the slashes in front to use.
+var disqus_identifier = window.location.href;
+var disqus_url = window.location.href;
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </div>
+	
+<script src="/media/js/mixpanel1.js" type="text/javascript"></script>
+<script src="/media/js/mixpanel2.js" type="text/javascript"></script>
+
+    </body>
+</html>
