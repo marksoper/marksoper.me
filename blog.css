@@ -1,4 +1,8 @@
 
+p {
+    margin: 10px 0px;
+}
+
 div {
     overflow:hidden;
     margin:0;
