@@ -108,14 +108,12 @@ pre {
 }
 .articleHeader {
     margin-top:-20px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     padding:10px 0;
 }
 .articleDate {
     margin-top:10px;
-    float:right;
-    clear:right;
-    width:100px;
+    clear: both;
     text-align:right;
 }
 .articleWeekday {
@@ -128,7 +126,8 @@ pre {
     color:#440000;
     font-size:20px;
     line-height:28px;
-    }
+    float: left;
+}
 .dateDivider {
     color:#aaaaaa;
 }
