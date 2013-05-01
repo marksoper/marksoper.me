@@ -5,7 +5,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-body, div, p, ul, canvas, h1, h2 {
+body, div, p, canvas, h1, h2 {
   margin: 0;
   padding: 0;
 }
