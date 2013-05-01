@@ -108,35 +108,31 @@ pre {
 }
 .articleHeader {
     margin-top:-20px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     padding:10px 0;
 }
 .articleDate {
     margin-top:10px;
-    float:right;
-    clear:right;
-    width:100px;
+    clear: both;
     text-align:right;
 }
 .articleWeekday {
+    display: none;
     color:#999999;
     font-size:14px;
     line-height:16px;
 } 
-.articleYear {
-    color:#999999;
-    font-size:14px;
-    line-height:15px;
-}
-.articleDay {
+.articleDay, .articleYear {
     color:#440000;
     font-size:20px;
     line-height:28px;
-    }
+    float: left;
+}
 .dateDivider {
     color:#aaaaaa;
 }
 .blogTitleOnArticle {
+    display: none;
     margin-top:3px;
     text-decoration:underline;
     font-size:14px;
