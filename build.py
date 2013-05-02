@@ -1,5 +1,6 @@
 
 import os
+from BeautifulSoup import BeautifulSoup
 
 bodies = os.listdir("articleBodies")
 
@@ -16,7 +17,14 @@ for bodyName in bodies:
     f = open("articleBodies/" + bodyName)
     body = f.read()
     f.close()
-    total = beforeArticle + "\n" + body + "\n" + afterArticle
+
+    parsedBody = BeautifulSoup(body)
+    title = str(parsedBody.find("div", attrs={'class':'articleTitle'}).find('h1').text)
+
+    titleTag = "<title>" + title + " - Mark Soper's Blog</title>"
+    beforeArticleWithTitle = beforeArticle.replace("<title></title>", titleTag)
+
+    total = beforeArticleWithTitle + "\n" + body + "\n" + afterArticle
     f = open("www/" + bodyName, 'w')
     f.write(total)
     f.close()
