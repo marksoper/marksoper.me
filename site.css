@@ -3,6 +3,7 @@
 
 body {
   font-family: Helvetica, Arial, sans-serif;
+  min-width: 440px;
 }
 
 body, div, p, canvas, h1, h2 {
@@ -29,7 +30,7 @@ h2 {
   background-color: #f2f2f2;
   border-bottom: 1px solid #d2d2d2;
   margin: 0 auto 3% auto;
-  padding: 1% 0;
+  padding: 20px 0;
 }
 
 .header .title {
@@ -54,6 +55,25 @@ h2 {
   width: 280px;
   padding: 0 5%;
   margin: 2% auto;
+}
+
+.nav {
+  float: right;
+  margin-top:48px;
+  margin-right:5%;
+  font-size:80%;
+  font-weight:bold;
+}
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  display:inline;
+  margin:10px;
 }
 
 .contact ul, .blog ul {
@@ -133,51 +153,18 @@ h2 {
   margin: 3% 0;
 }
 
-
-@media screen and (min-width:480px) {
-
-  .bio p {
-    margin: 2% auto;
-  }
-
-  .projectImage {
-    padding-top: 2%;
-    width: 32%;
-    float: left;
-  }
-
-  .projectText {
-    width: 68%;
-    float: right;
-  }
-
+.bio p {
+  margin: 2% auto;
 }
 
-
-@media screen and (max-width: 479px), screen and (max-height: 400px) {
-
-  .header {
-    font-size: 110%;
-    padding: 2% 0;
-  }
-
-  .bio p {
-    margin: 2% auto;
-  }
-
-  .projectImage {
-    padding-top: 2%;
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .projectText {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  
+.projectImage {
+  padding-top: 2%;
+  width: 32%;
+  float: left;
 }
 
-
+.projectText {
+  width: 68%;
+  float: right;
+}
 
