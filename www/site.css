@@ -113,6 +113,11 @@ h2 {
    clear: both;
 }
 
+.projects a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .projects p {
   margin-top: 2%;
 }
