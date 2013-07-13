@@ -50,6 +50,29 @@ h2 {
   font-size: 80%;
 }
 
+.currentWork {
+   width: 90%;
+   margin: 3% auto;
+   clear: both;
+}
+
+.currentWork ul {
+   list-style-type: none;
+}
+
+.currentWork li {
+  margin: 30px 0;
+}
+
+.currentWork a {
+  text-decoration: underline;
+}
+
+.currentWork h2, .contact h2, .blog h2, .projects h2 {
+  text-decoration: underline;
+}
+
+
 .contact {
   float: left;
   width: 280px;
@@ -79,10 +102,6 @@ h2 {
 .contact ul, .blog ul {
   list-style-type: none;
   margin: 10px auto;
-}
-
-.contact h2, .blog h2, .projects h2 {
-  text-decoration: underline;
 }
 
 .contact li {
