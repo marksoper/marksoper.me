@@ -52,7 +52,7 @@ h2 {
 
 .currentWork {
    width: 90%;
-   margin: 3% auto;
+   margin: 60px auto;
    clear: both;
 }
 
@@ -74,7 +74,6 @@ h2 {
   clear:both;
   overflow:hidden;
   width: 96%;
-  padding: 0 5%;
 }
 
 .currentWork .thumb {
@@ -97,7 +96,7 @@ h2 {
 .contact {
   float: left;
   padding: 0 5%;
-  margin: 2% auto;
+  margin: 50px auto;
 }
 
 .nav {
@@ -121,11 +120,11 @@ h2 {
 
 .blog ul {
   list-style-type: none;
-  margin: 10px auto;
+  padding: 0;
 }
 
 .contactList div {
-  padding:20px 20px 20px;
+  padding:20px 20px 20px 0;
   font-weight: bold;
   font-size: 120%;
   white-space: nowrap;
@@ -139,7 +138,7 @@ h2 {
 
 .blog {
   padding: 0 5%;
-  margin: 2% auto;
+  margin: 50px auto;
   float: left;
 }
 
@@ -150,7 +149,7 @@ h2 {
 
 .projects {
    width: 90%;
-   margin: 3% auto;
+   margin: 60px auto;
    clear: both;
 }
 
@@ -165,7 +164,7 @@ h2 {
 
 .bio {
   font-size:110%;
-  margin: 2% auto;
+  margin: 50px auto;
   padding: 0 5%;
 }
 
