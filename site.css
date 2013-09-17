@@ -96,7 +96,6 @@ h2 {
 
 .contact {
   float: left;
-  width: 280px;
   padding: 0 5%;
   margin: 2% auto;
 }
@@ -120,15 +119,17 @@ h2 {
   margin:10px;
 }
 
-.contact ul, .blog ul {
+.blog ul {
   list-style-type: none;
   margin: 10px auto;
 }
 
-.contact li {
-  margin:0 auto 6% auto;
+.contactList div {
+  padding:20px 20px 20px;
   font-weight: bold;
   font-size: 120%;
+  white-space: nowrap;
+  float: left;
 }
 
 .contact img {
