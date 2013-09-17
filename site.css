@@ -20,7 +20,7 @@ h1 {
 }
 
 h2 {
-  font-size: 112%;
+  font-size: 140%;
 }
 
 .header {
@@ -52,7 +52,7 @@ h2 {
 
 .currentWork {
    width: 90%;
-   margin: 60px auto;
+   margin: 50px auto;
    clear: both;
 }
 
@@ -60,7 +60,7 @@ h2 {
   text-decoration: underline;
 }
 
-.currentWork h2, .contact h2, .blog h2, .projects h2 {
+.currentWork h2, .contact h2, .blog h2 {
   text-decoration: underline;
 }
 
@@ -96,7 +96,7 @@ h2 {
 .contact {
   float: left;
   padding: 0 5%;
-  margin: 50px auto;
+  margin: 40px auto;
 }
 
 .nav {
@@ -124,7 +124,7 @@ h2 {
 }
 
 .contactList div {
-  padding:20px 20px 20px 0;
+  padding:20px 60px 20px 0;
   font-weight: bold;
   font-size: 120%;
   white-space: nowrap;
@@ -138,12 +138,12 @@ h2 {
 
 .blog {
   padding: 0 5%;
-  margin: 50px auto;
+  margin: 40px auto 50px auto;
   float: left;
 }
 
 .blog li {
-  margin:2% auto;
+  margin:20px auto;
   font-size: 110%;
 }
 
@@ -160,6 +160,10 @@ h2 {
 
 .projects p {
   margin-top: 2%;
+}
+
+.projects h3 {
+  margin: 5px 0;
 }
 
 .bio {
@@ -203,7 +207,6 @@ h2 {
 }
 
 .projectImage {
-  padding-top: 2%;
   width: 32%;
   float: left;
 }
