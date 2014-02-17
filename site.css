@@ -23,18 +23,25 @@ h2 {
   font-size: 140%;
 }
 
+.mainContainer {
+  margin: 0 12%;
+}
+
 .header {
   width: 100%;
   font-size: 120%;
   overflow: hidden;
-  background-color: #f2f2f2;
-  border-bottom: 1px solid #d2d2d2;
+  background-color: #333333;
+  border-bottom: 1px solid #000000;
   padding: 20px 0;
 }
 
 .header .title {
   float: left;
-  margin-left: 12%;
+}
+
+.header .title h1 {
+  color:#dddddd;
 }
 
 .header .title a {
@@ -50,7 +57,6 @@ h2 {
 }
 
 .currentWork {
-  padding: 0 12%;
   clear: both;
 }
 
@@ -58,9 +64,15 @@ h2 {
   text-decoration: underline;
 }
 
-.currentWork h2, .contact h2, .blog h2, .projects h2 {
+h2.sectionTitle, .sectionTitle h2  {
+  background-color:#f4f4f4;
   margin-bottom: 20px;
-  font-size: 200%;
+  padding: 20px 0 10px 0;
+  text-align: center;
+  color: #666666;
+  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #aaaaaa;
+  margin-bottom: 40px;
 }
 
 .currentWork .thumb img {
@@ -89,19 +101,14 @@ h2 {
   margin: 0 0 8px 0;
 }
 
-
-
-
 .contact {
   width: 100%;
   float: left;
-  padding: 0 12%;
 }
 
 .nav {
   float: right;
   margin-top:48px;
-  margin-right:10%;
   font-size:80%;
   font-weight:bold;
 }
@@ -123,13 +130,22 @@ h2 {
   padding: 0;
 }
 
+.nav a {
+  color: #99ddff;
+}
+
 .contactList div {
-  padding:20px 44px 20px 0;
+  padding:0px 0px 20px 0;
+  margin: 0 auto;
   font-weight: bold;
   font-size: 120%;
   white-space: nowrap;
-  float: left;
   clear:both;
+}
+
+.contact {
+  width: 100%;
+  text-align: center;
 }
 
 .contact img {
@@ -139,7 +155,6 @@ h2 {
 
 .blog {
   width: 100%;
-  padding: 0 12%;
   float: left;
 }
 
@@ -149,7 +164,6 @@ h2 {
 }
 
 .projects {
-   padding: 0 12%;
    margin: 60px auto 0 auto;
    clear: both;
 }
@@ -168,8 +182,7 @@ h2 {
 }
 
 .bio, .currentWork, .contact, .projects, .blog {
-  border-bottom: 1px solid #cccccc;
-  padding: 40px 12%;
+  padding: 40px 0 0 0;
 }
 
 .bio {
@@ -186,9 +199,10 @@ h2 {
 
 .project {
   overflow: hidden;
-  margin: 2% auto 6% auto;
-  padding: 2.5% 0 0 0;
+  margin-top: 60px;
+  padding-bottom: 60px;
   clear: both;
+  border-bottom: 1px solid #d2d2d2;
 }
 
 
@@ -226,8 +240,10 @@ h2 {
 }
 
 .footer {
-  background-color: #f2f2f2;
+  background-color: #333333;
+  color: #dddddd;
   font-size: 90%;
   text-align: center;
-  padding: 40px;
+  padding: 70px 0 50px 0;
+  border-top: 1px solid #d2d2d2;
 }
