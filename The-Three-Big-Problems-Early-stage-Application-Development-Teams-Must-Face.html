@@ -80,26 +80,43 @@
              
 
 <p>
-  Coming up for air after a few years of early-stage application development projects, I've gathered here some accrued thoughts on the more interesting systemic problems we've faced and how to overcome them.
+  Coming up for air after a few years of early-stage application development projects, I've gathered here some accrued thoughts on the surprise systemic problems that have crept in despite the best intentions of experienced teams.
 </p>
-
-<p>
-  The fundamental challenge for initial product teams is a very high degree of uncertainty about what the eventually successful product looks like. Teams often meet this challenge using an iterative approach, working quickly to build and launch a basic version of the product to gather feedback and produce learnings that will inform future development.
-
-  I'm going to argue that the main way that teams fail to achieve this goal is that they spend too much time dealing with issues that are either unimportant or about which the right answer 
-
-The overall process feels a lot more difficult than it needs to be. I think there are 4 major reasons why.
 
 <h2>
-  1. Too much fretting and debate required to make design decisions that may as well be arbibtrary
+  1. The Arbitrary Decision Problem
 </h2>
 
+<b>
+  Too much effort invested in making decisions when an arbitrary choice (that satisfies the fundamental requirement) is just as good
+</b>
+
 <p>
-  Even for a well-conceived, MVP-minded product, many of the features are not differentiative. User settings and account management, for example, aren't going to make or break your app, but you need them. In addition to the standard stuff for these features, your app may have special requirements, but very likely they arise from the need for the user to configure basic properties of the User or some other data model in your system. These properties are of standard types for which good input form patterns are well established. There's little incentive to innovate, be creative, debate options, or otherwise invest in design for such features.
+  Many teams pursue the MVP concept: remove superfluous features until the product is minimally viable. Within the context of each feature, however, teams often do not apply this kind of focus.
 </p>
 
 <p>
-  Within the core of your UX, in dealing with those features that truly do differentiate your product, countless design and implementation decisions get fretted over, debated, implemented and re-implemented before anyone ever really uses the product. An example might be the message search feature in a chat app (What sort of autocomplete mechanics does it have? How should the results be formatted?, How are messages indexed on the backend?). What's important is that you have some data and users need to be able to reliably search it.
+  This most obvious examples of this are features like User Settings that are required but don't really differentiate the product. Teams may invest heavily in custom design and engineering when there's little chance of meaningful UX improvement and high likelihood of a non-standard approach to some form input causing user frustration.
+</p>
+
+<p>
+  <em>Coming soon: </em> An article on deriving UI specifications for features like User Settings from more fundamental specifications like a User model schema definition.
+</p>
+
+<p>
+  Even when dealing with core features that truly differentiate the product, non-critical design and implementation decisions get fretted over, debated, implemented and re-implemented before anyone ever really uses the product.
+</p>
+
+<p>
+  An example might be the message search feature in a chat app (What sort of autocomplete mechanics does it have? How should the results be formatted?, How are messages indexed on the backend?). What's important is that you have some data and users need to be able to reliably search it. You can come up with dozens of designs variations that meet the requirement. You don't know which is better. An arbitrary choice, made quickly (and ideally not incontrovertibly) is often the best choice. 
+</p>
+
+<p>
+  It's hard to be too hard on ourselves for these challenges that are inherent in UI engineering: It's very hard to distinguish between which decisions are critical and which are not. And often it's necessary to implement a design and play with it before realizing it needs revision. But there are big gains to be made in developing better approaches to rapidly implementing and testing design variations that meet the fundamental feature requirements. 
+</p>
+
+<p>
+  <em>Coming soon: </em> An article on deriving multiple UI implementations for a feature from fundamental specifications like schema definitions, user actions, etc.
 </p>
 
 <p>
