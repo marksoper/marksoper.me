@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
     <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-        <title>The Three Big Problems Early-stage Application Development Teams Must Face - Mark Soper's Blog</title>
+        <title>Three Unexpected Enginering Problems Startup Teams Face - Mark Soper's Blog</title>
 
         <link rel="canonical" />
         <link rel="stylesheet" type="text/css" href="site.css" />
@@ -62,7 +62,7 @@
 
                           <div class="articleHeader">
     <div class="articleTitle">
-                  <h1>The Three Big Problems Early-stage Application Development Teams Must Face</h1>
+                  <h1>Three Unexpected Enginering Problems Startup Teams Face</h1>
     </div>
 
     <div class="articleDate">
@@ -80,22 +80,24 @@
              
 
 <p>
-  Coming up for air after a few years of early-stage application development projects, I've gathered here some accrued thoughts on the surprise systemic problems that have crept in despite the best intentions of experienced teams.
+  Coming up for air after a few years of early-stage application development projects, I've gathered here some accrued thoughts on the most unexpected, difficult, and otherwise interesting problems that have arisen despite the best intentions of experienced and talented teams.
 </p>
 
 <h2>
   1. The Unimportant Decision Problem
 </h2>
+
 <div class="topicHeader">
   <p>
     <b>Problem: </b>
     <em>Too much effort invested in making decisions when a decent arbitary choice (from already-available options that satisfy the fundamental requirement) is just as good or better than the options you're considering.</em>
     <br><br>
-    <b>Solution: </b>
+    <b>Solution: </b><br>
       <em>
         1. Be aggressive about distinguishing important problems from unimportant problems.<br>
-        2. Decide up front on libraries, frameworks, etc. that will provide a standard set of solutions to these problems.<br>
-        3. Enforce that the team use these standard solutions!<br>
+        2. Put in provisional implementations instead of going for perfection right away.<br>
+        3. Decide up front on existing libraries, frameworks, style guides, etc. that will provide a standard set of solutions to these problems.<br>
+        4. Enforce that the team use these standard solutions!<br>
       </em>
   </p>
 </div>
@@ -110,10 +112,10 @@
  Consider User Settings, a major UI component that's required but doesn't really differentiate the product. Teams may invest heavily in custom design and engineering when there's little chance of meaningful UX improvement and high likelihood of a non-standard approach to some form input causing user frustration.
 </p>
 
-<p>
+<div class="comingSoon">
   <b>Coming soon: </b>
-  <em>Basic UI for features like User Settings can be generated from more fundamental specifications like a User model schema definition.</em>
-</p>
+  <em>An article exploring how basic UI for features like User Settings can be generated from fundamental specifications like a User model schema definition.</em>
+</div>
 
 <h3>Non-differentiative details of Differentiative Components</h3>
 
@@ -135,19 +137,33 @@
 
 </p>
 
-<p>
-  <b>Coming soon: </b> More on how to get layout/nav right across different devices. Spoiler alert: We need low-level layout and navigation primitives that express fundamental product behavior and use a layout/nav engine to generate different variations that can be evaluated and tested in different environments. Think responsive design but at a much deeper level in the UI architecture.
-</p>
+<div class="comingSoon">
+  <b>Coming soon: </b> More on how to get layout/nav right across different devices. We need low-level layout and navigation primitives that express fundamental product behavior and use a layout/nav engine to generate different variations that can be evaluated and tested in different environments. Think responsive design but at a much deeper level in the UI architecture.
+</div>
 
 <h2>
   2. The Multi-Platform Problem
 </h2>
 
-
+<div class="topicHeader">
+  <p>
+    <b>Problem: </b>
+    <em>The end user UI environment is increasingly fragmented and unpredictible. There's pressure on startups to provide a great product across many device/platform/screen-size configurations, and this is a near-impossible cahllenge for teams with limited resources.</em>
+    <br><br>
+    <b>Solution: </b>
+    <em>
+      Focus relentlessly on core, platform-agnostic issues. Defer supporting mutliple environments if possible. Shift programming work away from the front-end, and use technologies that make it easier to do this.
+    </em>
+  </p>
+</div>
 
 <p>
   It's no surprise that building for multiple device platforms, device types, and screen-sizes is a huge UI engineering challenge. What's impressed over the years as a long-time web developer is the extent to which it's a deep problem with critical system design implications everywhere in the product and huge strategic implications for the business. There's more on the magnitude of this problem HERE (link). Instead let's focus on the solution.
 </p>
+
+<h3>
+  Make Parallel Development Projects Less Redundant
+</h3>
 
 <p>
   The last thing an entrepreneurial team needs is to be caught up in redundant parallel development tracks building for myriad UI environments (web, iOS, Android, email, smartphone, tablet, etc.), trying to hit multiple moving targets at the same time while ensuring UX consistency, observing DRY, and reconciling worthwhile domain learning across multiple development teams/projects. 
@@ -157,22 +173,36 @@
   It's important for early-stage projects to be relentless about focusing on core engineering challenges. Depending on the situation, this may mean starting iOS-only or web-only. It might mean using a hybrid approach - e.g. one of several based on Apache Cordova - where native apps are generated from the same HTML/JS/CSS code used in the web app. The consensus seems to be that hybrid development isn't an attractive long-term approach, but for some types of apps it can be a good early-stage choice in lieu of the eventual switch to a UI built from native components. We need better technology to solve the problem, and I'm optimistic we'll see it in the near future.
 </p>
 
+<h3>
+  Push Computing Lower in the Stack
+</h3>
+
 <p>
-  The innovative approach taken by React Native - share (Javascript) data management code across platforms but write platform-specific code at the view layer - offers a pointer into what the future may hold. The key insight here is that in a multi-platform system, we should relentlessly push computing into lower levels of the stack that are shared between platforms and continue to move that "platform-agnostic threshold" higher in the stack. 
+  The innovative approach taken by React Native - share (Javascript) front-end data management code across platforms and write simple, native platform-specific code at the view layer - offers a pointer into what the future may hold. The key insight here is that in a multi-platform system, we should relentlessly push computing into lower levels of the stack below the "platform-agnostic threshold" and favor technologies like React Native that move that threshold out toward the UI. 
 </p>
 
 <p>
-  <em>Coming Soon: </em> An article on the promising React Native approach.
+  As a general rule, when deciding what to do or not to do in an early-stage project, favor initiatives that focus on core, domain-specific engineering.  Does it help move you closer toward understanding the fundamental and unique data model and user interactions that will eventually power your successful product regardless of what device the user's holding? If not, try to avoid it!
 </p>
-
-
 
 <h2>
   3. The Multiple Designs Problem
 </h2>
 
+<div class="topicHeader">
   <p>
-    <em>UI/UX design</em> and <em>Software design of UI software</em> are two different things.
+    <b>Problem: </b>
+    <em>What's referred to as <b>design</b> in web/mobile application development only gives you half of the development plan your team needs to be successful.</em>
+    <br><br>
+    <b>Solution: </b>
+    <em>
+      Product owner, UI/UX Designer, and Front-end Engineer should work together intimately from the beginning to "do design" for the project. Include modularity, data-flow, and systemic events as first class design considerations alongside traditional UI/UX design issues.
+    </em>
+  </p>
+</div>
+
+  <p>
+    <em><b>UI/UX design</b> and <b>Software design of UI software</b> are two different things.</em>
   </p>
 
   <ul>
@@ -181,25 +211,25 @@
     </li>
     <br>
     <li>
-      <b>Software design of UI software</b> - typically done by a professional (front-end) software engineer, this involves creating a <b>plan for program(s) that the team will be building, with modularity and data management</b> as the key considerations. See Leslie Lamport's excellent work on getting the message out about the importance of "blueprints" before jumping into coding.
+      <b>Software design of UI software</b> - typically done by a professional (front-end) software engineer, this involves creating a <b>plan for program(s) that the team will be building, with modularity and managing the flow of data</b> as the key considerations. See Leslie Lamport's excellent work on getting the message out about the importance of "blueprints" before jumping into coding.
     </li>
   </ul>
 
   <p>
-    Most teams focus on the former and neglect that latter. The mocks stand in as software design. In the worst case scenarios the team jumps into coding up the mocks without thinking about software design. In a better but still wrong scenario, the engineering team <em>derives a software design</em> from the mocks - something like "drawing boxes around these mocks I see we're going to need the following 24 UI components and our model layer will have these 8 models.
+    Most teams focus on the former and neglect that latter. The mocks stand in as software design. In the worst case scenarios the team jumps into coding up the mocks without thinking about software design. In a better but still wrong scenario, the engineering team <em>derives a software design</em> from the mocks - something like "drawing a bunch of nested rectangles on these mocks I see we're going to need the following 24 UI components and our model layer will need to have these 8 models ...
   </p>
 
   <p>
-    The right way to do this is to have someone (the UI engineer) engaged in software design from the very beginning, working in parallel with a designer who's focused on UX, and the product owner who has the vision. A lot more collaboration is required up front, but doing this right means you have just created an <b>"application design"</b> that encompasses both UI/UX and software design. Critical considerations like modularity and how data will flow across the entire system play a first class role alongside equally important considerations like aesthetic, look-and-feel, usability, and good UI design patterns.
+    The right way to do this is to have someone (the UI engineer) engaged in software design from the very beginning, working in parallel with a designer who's focused on UX, and the product owner who has the vision. A lot more collaboration is required up front, but doing this right means you have just created an <b><em>application design</em></b> that encompasses both UI/UX and software design. Critical considerations like modularity, thinking holistically about all of the meaningful events that can occur in a system, and how data will flow across the entire system play a first class role alongside equally important considerations like aesthetic, look-and-feel, usability, and good UI design patterns.
   </p>
 
   <p>
-    A good way to compensate for the the extra collaborative cost incurred is to constrain the scope of both design inputs. Defer "arbitrariable decisions" whenever possible. Don't worry about pixel-perfection. Typography, colors, and other style guide issues can probably wait. In terms of software design, keep it very low level, thinking about the core data model that this thing will run on, and the fundamental user actions and other events that are meaningful to the product.
+    A good way to compensate for the the extra collaborative cost incurred is to constrain the scope of both design disciplines. Defer "unimportant decisions" whenever possible. Don't worry about pixel-perfection. Typography, colors, and other style guide issues can probably wait. In terms of software design, keep it very low level, thinking about the core data model that this thing will run on, and the fundamental user actions and other events that are meaningful to the product. Let these two design disciplines evolve in parallel toward less fundamental issues like componentizing the UI, layout/nav decisions, and determining the right UI patterns to use. 
   </p>
 
-  <p>
-    <em>Coming Soon: </em> An article with more detail and examples on how to do "application design"
-  </p>
+  <div class="comingSoon">
+    <em>Coming Soon: </em> An article with more detail and examples about this <b><em>application design</em></b> approach.
+  </div>
 
 
 
