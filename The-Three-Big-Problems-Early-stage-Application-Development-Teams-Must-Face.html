@@ -84,38 +84,49 @@
 </p>
 
 <h2>
-  1. The Arbitrariable Decision Problem
+  1. The Unimportant Decision Problem
 </h2>
-
-<p><b>
-  <em>Problem: </em>
-  Too much effort invested in making decisions when an arbitrary choice (that satisfies the fundamental requirement) is just as good or better than the options you're considering.
-  <br>
-  <em>Solution: </em>
-    1. Be aggressive about distinguishing important problems from unimportant problems
-    2. Decide up front on libraries, frameworks, etc. that will provide a standard set of solutions to these problems.
-    3. Use the standard solutions
-
+<p>
+  <b>Problem: </b>
+  <em>Too much effort invested in making decisions when a decent arbitary choice (from already-available options that satisfy the fundamental requirement) is just as good or better than the options you're considering.</em>
+  <br><br>
+  <b>Solution: </b>
+    <em>
+      1. Be aggressive about distinguishing important problems from unimportant problems.<br>
+      2. Decide up front on libraries, frameworks, etc. that will provide a standard set of solutions to these problems.<br>
+      3. Enforce that the team use these standard solutions!<br>
+    </em>
 </b></b>
 
 <p>
   Many teams pursue the MVP concept: remove superfluous features until the product is minimally viable. Within the context of each feature, however, teams often do not apply this kind of focus.
 </p>
 
+<h3>Non-differentiative (but Required) Components</h3>
+
 <p>
-  This most obvious examples of this are features like User Settings that are required but don't really differentiate the product. Teams may invest heavily in custom design and engineering when there's little chance of meaningful UX improvement and high likelihood of a non-standard approach to some form input causing user frustration.
+ Consider User Settings, a major UI component that's required but doesn't really differentiate the product. Teams may invest heavily in custom design and engineering when there's little chance of meaningful UX improvement and high likelihood of a non-standard approach to some form input causing user frustration.
 </p>
 
 <p>
-  <em>Coming soon: </em> An article on deriving UI specifications for features like User Settings from more fundamental specifications like a User model schema definition.
+  <b>Coming soon: </b>
+  <em>Basic UI for features like User Settings can be generated from more fundamental specifications like a User model schema definition.</em>
+</p>
+
+<h3>Non-differentiative details of Differentiative Components</h3>
+
+<p>
+  Even when dealing with critical major components that truly differentiate the product, non-critical design and implementation decisions get fretted over, debated, implemented and re-implemented before anyone ever really uses it.
 </p>
 
 <p>
-  Even when dealing with core features that truly differentiate the product, non-critical design and implementation decisions get fretted over, debated, implemented and re-implemented before anyone ever really uses the product.
+  Your chat app is going to be the next big thing because of its advanced message search capabilities. A good search UX is critical. But does this UX need to be innovative? Does it require creative rethinking of existing search UI patterns? Maybe it's the advanced AI your PhD's are developing, functionality that's completely decoupled from the front-end. Maybe you can get by with some Bootstrap autocomplete input for now.
 </p>
 
+<h3>Variations for Page Layout and Navigation</h3>
+
 <p>
-  An example might be the message search feature in a chat app (What sort of autocomplete mechanics does it have? How should the results be formatted?, How are messages indexed on the backend?). What's important is that you have some data and users need to be able to reliably search it. You can come up with dozens of designs variations that meet the requirement. You don't know which is better. An arbitrary choice, made quickly (and ideally not incontrovertibly) is often the best choice. 
+  How to arrange components onto pages and how to navigate between them is a major area for counter-productive debate and fretting over decisions.
 </p>
 
 <p>
