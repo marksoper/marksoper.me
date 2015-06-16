@@ -124,51 +124,76 @@
 </p>
 
 <h2>
-  2. Too many devices/platforms/screensizes to build for
-
-<p>
-  tablestakes
-</p>
-
+  2. The Multi-Platform Problem
 </h2>
 
+<b>
+  tablestakes
+</b>
+
+<p>
+  It's no secret that building for multiple device platforms, device types, and screen-sizes is a huge UI engineering challenge. What's surprised me as a long-time web developer is the extent to which it's a deep problem with critical system design implications everywhere in the product and huge strategic implications for the business.   
+</p>
+
+<p>
+  The problem goes beyond just supporting iOS and Android smartphones and tablets. Almost every company communicates with users via email, which many business owners are surprised to learn often merits its own UI/UX design and engineering processes. New platforms and devices are constantlye emerging.
+</p>
+
+<p>
+  The last thing an entrepreneurial team needs is to be caught up in redundant parallel development tracks building for web, iOS, Android, etc., trying to ensure UX consistency, observe DRY, reconcile worthwhile learning about the domain across several development projects. 
+</p>
+
+<p>
+  Solutions to the problem vary widely with the situation. Responsive design can be attractive for web apps, especially those that tend toward content and away from complex interaction. Hybrid approaches to native apps bring the rarely-fulfulled promise of "write once, run anywhere". In reality, desktop web apps and native mobile apps are often so different that separate design/dev paths are required in any case and trying to share code between the two becomes problematic as you approach a "viewish" level of the stack where markup and UI events are involved.
+</p>
+
+<p>
+  Spreading precious startup resources across multiple redundant design/dev projects is such a huge cost ...
+</p>
+
+<p>
+  <em>Coming Soon: </em> An article on the promising React Native approach.
+</p>
+
+
+
 <h2>
-  3. The problem of multiple design levels
+  3. The Different Designs Problem
 </h2>
 
   <p>
-    UI/UX design and software design of UI software are two different things.
+    <em>UI/UX design</em> and <em>Software design of UI software</em> are two different things.
   </p>
 
   <ul>
     <li>
-      UI/UX design - typically done by a professional designer, this involves working with the product's business owner to get the product vision out of his/her head and into a visual representation (wirefreames, mocks, etc) of the user experience (UX) and associated user interface (UI).
+      <b>UI/UX design</b> - typically done by a professional designer, this involves working with the product's business owner to get the product vision out of his/her head and into a <b>visual representation (wirefreames, mocks, etc) of the user experience (UX) and associated user interface (UI)</b>.
     </li>
+    <br>
     <li>
-      Software design of UI software - typically done by a professional (front-end) software engineer, this involves planning the program(s) that the team will be building. See Leslie Lamport's excellent work on getting the message out about the importance of "blueprints" before jumping into coding.
+      <b>Software design of UI software</b> - typically done by a professional (front-end) software engineer, this involves creating a <b>plan for program(s) that the team will be building, with modularity and data management</b> as the key considerations. See Leslie Lamport's excellent work on getting the message out about the importance of "blueprints" before jumping into coding.
     </li>
   </ul>
 
   <p>
-    The problem is that the existence/importance of these two levels, and how they inter-relate, aren't well appreciated by early-stage product teams. The most common incarnation is where a designer does UI/UX design, producing a design spec (mocks/wireframes), and the team concludes "design is done", let's get coding. It's a rare designer who has the experience to produce a design that addresses both levels, and it's not just a skillset issue. The engineering team should be involved in both levels but absolutely has to be inolved in the second level.
+    Most teams focus on the former and neglect that latter. The mocks stand in as software design. In the worst case scenarios the team jumps into coding up the mocks without thinking about software design. In a better but still wrong scenario, the engineering team <em>derives a software design</em> from the mocks - something like "drawing boxes around these mocks I see we're going to need the following 24 UI components and our model layer will have these 8 models.
   </p>
 
-<h2>
+  <p>
+    The right way to do this is to have someone (the UI engineer) engaged in software design from the very beginning, working in parallel with a designer who's focused on UX, and the product owner who has the vision. A lot more collaboration is required up front, but doing this right means you have just created an <b>"application design"</b> that encompasses both UI/UX and software design. Critical considerations like modularity and how data will flow across the entire system play a first class role alongside equally important considerations like aesthetic, look-and-feel, usability, and good UI design patterns.
+  </p>
 
-</h2>
+  <p>
+    A good way to compensate for the the extra collaborative cost incurred is to constrain the scope of both design inputs. Defer "arbitrariable decisions" whenever possible. Don't worry about pixel-perfection. Typography, colors, and other style guide issues can probably wait. In terms of software design, keep it very low level, thinking about the core data model that this thing will run on, and the fundamental user actions and other events that are meaningful to the product.
+  </p>
 
-
-early-stage projects
-MVP
-
-
-
-
-
-
+  <p>
+    <em>Coming Soon: </em> An article with more detail and examples on how to do "application design"
+  </p>
 
 
-           
+
+
       <div id="disqus_thread"></div>
 
 <script>

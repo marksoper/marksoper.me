@@ -1,14 +1,13 @@
 
 
 
-body {
-  font-family: proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  min-width: 780px;
-}
-
 body, div, p, canvas, h1, h2 {
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -23,11 +22,22 @@ h2 {
   font-size: 140%;
 }
 
+.container {
+  max-width: 780px;
+  min-width: 480px;
+}
+
+.currentWork, .projects {
+  max-width: 1200px;
+  min-width: 780px;
+}
+
 .mainContainer {
   margin: 0 12%;
 }
 
 .header {
+  min-width: 540px;
   width: 100%;
   font-size: 120%;
   overflow: hidden;
