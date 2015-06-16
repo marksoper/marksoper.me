@@ -120,25 +120,21 @@
 </p>
 
 <p>
-  Your chat app is going to be the next big thing because of its advanced message search capabilities. A good search UX is critical. But does this UX need to be innovative? Does it require creative rethinking of existing search UI patterns? Maybe it's the advanced AI your PhD's are developing, functionality that's completely decoupled from the front-end. Maybe you can get by with some Bootstrap autocomplete input for now.
+  Your chat app is going to be the next big thing because of its advanced message search capabilities. A good search UX is critical. But does this UX need to be innovative? Does it require creative rethinking of existing search UI patterns? Maybe your special sauce is the advanced AI your PhD's are developing, functionality that's completely decoupled from the front-end. Can get by with your framework's stock autocomplete input for now instead of rolling your own?
 </p>
 
 <h3>Variations for Page Layout and Navigation</h3>
 
 <p>
-  How to arrange components onto pages and how to navigate between them is a major area for counter-productive debate and fretting over decisions.
+  How to arrange components onto pages and how to navigate between them is a major area for counter-productive debate and fretting over decisions. And the problem gets compounded by the multi-platform problem discussed below as you're often trying to hit multiple moving UI design targets (e.g. smartphone and desktop) simultaneously. Usually here are only handful of reasonable layout/navigation arrangements worth considering - e.g. "Throw everything on one page (great for desktop!)" or "Every component on its own page with a navbar at bottom (great for smartphone)". Usually it's not possible to know what the best choices are. You might implement it one way, user test it, and then realize there's a better way to organize.
 </p>
 
 <p>
-  It's hard to be too hard on ourselves for these challenges that are inherent in UI engineering: It's very hard to distinguish between which decisions are critical and which are not. And often it's necessary to implement a design and play with it before realizing it needs revision. But there are big gains to be made in developing better approaches to rapidly implementing and testing design variations that meet the fundamental feature requirements. 
+
 </p>
 
 <p>
-  <em>Coming soon: </em> An article on deriving multiple UI implementations for a feature from fundamental specifications like schema definitions, user actions, etc.
-</p>
-
-<p>
-  Another example is which components appear on which screen. Highly debated. Often layout are hard-coded around a specific choice. Should be possible to have several equivalent screen layouts in play, test which works best at various screen dimensions.
+  <b>Coming soon: </b> More on how to get layout/nav right across different devices. Spoiler alert: We need low-level layout and navigation primitives that express fundamental product behavior and use a layout/nav engine to generate different variations that can be evaluated and tested in different environments. Think responsive design but at a much deeper level in the UI architecture.
 </p>
 
 <h2>
@@ -176,7 +172,7 @@
 
 
 <h2>
-  3. The Different Designs Problem
+  3. The Multiple Designs Problem
 </h2>
 
   <p>
