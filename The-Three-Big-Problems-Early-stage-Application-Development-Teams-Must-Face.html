@@ -86,17 +86,19 @@
 <h2>
   1. The Unimportant Decision Problem
 </h2>
-<p>
-  <b>Problem: </b>
-  <em>Too much effort invested in making decisions when a decent arbitary choice (from already-available options that satisfy the fundamental requirement) is just as good or better than the options you're considering.</em>
-  <br><br>
-  <b>Solution: </b>
-    <em>
-      1. Be aggressive about distinguishing important problems from unimportant problems.<br>
-      2. Decide up front on libraries, frameworks, etc. that will provide a standard set of solutions to these problems.<br>
-      3. Enforce that the team use these standard solutions!<br>
-    </em>
-</b></b>
+<div class="topicHeader">
+  <p>
+    <b>Problem: </b>
+    <em>Too much effort invested in making decisions when a decent arbitary choice (from already-available options that satisfy the fundamental requirement) is just as good or better than the options you're considering.</em>
+    <br><br>
+    <b>Solution: </b>
+      <em>
+        1. Be aggressive about distinguishing important problems from unimportant problems.<br>
+        2. Decide up front on libraries, frameworks, etc. that will provide a standard set of solutions to these problems.<br>
+        3. Enforce that the team use these standard solutions!<br>
+      </em>
+  </p>
+</div>
 
 <p>
   Many teams pursue the MVP concept: remove superfluous features until the product is minimally viable. Within the context of each feature, however, teams often do not apply this kind of focus.
@@ -141,28 +143,22 @@
   2. The Multi-Platform Problem
 </h2>
 
-<b>
-  tablestakes
-</b>
+
 
 <p>
-  It's no secret that building for multiple device platforms, device types, and screen-sizes is a huge UI engineering challenge. What's surprised me as a long-time web developer is the extent to which it's a deep problem with critical system design implications everywhere in the product and huge strategic implications for the business.   
+  It's no surprise that building for multiple device platforms, device types, and screen-sizes is a huge UI engineering challenge. What's impressed over the years as a long-time web developer is the extent to which it's a deep problem with critical system design implications everywhere in the product and huge strategic implications for the business. There's more on the magnitude of this problem HERE (link). Instead let's focus on the solution.
 </p>
 
 <p>
-  The problem goes beyond just supporting iOS and Android smartphones and tablets. Almost every company communicates with users via email, which many business owners are surprised to learn often merits its own UI/UX design and engineering processes. New platforms and devices are constantlye emerging.
+  The last thing an entrepreneurial team needs is to be caught up in redundant parallel development tracks building for myriad UI environments (web, iOS, Android, email, smartphone, tablet, etc.), trying to hit multiple moving targets at the same time while ensuring UX consistency, observing DRY, and reconciling worthwhile domain learning across multiple development teams/projects. 
 </p>
 
 <p>
-  The last thing an entrepreneurial team needs is to be caught up in redundant parallel development tracks building for web, iOS, Android, etc., trying to ensure UX consistency, observe DRY, reconcile worthwhile learning about the domain across several development projects. 
+  It's important for early-stage projects to be relentless about focusing on core engineering challenges. Depending on the situation, this may mean starting iOS-only or web-only. It might mean using a hybrid approach - e.g. one of several based on Apache Cordova - where native apps are generated from the same HTML/JS/CSS code used in the web app. The consensus seems to be that hybrid development isn't an attractive long-term approach, but for some types of apps it can be a good early-stage choice in lieu of the eventual switch to a UI built from native components. We need better technology to solve the problem, and I'm optimistic we'll see it in the near future.
 </p>
 
 <p>
-  Solutions to the problem vary widely with the situation. Responsive design can be attractive for web apps, especially those that tend toward content and away from complex interaction. Hybrid approaches to native apps bring the rarely-fulfulled promise of "write once, run anywhere". In reality, desktop web apps and native mobile apps are often so different that separate design/dev paths are required in any case and trying to share code between the two becomes problematic as you approach a "viewish" level of the stack where markup and UI events are involved.
-</p>
-
-<p>
-  Spreading precious startup resources across multiple redundant design/dev projects is such a huge cost ...
+  The innovative approach taken by React Native - share (Javascript) data management code across platforms but write platform-specific code at the view layer - offers a pointer into what the future may hold. The key insight here is that in a multi-platform system, we should relentlessly push computing into lower levels of the stack that are shared between platforms and continue to move that "platform-agnostic threshold" higher in the stack. 
 </p>
 
 <p>
