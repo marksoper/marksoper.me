@@ -71,7 +71,7 @@
                     Tuesday
                   </div>
                   <div class="articleDay">
-                    June 17
+                    July 13
                   </div>
                   <div class="articleYear">,
                     2015
@@ -79,20 +79,75 @@
     </div>
         </div>
 
-
+        <br>
         <p>
+
           <em>
-            Explores the following question: Can user-acceptable web UI for a application be derived from its production data (txn db &amp; well-instrumented analytics db)?
+            Can user-acceptable web UI implementations be derived from an application's complete production data model (as defined to include both the transactional database schema and a the event definitions associated with a properly-instrumented analytics database)?
           </em>
         </p>
         <br>
+
+        <h2>
+          Two Problems with Typical UI/UX Design As It Is Currently Done
+        </h2>
+
         <p>
-          New application design normally means producing a visual representation of UI/UX &nbsp;(wireframes, mocks, clickable prototype) that serves as requirements for the subsequent development phase.
+          New application design typically means producing a visual representation of UI/UX &nbsp;(wireframes, mocks, clickable prototype) that serves as requirements for the subsequent development phase.
         </p>
 
-        There are several problems with this traditional approach:
+        <p>
+          There are two major problems with this typical approach:
+        </p>
 
-        As development evolves, the product increasingly deviates from the design, meaning there&rsquo;s no longer a definitive specification that product owners, developers, designers, and QA can use for a shared understanding of the product. One symptom of this problem is that there isn&rsquo;t a single consistent and precise notion of the product that can be used in instrumenting for analytics (reasoning about the production system for business and technical purposes). The team may lack a common language for referring to the various screens, components, features, etc. involved in the UI, making it hard to map analytics events back to specific behaviors the user executed in the product.<br></span></li><li class="c3 c5"><span class="c1">The typical visual forms (wireframes, mocks, clickable prototype) require the team to represent aspects of the UI that are highly-specific to the target device platform (web, smartphone, etc.) and could be more effectively deferred as implementation details. Usual suspects are page layout and navigation. As an example, a team might spend a lot of initial design time on whether (a) the user composes a new message within the visual context of the message thread, or (b) is taken to a different screen for composing new messages. In my experience this kind of feature can be a source of lot of lateral movement in the project - debates among the team, prototyping it one way and then the other way - that cost valuable time. Often the right answer isn&rsquo;t knowable without user testing and the right answer is platform-dependent: (a) is right for desktop while (b) is right for smartphone. So we&rsquo;d like the initial design to treat this issue at a higher level: &ldquo;users must be able to compose new messages&rdquo; and leave the rest to implementation.</span></li></ol><p class="c3 c4"><span class="c1"></span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">Let&rsquo;s consider a different approach that solves these problems and has the potential for big gains in speed to develop prototypes and production applications.</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">Step 1: Visual UI/UX Design</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">The first step is the similar to the first step in the traditional approach: product owner, developer, and designer work together to get the product vision out owners&rsquo; heads and into a visual representation of the UI and UX. The difference is that this step needn&rsquo;t have the rigor required when the goal is to produce a specification. So the team can deal with a high-level representation of the product and work quickly by deferring details to later. Digital tools like Invision can used, but whiteboard, pen and paper, simple wireframes should be sufficient.</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">Step 2: Software System Design</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">Using the output of Step 1 as a guide, the same team works together to produce a functional design specification for the system. The goal here is to specify system behavior at the most fundamental level, for example:</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">The system involves an entity called </span><span class="c1 c6">User</span><span class="c1">&nbsp;which has the following properties and relationships to other entities ...</span></p><p class="c3"><span class="c1">The system involves an entity called </span><span class="c1 c6">Message</span><span class="c1">&nbsp;which has the following properties and relationships to other entities &hellip;</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">User must be able to create a new Message</span></p><p class="c3"><span class="c1">User must be able to send a Message to another User</span></p><p class="c3"><span class="c1">User must be able to view a received Message</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">This approach is premised on the assumption that for a certain class of applications (new development, CRUD heavy, basic UI requirements), the product owner may be reasonably satisfied with ANY application UI and UX that conforms to all relevant constraints as stated in the form above. A rapidly developed application that simply meets the basic functional requirements may not be sufficient in the long-term, but the near-term benefits can be huge: it allows the owner to experiment with the product and start end-to-end user testing right away to challenge and improve upon initial design assumptions.</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">Notice that this design format has two sections that should seem familiar:</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">Defining entities - this is </span><span class="c1 c6">classic data modeling</span><span class="c1">&nbsp;a la Rails Active Record and other such systems</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">Defining system and user behaviors - this is roughly equivalent to the process that the team goes through in </span><span class="c1 c6">instrumenting the product</span><span class="c1">&nbsp;for analytics. Instrumentation is where the team decides which &ldquo;events&rdquo; relevant to the system/prodcut it deems important enough to track and analyze for business and technical purposes. Such events might be either user-initiated (User sends a Message) or system-initiated (System sends an account sign-up confirmation email to a User).</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">So if this theory (that the product owner can be initially satisfied with a rapidly-generated app that conforms to the fundamental design rules) holds true, we have an interesting result:</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">Transaction data model and analytics-instrumentation events provide sufficient design specification for an entire application software system, at least at a prototype stage. In other words, describing the data that powers a system is sufficient to describe that system at a fundamental, functional level.</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">This is a very powerful result because:</span></p><p class="c3 c4"><span class="c1"></span></p><ol class="c7 lst-kix_11frwc5hzx0a-0 start" start="1"><li class="c3 c5"><span class="c1">&nbsp;It means that the team can create and evolve the application by managing a set of domain-specific rules written in a high-level language that business people can use.<br></span></li><li class="c3 c5"><span class="c1">With the right middleware (which doesn&rsquo;t yet exist), UI software can be reliably and immediately generated from these rules. This means that application UI can always be kept precisely synchronized with requirements AND with analytics instrumentation (since this IS the design spec)</span></li></ol><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">&nbsp;</span></p><p class="c3 c4"><span class="c2"></span></p><p class="c3 c4"><span class="c2"></span></p></body>
+        <ol>
+          <li>
+            As development evolves, the product increasingly deviates from the design, meaning there&rsquo;s no longer a definitive specification that product owners, developers, designers, QA, etc. can use for a shared understanding of the product. One symptom of this problem is that there isn&rsquo;t a single consistent and precise notion of the product that can be used in instrumenting for analytics (reasoning about the production system for business and technical purposes). The team may lack a common language for referring to the various screens, components, features, etc. involved in the UI, making it hard to map analytics events back to specific behaviors the user executed in the product.
+          </li>
+          <li>
+            The typical visual forms (wireframes, mocks, clickable prototype) require the team to sort out details of the UI that aren't critical to early user acceptance.
+            Much effort goes into decisions about layout, navigation, aesthetics, and lots of other aspects that may not improve user experience.
+            As an example, consider a team deciding between (a) the user composes a new message within the visual context of the message thread,
+            or (b) the user is taken to a different screen for composing new messages.
+            In my experience this kind of feature can be a source of lot of lateral movement in the project - debates among the team, prototyping it one way and then the other way - that cost valuable time.
+            Often the right answer isn&rsquo;t knowable without user testing and the right answer varies with screen-size: (a) is right for desktop while (b) is right for smartphone.
+            Ideally the initial design would deal with this issue at a higher level: &ldquo;users must be able to compose new messages&rdquo; and leave the rest to implementation.
+          </li>
+        </ol>
+
+        <h2>
+          A Proposed Data-Focused Approach To UI/UX Design
+        </h2>
+
+        <p>
+          Let&rsquo;s consider a different approach that solves these problems and has the potential for big gains in speed to implement, quality, and malleability of the resulting application.
+        </p>
+
+        <h3>
+          Step 1: Visual UI/UX Design
+        </h3>
+
+        <p>
+          Similar to the first step in the traditional approach, design begins with product owner, developer, and designer working together to get the product vision out of the owners&rsquo; heads and into a visual representation of the UI and UX.
+          The difference is that this step needn&rsquo;t have the rigor required when the goal is to produce a requirements specification.
+          The team can deal with a high-level representation of the product and work quickly by deferring details to later.
+          Digital tools like Invision can used, but whiteboard, pen and paper, simple wireframes should be sufficient.
+        </p>
+
+        <h3>
+          Step 2: Software System Design
+        </h3>
+
+        <p>
+          Using the output of Step 1 as a guide, the team works together to produce a functional software design specification for the system
+          in the format of a data model and a set of user/system behaviors.
+          The goal here is to specify system data and behavior at the most fundamental level.
+          Consider an example:
+        </p>
+
+        <p>
+          The system involves an entity called </span><span class="c1 c6">User</span><span class="c1">&nbsp;which has the following properties and relationships to other entities ...</span></p><p class="c3"><span class="c1">The system involves an entity called </span><span class="c1 c6">Message</span><span class="c1">&nbsp;which has the following properties and relationships to other entities &hellip;</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">User must be able to create a new Message</span></p><p class="c3"><span class="c1">User must be able to send a Message to another User</span></p><p class="c3"><span class="c1">User must be able to view a received Message</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">This approach is premised on the assumption that for a certain class of applications (new development, CRUD heavy, basic UI requirements), the product owner may be reasonably satisfied with ANY application UI and UX that conforms to all relevant constraints as stated in the form above. A rapidly developed application that simply meets the basic functional requirements may not be sufficient in the long-term, but the near-term benefits can be huge: it allows the owner to experiment with the product and start end-to-end user testing right away to challenge and improve upon initial design assumptions.</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">Notice that this design format has two sections that should seem familiar:</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">Defining entities - this is </span><span class="c1 c6">classic data modeling</span><span class="c1">&nbsp;a la Rails Active Record and other such systems</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">Defining system and user behaviors - this is roughly equivalent to the process that the team goes through in </span><span class="c1 c6">instrumenting the product</span><span class="c1">&nbsp;for analytics. Instrumentation is where the team decides which &ldquo;events&rdquo; relevant to the system/prodcut it deems important enough to track and analyze for business and technical purposes. Such events might be either user-initiated (User sends a Message) or system-initiated (System sends an account sign-up confirmation email to a User).</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">So if this theory (that the product owner can be initially satisfied with a rapidly-generated app that conforms to the fundamental design rules) holds true, we have an interesting result:</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">Transaction data model and analytics-instrumentation events provide sufficient design specification for an entire application software system, at least at a prototype stage. In other words, describing the data that powers a system is sufficient to describe that system at a fundamental, functional level.</span></p><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">This is a very powerful result because:</span></p><p class="c3 c4"><span class="c1"></span></p><ol class="c7 lst-kix_11frwc5hzx0a-0 start" start="1"><li class="c3 c5"><span class="c1">&nbsp;It means that the team can create and evolve the application by managing a set of domain-specific rules written in a high-level language that business people can use.<br></span></li><li class="c3 c5"><span class="c1">With the right middleware (which doesn&rsquo;t yet exist), UI software can be reliably and immediately generated from these rules. This means that application UI can always be kept precisely synchronized with requirements AND with analytics instrumentation (since this IS the design spec)</span></li></ol><p class="c3 c4"><span class="c1"></span></p><p class="c3"><span class="c1">&nbsp;</span></p><p class="c3 c4"><span class="c2"></span></p><p class="c3 c4"><span class="c2"></span></p></body>
+        </p>
 
 
 
