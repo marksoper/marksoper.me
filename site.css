@@ -27,10 +27,7 @@ h2 {
   min-width: 480px;
 }
 
-.currentWork, .projects {
-  max-width: 1200px;
-  min-width: 780px;
-}
+
 
 .mainContainer {
   margin: 0 12%;
