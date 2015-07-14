@@ -83,8 +83,7 @@
         <p>
 
           <em>
-            Can user-acceptable web UI implementations be derived from an application's complete production data model
-            - as defined to include both the transactional database schema and the event definitions associated with a properly-instrumented analytics database?
+            Can acceptable user interfaces be derived from the schema of the data that powers an application?
           </em>
         </p>
         <br>
@@ -150,7 +149,7 @@
         </p>
 
         <h4>
-          Example Entities
+          Example: Entities
         </h4>
 
         <ul>
@@ -160,7 +159,7 @@
         </ul>
 
         <h4>
-          Example Events
+          Example: Events
         </h4>
 
         <ul>
@@ -181,9 +180,9 @@
             <b>Entities</b> are just <a href="https://en.wikipedia.org/wiki/Conceptual_schema">conceptual schema</a> in the traditional <a href="https://en.wikipedia.org/wiki/Data_modeling">data modeling</a> context, could be specified using a pattern like <a href="http://guides.rubyonrails.org/active_record_basics.html">Active Record</a>.
           </li>
           <li>
-            <b>Events</b> are very much like the kind of user and system behaviors and instrumented product would be kicking off to Mixpanel or the like.
-            Note that many of the Events follow from basic CRUD functionality for the Entities,
-            UI for which is already automatically generated for scaffolded admin UI in Rails and Django MVC frameworks.
+            <b>Events</b> are very much like the kind of user and system behaviors an instrumented product would be kicking off to <a href="http://mixpanel.com">Mixpanel</a> or the like.
+            Note that many of the Events follow from basic <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD functionality</a> for the Entities,
+            UI for which is already automatically generated for scaffolded admin UI in <a href="http://rubyonrails.org/">Rails</a> and <a href="https://www.djangoproject.com/">Django MVC</a> frameworks.
           </li>
         </ul>
 
@@ -192,7 +191,8 @@
         </h3>
 
         <p>
-          Drawing upon existing precedents such as Active Record model view/edit UI scaffolding,
+          Drawing upon existing precedents such as Active Record model view/edit UI scaffolding
+          and incorporating proven UI design patterns,
           middleware can be created that rapidly generates UI components and layout variations that conform to the rules.
           The team can evaluate these variations and make initial choices for initial testing with early users.
           Initial UI choices can potentially be customized based on the feedback from this testing.
