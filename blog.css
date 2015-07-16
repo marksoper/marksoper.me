@@ -13,6 +13,10 @@
     margin-bottom: 20px;
 }
 
+.example-box {
+    background-color: #f4f4f4;
+    padding: 20px;
+}
 
 p {
     margin: 10px 0px;
@@ -22,7 +26,7 @@ ol {
     margin-left: 50px;
 }
 
-ol li {
+ol li, ul li {
     margin-bottom: 10px;
 }
 

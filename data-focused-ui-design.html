@@ -99,26 +99,37 @@
         </p>
 
         <p>
-          There are two major problems with this typical approach:
+          There are <b>two major problems</b> with the typical approach:
         </p>
 
-        <ol>
-          <li>
+
+            <h3>Visual designs are not a blueprint</h3>
+            <p>
             As development evolves, the product increasingly deviates from the design, meaning there&rsquo;s no longer a definitive specification that product owners, developers, designers, QA, etc. can use for a shared understanding of the product.
+            </p>
+            <p>
             One symptom of this problem is that there isn&rsquo;t a single consistent and precise notion of the product that can be used in <a href="https://en.wikipedia.org/wiki/Instrumentation">instrumenting for analytics</a> (reasoning about the production system for business and technical purposes).
             The team may lack a common language for referring to the various screens, components, features, etc. involved in the UI, making it hard to map analytics events back to specific behaviors the user executed in the product.
+            </p>
+            <p>
             Turing award-winner and distributed systems expert <a href="https://en.wikipedia.org/wiki/Leslie_Lamport">Leslie Lamport</a> describes this problem of <a href="http://cacm.acm.org/magazines/2015/4/184705-who-builds-a-house-without-drawing-blueprints/fulltext">building a house without blueprints</a>.
-          </li>
-          <li>
-            The typical visual forms (wireframes, mockups, clickable prototypes) require the team to sort out details of the UI that aren't critical to early user acceptance.
-            Much effort goes into decisions about layout, navigation, aesthetics, and lots of other aspects that may not improve user experience.
+            </p>
+
+            <h3>Visual designs often encourage focus on unimportant details coupled to a specific user environment</h3>
+            <p>
+            The typical visual formats (wireframes, mockups, clickable prototypes) encourage the team to think about details of the UI that aren't critical to early user acceptance.
+            Much effort goes into decisions about layout, navigation, aesthetics, and many other issues that may not improve user experience.
+            </p>
             As an example, consider a team deciding between whether (a) the user composes a new message within the visual context of the message thread,
             or (b) the user is taken to a different screen for composing new messages.
-            In my experience this kind of feature can be a source of lot of lateral movement in the project - debates among the team, prototyping it one way and then the other way - that cost valuable time.
-            Often the right answer isn&rsquo;t knowable without user testing and the right answer varies with screen-size: (a) is right for desktop while (b) is right for smartphone.
-            Ideally the initial design would deal with this issue at a higher level: &ldquo;users must be able to compose new messages&rdquo; and leave the rest to implementation.
-          </li>
-        </ol>
+            In my experience with early-stage development, this kind of design issue can be a source of lot of lateral movement in the project - debates among the team, prototyping it one way and then the other way - that cost valuable time.
+            Often the right answer isn&rsquo;t knowable without user testing.
+            </p>
+            <p>
+              The problem is compounded by the extent to which design decisions are <b>highly coupled with the user environment</b>. The right answer varies with screen-size: perhaps (a) is right for desktop while (b) is right for smartphone.
+            </p>
+            <p>Ideally the initial design would deal with this issue at a higher level: &ldquo;users must be able to compose new messages&rdquo; and leave the rest to platform-specific implementation.
+          </p>
 
         <h2>
           A Proposed Data-Focused Approach To UI Design
@@ -150,46 +161,53 @@
         <p>
           Using the output of Step 1 as a guide, the team works together to produce a functional
           software design specification for the data that drives the system.
-          I propose that two data-description formats are sufficient as a design specification from which to infer functionally conformative UI variations: <b>Entities</b> and <b>Events</b>.
-        </p>
-        <p>
-          Let&rsquo;s consider an example:
+          I propose that two data-description formats are sufficient as a design specification from which to infer functionally conformative UI variations: <b>Conceptual Schema</b> and <b>User and System Events</b>.
         </p>
 
-        <h4>
-          Example: Entities
-        </h4>
+        <div class="example-box">
 
-        <ul>
-          <li>The system must provide an entity called <b>User</b> which has properties name, email, etc.</li>
-          <li>The system must provide an entity called <b>Message</b> which has properties body, timestamp, photos, etc., and has one-to-one relationship with User as sender, has one-to-many relationship with User as recipient, etc.</li>
-          <li>The system must provide an entity called <b>Photo</b> which has properties url, height, width, etc., and has many-to-many relationship with Message as attached, has many-to-one relationship with User as uploader, etc.</li>
-        </ul>
+          <h4>Example: Messaging App with Relevancy Ranking</h4>
 
-        <h4>
-          Example: Events
-        </h4>
+          <p>
+            Let&rsquo;s consider an example of a basic text and photo messaging app which uses an algorithm to emphasize the most important messages.
+          </p>
 
-        <ul>
-          <li>The system must provide an event wherein a <b>User creates a new Message</b></li>
-          <li>The system must provide an event wherein a <b>User sends a message to one or more Users</b></li>
-          <li>The system must provide an event wherein a <b>User views a received Message</b></li>
-          <li>The system must provide an event wherein a <b>User views a list of received Messages</b></li>
-          <li>The system must provide an event wherein a <b>User updates a Message to include one or more Photos</b></li>
-          <li>The system must provide an event wherein the <b>System scores messages according to a relevancy algorithm</b></li>
-        </ul>
+            <h5>
+              Conceptual Schema
+            </h5>
+
+            <ul>
+              <li>The system must provide an entity called <b>User</b> which has properties name, email, etc.</li>
+              <li>The system must provide an entity called <b>Message</b> which has properties text, timestamp, photos, etc., and has one-to-one relationship with User as sender, has one-to-many relationship with User as recipient, etc.</li>
+              <li>The system must provide an entity called <b>Photo</b> which has properties url, height, width, etc., and has many-to-many relationship with Message as attached, has many-to-one relationship with User as uploader, etc.</li>
+            </ul>
+
+            <h5>
+              User and System Events
+            </h5>
+
+            <ul>
+              <li>The system must provide an event: <b>User creates a new Message</b></li>
+              <li>The system must provide an event: <b>User sends a message to one or more Users</b></li>
+              <li>The system must provide an event: <b>User views a received Message</b></li>
+              <li>The system must provide an event: <b>User views a list of received Messages</b></li>
+              <li>The system must provide an event: <b>User updates a Message to include one or more Photos</b></li>
+              <li>The system must provide an event: <b>System scores messages according to a relevancy algorithm</b></li>
+            </ul>
+
+        </div>
 
         <p>
-          These two design formats should seem familiar:
+          These two design formats should be familiar:
         </p>
 
         <ul>
           <li>
-            <b>Entities</b> are just <a href="https://en.wikipedia.org/wiki/Conceptual_schema">conceptual schema</a> in the traditional <a href="https://en.wikipedia.org/wiki/Data_modeling">data modeling</a> context, could be specified using a pattern like <a href="http://guides.rubyonrails.org/active_record_basics.html">Active Record</a>.
+            <b>Conceptual Schema</b> <a href="https://en.wikipedia.org/wiki/Data_modeling">models</a> the <a href="https://en.wikipedia.org/wiki/Conceptual_schema">attriutes of and relationships between the key concepts in a system</a>. This could be specified using a pattern like <a href="http://guides.rubyonrails.org/active_record_basics.html">Active Record</a>.
           </li>
           <li>
-            <b>Events</b> are very much like the kind of user and system behaviors an instrumented product would be kicking off to <a href="http://mixpanel.com">Mixpanel</a> or the like.
-            Note that many of the Events follow from basic <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD functionality</a> for the Entities,
+            <b>User and System Events</b> are very much like the kind of user and system behaviors an instrumented product would be kicking off to <a href="http://mixpanel.com">Mixpanel</a> or the like.
+            Note that many of the Event types follow from basic <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD functionality</a> for the Entities,
             UI for which is already automatically generated for scaffolded admin UI in <a href="http://rubyonrails.org/">Rails</a> and <a href="https://www.djangoproject.com/">Django MVC</a> frameworks.
           </li>
         </ul>
