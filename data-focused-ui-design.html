@@ -89,7 +89,7 @@
         <br>
 
         <h2>
-          Two Problems with Typical UI Design As It Is Currently Done
+          Two Problems with Typical UI Design and Development
         </h2>
 
         <p>
@@ -112,7 +112,8 @@
             The team may lack a common language for referring to the various screens, components, features, etc. involved in the UI, making it hard to map analytics events back to specific behaviors the user executed in the product.
             </p>
             <p>
-            Turing award-winner and distributed systems expert <a href="https://en.wikipedia.org/wiki/Leslie_Lamport">Leslie Lamport</a> describes this problem of <a href="http://cacm.acm.org/magazines/2015/4/184705-who-builds-a-house-without-drawing-blueprints/fulltext">building a house without blueprints</a>.
+            Turing award-winner and distributed systems expert <a href="https://en.wikipedia.org/wiki/Leslie_Lamport">Leslie Lamport</a> describes the problem of <a href="http://cacm.acm.org/magazines/2015/4/184705-who-builds-a-house-without-drawing-blueprints/fulltext">building a house without blueprints</a>.
+            <em>Too often in front-end engineering we rely on the software equivalent of a scale model instead of a blueprint.</em> 
             </p>
 
             <h3>Visual designs often encourage focus on unimportant details coupled to a specific user environment</h3>
@@ -177,9 +178,9 @@
             </h5>
 
             <ul>
-              <li>The system must provide an entity called <b>User</b> which has properties name, email, etc.</li>
-              <li>The system must provide an entity called <b>Message</b> which has properties text, timestamp, photos, etc., and has one-to-one relationship with User as sender, has one-to-many relationship with User as recipient, etc.</li>
-              <li>The system must provide an entity called <b>Photo</b> which has properties url, height, width, etc., and has many-to-many relationship with Message as attached, has many-to-one relationship with User as uploader, etc.</li>
+              <li><b>User</b> which has properties name, email, etc.</li>
+              <li><b>Message</b> which has properties text, timestamp, photos, etc., and has one-to-one relationship with User as sender, has one-to-many relationship with User as recipient, etc.</li>
+              <li><b>Photo</b> which has properties url, height, width, etc., and has many-to-many relationship with Message as attached, has many-to-one relationship with User as uploader, etc.</li>
             </ul>
 
             <h5>
@@ -187,12 +188,12 @@
             </h5>
 
             <ul>
-              <li>The system must provide an event: <b>User creates a new Message</b></li>
-              <li>The system must provide an event: <b>User sends a message to one or more Users</b></li>
-              <li>The system must provide an event: <b>User views a received Message</b></li>
-              <li>The system must provide an event: <b>User views a list of received Messages</b></li>
-              <li>The system must provide an event: <b>User updates a Message to include one or more Photos</b></li>
-              <li>The system must provide an event: <b>System scores messages according to a relevancy algorithm</b></li>
+              <li><b>User creates a new Message</b></li>
+              <li><b>User sends a message to one or more Users</b></li>
+              <li><b>User views a received Message</b></li>
+              <li><b>User views a list of received Messages</b></li>
+              <li><b>User updates a Message to include one or more Photos</b></li>
+              <li><b>System scores messages according to a relevancy algorithm</b></li>
             </ul>
 
         </div>
