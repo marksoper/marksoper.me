@@ -53,6 +53,7 @@ h2 {
 }
 
 .header .title h1 {
+  font-size: 100%;
   color:#ffffff;
 }
 
@@ -283,3 +284,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc252338', e
   padding: 70px 0 50px 0;
   border-top: 1px solid #d2d2d2;
 }
+
+.header-h2 {
+  font-size: 60%;
+  color:#ffffff;
+}
+
