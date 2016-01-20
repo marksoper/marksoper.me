@@ -1,0 +1,158 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>GraphQL for the Entire Product Team</title>
+
+        <link rel="canonical" />
+
+<style type="text/css">ul.lst-kix_jubgn4b2ml5y-0{list-style-type:none}.lst-kix_jubgn4b2ml5y-6>li:before{content:"\0025cf  "}ul.lst-kix_jubgn4b2ml5y-1{list-style-type:none}ul.lst-kix_jubgn4b2ml5y-2{list-style-type:none}.lst-kix_jubgn4b2ml5y-7>li:before{content:"\0025cb  "}ul.lst-kix_jubgn4b2ml5y-3{list-style-type:none}ul.lst-kix_jubgn4b2ml5y-4{list-style-type:none}.lst-kix_jubgn4b2ml5y-8>li:before{content:"\0025a0  "}.lst-kix_jubgn4b2ml5y-4>li:before{content:"\0025cb  "}.lst-kix_jubgn4b2ml5y-5>li:before{content:"\0025a0  "}ul.lst-kix_jubgn4b2ml5y-5{list-style-type:none}ul.lst-kix_jubgn4b2ml5y-6{list-style-type:none}ul.lst-kix_jubgn4b2ml5y-7{list-style-type:none}.lst-kix_jubgn4b2ml5y-2>li:before{content:"\0025a0  "}.lst-kix_jubgn4b2ml5y-3>li:before{content:"\0025cf  "}.lst-kix_jubgn4b2ml5y-0>li:before{content:"\0025cf  "}.lst-kix_jubgn4b2ml5y-1>li:before{content:"\0025cb  "}ul.lst-kix_jubgn4b2ml5y-8{list-style-type:none}ol{margin:0;padding:0}.c9{background-color:#ffffff;max-width:468pt;padding:72pt 72pt 72pt 72pt}.c1{orphans:2;widows:2;direction:ltr}.c2{color:inherit;text-decoration:inherit}.c8{padding:0;margin:0}.c5{color:#1155cc;text-decoration:underline}.c6{margin-left:36pt;padding-left:0pt}.c7{font-weight:bold}.c0{font-style:italic}.c3{height:11pt}.c4{page-break-after:avoid}.title{padding-top:0pt;color:#000000;font-size:26pt;padding-bottom:3pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}.subtitle{padding-top:0pt;color:#666666;font-size:15pt;padding-bottom:16pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}li{color:#000000;font-size:11pt;font-family:"Arial"}p{margin:0;color:#000000;font-size:11pt;font-family:"Arial"}h1{padding-top:20pt;color:#000000;font-size:20pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h2{padding-top:18pt;color:#000000;font-size:16pt;padding-bottom:6pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h3{padding-top:16pt;color:#434343;font-size:14pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h4{padding-top:14pt;color:#666666;font-size:12pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h5{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;orphans:2;widows:2;text-align:left}h6{padding-top:12pt;color:#666666;font-size:11pt;padding-bottom:4pt;font-family:"Arial";line-height:1.15;page-break-after:avoid;font-style:italic;orphans:2;widows:2;text-align:left}</style>
+
+        <link rel="stylesheet" type="text/css" href="site.css" />
+        <link rel="stylesheet" type="text/css" href="blog.css" />
+
+<script src="site.js"></script>
+
+    </head>
+    <body>
+
+     <div class="header">
+
+      <div class="title">
+        <a href="./" title="Mark Soper">
+          <div class="header-h2">Mark Soper
+            <br>
+            <span class="profession">
+              Software Engineer
+            </span>
+            <br>
+            <span class="location">
+              Cambridge, MA
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <div class="nav">
+        <ul>
+
+          <li>
+            <a href="./#contact" title="Contact Mark Soper">
+              Contact
+            </a>
+          </li>
+
+          <li>
+            <a href="./#blog" title="Mark Soper's Blog">
+              Blog
+            </a>
+          </li>
+
+          <li>
+            <a href="./#projects" title="Mark Soper's Projects">
+              Projects
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+
+        <div class="container">
+
+
+                          <div class="articleHeader">
+    <div class="articleTitle">
+                  <h1>GraphQL for the Entire Product Team</h1>
+    </div>
+
+    <div class="articleDate">
+                  <div class="articleWeekday">
+                    Wednesday
+                  </div>
+                  <div class="articleDay">
+                    Jan 20
+                  </div>
+                  <div class="articleYear">,
+                    2016
+                  </div>
+    </div>
+        </div>
+
+
+<p>
+  As a freelancer I've had the opportunity to work with many early-stage teams over the past few years.
+  From this experience I've become convinced that collaboration among entire teams -
+  product owners, designers, engineers, QA, analysts, etc. - is critically important and too often a source
+  of failure. I'm inspired to contribute to improving how entire teams work together.
+</p>
+<p>
+  The technology by which software is produced evolves at a staggering pace,
+  with daily announcements of innovations in data management, cloud computing, machine learning, programming
+  languages, etc. But software engineering as a profession is failing to manage the way
+  these advances are communicated to and used by everyone else outside of an elite few within its
+  own community.
+</p>
+<p>
+  I believe that the best way to make progress is to pursue technology and process improvements
+  that increase <em>data fluency</em> within teams and companies. It's no longer the case that
+  data models are an implementation detail owned by a few engineers in the basement somewhere.
+  Increasingly everyone on the team must be able to understand and manage the data that powers the product
+  the ultimately, the business.
+</p>
+<p>
+  Expanding data fluency beyond engineering requires that we move toward more declarative, comprehensive approaches to describing and processing data.
+  In 2015 we saw the gradual public introduction by Facebook of a technology with promising implications for such improvement:
+  <a href="https://facebook.github.io/react/blog/2015/05/01/graphql-introduction.html" title="GraphQL">GraphQL</a>.
+  I believe GraphQL is promising because it provides an expressive type system that's not tied to any programming language
+  or DBMS: teams can use it to maintain a central data model that works with various front-end languages and works with data
+  from disparate databases.
+</p>
+<p>
+  In addition to learning more about and contributing to existing efforts in the GraphQL ecosystem,
+  I'm researching several areas where I believe GraphQL will improve data fluency among entire product teams.
+</p>
+
+<h2>
+  Making data schema accessible to entire teams
+</h2>
+
+<p>
+  A web UI that extends GraphiQL to support defining and managing GraphQL type system definitions. Increasingly entire teams need to work with the system’s data model. This UI provides that capability.
+</p>
+
+<h2>
+  Admin UIs with which entire teams can manage system data
+</h2>
+
+<p>
+  A UI component generator for creating admin interfaces that the entire teams can use to manage system data. Admin UI tools a la Rails are improved upon through GraphQL’s introspection and client-specific queries to make more powerful, product-oriented admin UX.
+</p>
+
+      <div id="disqus_thread"></div>
+
+<script>
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'marksopersblog'; // required: replace example with your forum shortname
+
+// The following are highly recommended additional parameters. Remove the slashes in front to use.
+var disqus_identifier = window.location.href;
+var disqus_url = window.location.href;
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </div>
+
+    </body>
+</html>
