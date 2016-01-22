@@ -82,7 +82,6 @@
     </div>
         </div>
 
-
 <p>
   As a freelance software engineer I've had the opportunity to work with many early-stage teams over the past few years.
   I've become especially interested in the overall collaboration among these teams:
@@ -106,8 +105,8 @@
   advancements more broadly to the business interests we serve and the everyone else involved the product lifecycle.
   I believe that the best way to do this is to pursue technology and process improvements
   that increase <em>data fluency</em> within teams and companies. Long gone are the days when
-  data models were an implementation detail closely guarded by a few engineers and DBAs hiding out in a basement office.
-  In today's world, and increasingly so, everyone on the team and everyone in the company must be able to understand and manage the data
+  data models were an implementation detail closely guarded by a few engineers and DBAs in a basement office.
+  Increasingly everyone on the team and everyone in the company must be able to understand and manage the data
   that powers the product and ultimately, the business.
 </p>
 
@@ -138,8 +137,26 @@
 </h2>
 
 <p>
-  Extensions to Facebook's graphical IDE - named (perhaps confusingly) <a href="https://github.com/graphql/graphiql">GraphiQL</a> - to support defining and
-  managing GraphQL type system definitions. Increasingly entire teams need to work with the system’s data model. This UI provides that capability.
+  The GraphQL type system involves managing a schema of data types (e.g. User, Product, Transaction) in terms of their properties
+  (User has name, email, etc.) and relationships (e.g. Transaction involves multiple Products). These definitions are implemented
+  as code in whatever server-side programming language the team chooses. Using the building blocks the schema provides, programmers
+  create feature-specific <em>queries</em> for retrieving data and <em>mutations</em> for updating data.
+</p>
+<p>
+
+<p>
+  The engineering team should own the schema design process because it forms the foundation for the rest of the code in the product.
+  But the schema is also the DNA of the user experience with profound implications on how people use the product. In my experience,
+  there's a lack of awareness of this among product owners and UI/UX designers with a premature emphasis on pixels leading to a disconnect
+  between visual design and the actual system design (i.e. a comprehensive development plan) for the product.
+</p>
+
+<p>
+  I believe the whole team can benefit from understanding how information is organized in the product, and that many product owners
+  see this benefit. But good tools and processes to support this aren't yet available. GraphQL is conducive to graphical
+  UIs that can help non-programmers understand and in some cases manage the evolving data model. Facebook developed a primitive graphical IDE
+  called <a href="https://github.com/graphql/graphiql">GraphiQL</a> for programmers that could form the basis or inspiration for
+  a more advanced interface that moves the whole team closer to being able to "reason about" the product.
 </p>
 
 <h2>
@@ -147,8 +164,21 @@
 </h2>
 
 <p>
-  A UI component generator for creating admin interfaces that the entire teams can use to manage system data. Admin UI tools a la Rails are improved upon through GraphQL’s introspection and client-specific queries to make more powerful, product-oriented admin UX.
+  In addition to understanding the shape of the data, broadening groups of people need direct real-time access to the data itself
+  in a variety of ways, ranging from populating test data in the early stages to analyzing and measuring the product in production.
+  GraphQL's UI-specific queries and introspection capability, a way to query the schema on the fly to learn how data can be accessed,
+  create potential for more product-oriented administration interfaces that improve upon the scaffolding-based admin functionality common to web frameworks like
+  Rails and Django.
 </p>
+<p>
+  There's also interesting potential to improve analytics available to the entire team. Too often analytics and measurement
+  are accomplished as an afterthought. With the ship data rapidly approaching, a hasty effort is made to instrument the product
+  and implement schema, storage, and reporting as a separate system from the product itself. I believe analytics should emerge more
+  naturally from the product itself, and am eager to explore how GraphQL's type-system orientation might lend itself to this goal.
+</p>
+
+<p>
+  If any of these ideas resonate, please get in touch <a href="http://twitter.com/marksoper">@marksoper</a>.
 
       <div id="disqus_thread"></div>
 
