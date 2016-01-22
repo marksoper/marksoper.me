@@ -61,7 +61,7 @@
     </div>
 
 
-        <div class="container">
+        <div class="container underline-links">
 
 
                           <div class="articleHeader">
@@ -71,10 +71,10 @@
 
     <div class="articleDate">
                   <div class="articleWeekday">
-                    Wednesday
+                    Friday
                   </div>
                   <div class="articleDay">
-                    Jan 20
+                    Jan 22
                   </div>
                   <div class="articleYear">,
                     2016
@@ -83,31 +83,32 @@
         </div>
 
 <p>
-  As a freelance software engineer I've had the opportunity to work with many early-stage teams over the past few years.
+  As a freelance software engineer I've had the opportunity to work with <a href="http://marksoper.me/#projects">many early-stage teams</a> over the past few years.
   I've become especially interested in the overall collaboration among these teams:
   product owners, designers, engineers, QA, analysts, etc.
-  I'm convinced that how the entire team works together is critically important to the success of the product.
+  I'm convinced, perhaps it's obvious, that how the entire team works together is critically important to the success of the product.
   I'm also convinced that there's a growing need for improvement in the process and tools teams use to collaborate, especially
-  with respect to a shared understanding of the fundamental design specification. We need a way for everyone to reason about how the
-  product is supposed to work.
+  with respect to a shared understanding of the data model and fundamental system design of the product.
+  We need a way for everyone to reason about the product.
 </p>
 
 <p>
-  I think we in the engineering community already get this. We hear the term "easier to reason about" used constantly to
-  explain major trends (e.g. functional programming) and technologies (e.g. React.js) whose popularity has exploded in recent years.
+  I think we in the engineering community already get this. We hear the term "easier to reason about" used frequently to
+  explain major software development trends (e.g. <a href="https://www.quora.com/How-does-functional-programming-help-me-reason-about-my-code-better-than-OOP">functional programming</a>) and technologies (e.g. <a href="https://medium.com/@joaomilho/arguing-for-reactjs-7b80aafc6493">React.js</a>) whose popularity has exploded in recent years.
   Collectively we've realized the cost of incidental complexity and are taking steps to fight it.
   But I question whether everyone else involved in software products is benefitting from these anti-complexity efforts.
-  Is it any easier for a designer or product manager to "reason about" a web app made with React than one made with Angular or whatever?
+  Is it any easier for a designer, product manager, or analyst to "reason about" an API written in a type-checked language
+  or a web app made with React vs another framework.
 </p>
 
 <p>
-  We in the engineering profession can and should do a better job of communicating and making available our anti-complexity
+  We in the engineering profession can do a better job of communicating and making available our anti-complexity
   advancements more broadly to the business interests we serve and the everyone else involved the product lifecycle.
   I believe that the best way to do this is to pursue technology and process improvements
   that increase <em>data fluency</em> within teams and companies. Long gone are the days when
-  data models were an implementation detail closely guarded by a few engineers and DBAs in a basement office.
+  data models were an implementation detail closely guarded by a few DBAs in a basement office.
   Increasingly everyone on the team and everyone in the company must be able to understand and manage the data
-  that powers the product and ultimately, the business.
+  that powers the product and ultimately the business.
 </p>
 
 <h2>
@@ -118,13 +119,14 @@
   Expanding data fluency beyond engineering requires a more declarative,
   comprehensive approach to describing and processing data, a way to work with the DNA of a system that's
   approachable without programming experience.
-  In 2015 Facebook made available <a href="https://facebook.github.io/react/blog/2015/05/01/graphql-introduction.html" title="GraphQL">GraphQL</a>,
+  In 2015 Facebook made available
+  <a href="https://facebook.github.io/react/blog/2015/05/01/graphql-introduction.html" title="GraphQL">GraphQL</a>,
   a technology with promising implications for developing such an approach.
   I believe GraphQL is promising because it provides a expressive <em>type system</em> that's not tied to any programming language
   or DBMS. It's well suited to maintaining a central data model that works with various front-end languages, in any back-end language
-  environment, and with data from multiple disparate databases. GraphQL also supports queries, expressions of specific combinations of data
-  associated with a UI feature. The type system is a declarative way to describe the shape of data system-wide, and the query language represents a
-  declarative way to describe the shape of user interfaces to that data. Together these two aspects make GraphQL a promising as a foundation
+  environment, and with data from multiple disparate databases. GraphQL also supports UI-specific queries, expressions of data requirements
+  directly aligned with UI features. The type system is a declarative way to describe the shape of data system-wide, and the query language represents a
+  declarative way to describe the shape of user interfaces to that data. Together these two aspects make GraphQL a promising foundation
   for data fluency.
 </p>
 <p>
@@ -139,22 +141,26 @@
 <p>
   The GraphQL type system involves managing a schema of data types (e.g. User, Product, Transaction) in terms of their properties
   (User has name, email, etc.) and relationships (e.g. Transaction involves multiple Products). These definitions are implemented
-  as code in whatever server-side programming language the team chooses. Using the building blocks the schema provides, programmers
-  create feature-specific <em>queries</em> for retrieving data and <em>mutations</em> for updating data.
+  as code in whatever server-side programming language the team chooses -
+  <a href="https://github.com/chentsulin/awesome-graphql">implementations are fast emerging</a> in all major languages.
+  Using the building blocks the schema provides, programmers create feature-specific <em>queries</em> for retrieving data
+  and <em>mutations</em> for updating data.
 </p>
 <p>
 
 <p>
-  The engineering team should own the schema design process because it forms the foundation for the rest of the code in the product.
-  But the schema is also the DNA of the user experience with profound implications on how people use the product. In my experience,
-  there's a lack of awareness of this among product owners and UI/UX designers with a premature emphasis on pixels leading to a disconnect
-  between visual design and the actual system design (i.e. a comprehensive development plan) for the product.
+  The engineering team owns the schema design process. It forms the DNA for the rest of the code and can limit future
+  flexibility if not done thoughtfully.
+  But the schema also has profound implications for the UX. In my experience,
+  many product owners and designers don't appreciate this. A common symptom is a premature emphasis on pixels
+  leading to a disconnect between visual UI/UX design and the actual design (i.e. system design - a comprehensive development plan)
+  for the product.
 </p>
 
 <p>
   I believe the whole team can benefit from understanding how information is organized in the product, and that many product owners
   see this benefit. But good tools and processes to support this aren't yet available. GraphQL is conducive to graphical
-  UIs that can help non-programmers understand and in some cases manage the evolving data model. Facebook developed a primitive graphical IDE
+  UIs that can help non-programmers understand and in some cases manage the evolving data model. Facebook is developing a primitive graphical IDE
   called <a href="https://github.com/graphql/graphiql">GraphiQL</a> for programmers that could form the basis or inspiration for
   a more advanced interface that moves the whole team closer to being able to "reason about" the product.
 </p>
@@ -164,21 +170,21 @@
 </h2>
 
 <p>
-  In addition to understanding the shape of the data, broadening groups of people need direct real-time access to the data itself
+  In addition to understanding the shape of the data, increasingly wider groups of people need direct real-time access to the data itself
   in a variety of ways, ranging from populating test data in the early stages to analyzing and measuring the product in production.
   GraphQL's UI-specific queries and introspection capability, a way to query the schema on the fly to learn how data can be accessed,
-  create potential for more product-oriented administration interfaces that improve upon the scaffolding-based admin functionality common to web frameworks like
-  Rails and Django.
+  create potential for more product-oriented administration interfaces that improve upon the scaffolding-based admin functionality
+  popularized by web frameworks like Rails and Django.
 </p>
 <p>
   There's also interesting potential to improve analytics available to the entire team. Too often analytics and measurement
-  are accomplished as an afterthought. With the ship data rapidly approaching, a hasty effort is made to instrument the product
-  and implement schema, storage, and reporting as a separate system from the product itself. I believe analytics should emerge more
-  naturally from the product itself, and am eager to explore how GraphQL's type-system orientation might lend itself to this goal.
+  are arranged as an afterthought. With the ship data rapidly approaching, a hasty effort is made to instrument the product
+  and slap in a third-party package that implements schema, storage, and reporting as a separate system from the product itself.
+  I believe analytics should emerge more naturally from the product itself, and am eager to explore how GraphQL's type-system
+  orientation might lend itself to this goal.
 </p>
 
-<p>
-  If any of these ideas resonate, please get in touch <a href="http://twitter.com/marksoper">@marksoper</a>.
+<br>
 
       <div id="disqus_thread"></div>
 

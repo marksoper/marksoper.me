@@ -23,7 +23,7 @@ h2 {
 }
 
 .container {
-  max-width: 780px;
+  max-width: 980px;
   min-width: 480px;
 }
 
@@ -290,3 +290,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc252338', e
   color:#ffffff;
 }
 
+.underline-links a {
+  text-decoration: underline;
+}
