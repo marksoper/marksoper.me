@@ -1,0 +1,40 @@
+---
+title: "Extending the Python Wrapper for OpenCalais to Support RDF"
+description: "Adding RDF output support to the python-calais wrapper for the OpenCalais Semantic Text Annotation Service, with SPARQL queries for entities and categories."
+date: 2009-04-16
+tags: ["python", "rdf", "semantic-web", "opencalais", "nlp"]
+---
+
+We've been working for some time with Jordan Dimov's [python-calais](http://code.google.com/p/python-calais/), a Python wrapper for the [OpenCalais Semantic Text Annotation Service](http://opencalais.com). For Likematter, we extended its native support for OpenCalais' JSON response type to include support for OpenCalais' RDF output. Several people expressed interest in using rdflib with OpenCalais at last night's Python meetup in Cambridge, MA - so I've packaged up our RDF extension as a starting point/example for folks looking to process OpenCalais RDF in Python apps.
+
+The reason to use RDF over JSON is that the RDF output contains a fuller representation of the analysis OpenCalais produces. As just one minor example, the full de-referenceable URLs for each entity type (e.g. Country, Person, etc.) aren't present in the JSON. The drawback to using RDF is that it's much harder to interpret and translate into Python objects than JSON. The code here includes the SPARQL to obtain only part of what OpenCalais produces, entities and categories, but should serve as a starting point to working with OpenCalais' RDF. Our RDF extension has been added to the python-calais google-code repository. The key SPARQL queries for categories and entities are below.
+
+```sparql
+CATEGORY_QUERY = { 'fields' : ['docId', 'category', 'categoryName', 'score'],
+'SPARQL' : """
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX cp: <http://s.opencalais.com/1/pred/>
+SELECT ?docId ?category ?categoryName ?score
+WHERE { ?doc cp:docId ?docId .
+?doc cp:category ?category .
+?doc cp:categoryName ?categoryName .
+?doc cp:score ?score . }
+"""  }
+```
+
+```sparql
+ENTITY_QUERY = { 'fields' : ['entityId', 'name', 'type', 'relevance', 'resolves_to_uri', 'resolves_to_type', 'resolves_to_name', 'resolves_to_score'],
+'SPARQL' : """
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX cp: <http://s.opencalais.com/1/pred/>
+SELECT ?entity ?name ?type ?relevance ?res_uri ?res_type ?res_name ?res_score
+WHERE {?entity cp:name ?name .
+?entity rdf:type ?type .
+?rel_uri cp:subject ?entity .
+?rel_uri cp:relevance ?relevance .
+OPTIONAL { ?res_uri cp:subject ?entity .
+?res_uri rdf:type ?res_type .
+?res_uri cp:name ?res_name . }
+}
+"""  }
+```

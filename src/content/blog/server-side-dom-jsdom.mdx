@@ -1,0 +1,106 @@
+---
+title: "Server-side DOM Manipulation in Node.js with JSDOM, JQuery, and Mustache Templates"
+description: "Using JSDOM to perform server-side DOM manipulation with JQuery in Node.js, enabling code reuse between browser and server."
+date: 2011-04-25
+tags: ["node.js", "javascript", "dom", "jquery", "mustache"]
+---
+
+I recently finished a mobile web development contract based on [Node.js](http://nodejs.org). Looking around for but not finding a javascript-compatible template system like python's [Mako](http://makotemplates.com), I came across Nodejitsu's [JSDOM](https://github.com/tmpvar/jsdom)-based [Weld](http://blog.nodejitsu.com/micro-templates-are-dead) approach to rendering HTML content via DOM manipulation on the server. What an awesome idea: **Write your original rendering code in JQuery and the JQuery you'll need for AJAX in browser is already done**. Not much out there one this yet, so I'll go through my process here.
+
+The [Nodejitsu article](http://blog.nodejitsu.com/micro-templates-are-dead) mentioned above is a great place to start. Weld adds a data-DOM mapper to [JSDOM's server-side DOM implementation](https://github.com/tmpvar/jsdom). I chose a different JSDOM-based approach that maps data to HTML in atomic blocks and then places those blocks into the DOM - using a [Mustache template](http://mustache.github.com/) for each block of HTML I'd want to be replaceable (e.g. via AJAX on client). With either approach, in order to realize the benefit of server/browser code re-use, such HTML blocks will have to be sent to the browser. In the approach described here, that might involve using [ICanHaz.js](http://icanhazjs.com/), which I hope to cover this in a follow-up post.
+
+[**Download this code**](http://blog.soper.me/media/demos/Server-Side-DOM-Manipulation-In-Nodejs.tar.gz)
+
+[**Demo Output**](http://dev.soper.me/media/html/Album-Demo-Server-side-DOM-manipulation-in-Node.js-with-JSDOM-and-JQuery.html)
+
+### Handling the request in Node.js (product_demo.js)
+
+```javascript
+require.paths.unshift('/usr/local/lib/node_modules');
+var http = require('http'),
+    fs = require('fs'),
+    jsdom = require('jsdom'),
+    mustache = require('mustache');
+
+var products = require('./fixtures/products_fixture');
+
+var productSummaryTemplate = fs.readFileSync('component_templates/product_summary.html','utf-8');
+
+http.createServer(function(request,response) {
+        var page_template = fs.readFileSync('page_templates/product_list.html','utf-8');
+        var document = jsdom.jsdom(page_template);
+        var window = document.createWindow();
+        jsdom.jQueryify(window, './jquery.js', function() {
+                window.$('html').html(page_template);
+                window.$('h2').html("Content Added to DOM by Node.js Server");
+                for (var i=0; i < products.length; i++) {
+                    productSummaryHtml = mustache.to_html(productSummaryTemplate, products[i]);
+                    window.$('#productList').append(productSummaryHtml);
+                }
+                response.writeHead(200, {'Content-Type': 'text/html'});
+                response.end("<!DOCTYPE html>\n" + window.$('html').html());
+            });
+    }).listen(8078);
+```
+
+### Plain HTML template to be fleshed out via JQuery in the DOM (page_templates/product_list.html)
+
+```html
+<html>
+  <head>
+    <title>
+      Album Demo - Server-side DOM manipulation in Node.js with JSDOM and JQuery
+    </title>
+  </head>
+  <body>
+    <h1>
+      Album Demo - Server-side DOM manipulation in Node.js with JSDOM and JQuery
+    </h1>
+    <h2>
+      !!! This will be overwritten  !!!
+    </h2>
+    <ul id="productList" style="list-style:none">
+    </ul>
+  </body>
+</html>
+```
+
+### Mustache template component to be applied to the DOM via JQuery (component_templates/product_summary.html)
+
+```html
+<li style="list-style:none">
+  <div class="album" style="width:360px">
+    <div class="albumCover" style="float:left;clear:left;width:100px;">
+      <img src="{{ coverUrl }}" style="width:100px">
+    </div>
+    <div class="albumMeta" style="float:right;clear:right;width:240px;">
+      <div class="albumName">
+        <em>{{ name }}</em>
+      </div>
+      <div class="albumArtist">
+        {{ artist }}
+      </div>
+    </div>
+  </div>
+</li>
+```
+
+### Example data (fixtures/productsFixture.js)
+
+```javascript
+exports.products_fixtures = module.exports =
+    [{"id":123,
+      "name":"Tried By 12",
+      "artist":"East Flatbush Project",
+      "coverUrl":"/media/images/flatbush.jpg"},
+    {"id":456,
+     "name":"Cymande",
+     "artist":"Cymande",
+     "coverUrl":"/media/images/cymande.jpg"},
+    {"id":789,
+     "name":"Rock'N'Roll Gumbo",
+     "artist":"Professor Longhair",
+     "coverUrl":"/media/images/longhair.jpg"}];
+```
+
+A follow-up piece covering javascript-DOM code sharing between browser and server coming soon.

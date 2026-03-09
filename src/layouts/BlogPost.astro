@@ -1,0 +1,66 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  date: Date;
+  tags?: string[];
+  image?: string;
+  originalUrl?: string;
+}
+
+const { title, description, date, tags = [], image, originalUrl } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+// Estimate reading time from slot content
+const readingTime = Math.max(1, Math.ceil((Astro.props.title?.length || 500) / 200));
+---
+
+<Base title={`${title} — Mark Soper`} description={description} image={image}>
+  <article class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] py-12">
+    <!-- Header -->
+    <header class="max-w-[var(--container-max)] mb-10">
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-4">
+          {tags.map(tag => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      )}
+      <h1 class="text-3xl sm:text-4xl font-semibold mb-4 leading-tight">{title}</h1>
+      <div class="flex items-center gap-4 text-sm text-[var(--color-text-muted)] font-[var(--font-mono)]">
+        <time datetime={date.toISOString()}>{formattedDate}</time>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="prose">
+      <slot />
+    </div>
+
+    <!-- Footer -->
+    <footer class="max-w-[var(--container-max)] mt-12 pt-8 border-t border-[var(--color-border)]">
+      {originalUrl && (
+        <p class="text-sm text-[var(--color-text-muted)] mb-6">
+          Originally published on <a href={originalUrl} class="text-[var(--color-accent)]" target="_blank" rel="noopener">Medium</a>.
+        </p>
+      )}
+      <div class="flex items-start gap-4 p-5 bg-[var(--color-surface-alt)] rounded-lg">
+        <img src="/img/mark_soper.png" alt="Mark Soper" class="w-12 h-12 rounded-full object-cover" />
+        <div>
+          <p class="font-medium text-[var(--color-text)] mb-1">Mark Soper</p>
+          <p class="text-sm text-[var(--color-text-muted)]">
+            Product leader, engineer, and entrepreneur. Building at the intersection of data infrastructure and AI.
+            <a href="/about" class="text-[var(--color-accent)] no-underline hover:underline ml-1">More about me &rarr;</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </article>
+</Base>

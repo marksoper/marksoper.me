@@ -1,0 +1,68 @@
+---
+title: "A Value Investing Approach to March Madness 2013"
+description: "Applying value investing principles to NCAA Tournament bracket picks by comparing Vegas odds with Yahoo pool popularity to find undervalued teams."
+date: 2013-03-20
+tags: ["sports", "analytics", "march-madness", "strategy"]
+---
+
+Picking good NCAA Basketball Tournament brackets is a lot like value investing: look for good opportunities that are undervalued in the market. I've experimented with this approach for years now and finally decided to write some code to automate the process. I linked up with a friend [Chris Mihm](http://www.linkedin.com/in/chrismihm) who's been using a similar approach and we started geeking out on hoops math.
+
+## The Strategy
+
+Value investing compares how good an opportunity is (e.g. company fundamentals) with its market value (e.g. stock price). Our strategy uses Vegas odds of overall victory as the measure of how good a team is, and the popularity of the team in Yahoo's pool as the market value. We look for big disparity between these two values as a guide in making bracket picks likely to outperform in a pool.
+
+## Pool Size
+
+The size of the market makes a huge difference in how this plays out. If you're playing a 10-person office pool, don't bother with this strategy. Make your picks based on Vegas odds alone. This strategy becomes valuable as pool sizes grow. I use it for a 400-entry pool and it definitely makes sense for large pools like Yahoo, ESPN, CBS, etc.
+
+## Interactive Bracket Optimizer
+
+We built [a bracket optimizer tool called BracketWise](http://bracketwise.com). It's not quite ready for primetime this year, but might be of interest for hard-core bracketology geeks.
+
+## What teams should I pick in 2013
+
+The table below shows the disparity between Vegas and Yahoo for the teams that have meaningful numbers in both categories. Make picks by looking at the Vegas odds and the Vegas/Yahoo ratio. For medium-size pools (e.g. 400 people), you may want to emphasize very good teams who also have good ratios, e.g. Florida has 10/1 odds to win it all in Vegas but is 40/1 in Yahoo, so you get a 4x "value advantage" from Florida. As pool size gets larger, you need more good risk to compete, so you might consider New Mexico, who has 20/1 odds to win it all in Vegas but is 200/1 on Yahoo for a 10x "value advantage".
+
+- Vegas = Vegas odds for overall tournament winner - [source](http://www.vegasinsider.com/college-basketball/odds/futures/)
+- Yahoo = Yahoo bracket pool pick distribution - [source](http://tournament.fantasysports.yahoo.com/t1/group/all/pickdistribution)
+
+| Team (seed) | Vegas | Yahoo | Vegas - Yahoo | Vegas / Yahoo |
+|---|---|---|---|---|
+| Pittsburgh (8) | 0.0166 | 0.001 | 0.0156 | 16.666 |
+| Missouri (9) | 0.0133 | 0.001 | 0.0123 | 13.333 |
+| Marquette (3) | 0.0333 | 0.003 | 0.0303 | 11.111 |
+| New Mexico (3) | 0.05 | 0.005 | 0.045 | 10.0 |
+| Saint Louis (4) | 0.04 | 0.004 | 0.036 | 10.0 |
+| Arizona (6) | 0.02 | 0.002 | 0.018 | 10.0 |
+| Oklahoma State (5) | 0.01 | 0.001 | 0.009 | 10.0 |
+| North Carolina State (8) | 0.02 | 0.002 | 0.018 | 10.0 |
+| Minnesota (11) | 0.01 | 0.001 | 0.009 | 10.0 |
+| UNLV (5) | 0.01 | 0.001 | 0.009 | 10.0 |
+| Notre Dame (7) | 0.01 | 0.001 | 0.009 | 10.0 |
+| Oregon (12) | 0.01 | 0.001 | 0.009 | 10.0 |
+| VCU (5) | 0.02 | 0.002 | 0.018 | 10.0 |
+| Wisconsin (5) | 0.05 | 0.006 | 0.044 | 8.3333 |
+| Kansas State (4) | 0.02 | 0.003 | 0.017 | 6.6666 |
+| UCLA (6) | 0.01 | 0.002 | 0.008 | 5.0 |
+| Butler (6) | 0.01 | 0.002 | 0.008 | 5.0 |
+| Memphis (6) | 0.01 | 0.002 | 0.008 | 5.0 |
+| Villanova (9) | 0.005 | 0.001 | 0.004 | 5.0 |
+| Florida (3) | 0.1 | 0.025 | 0.075 | 4.0 |
+| North Carolina (8) | 0.0166 | 0.005 | 0.0116 | 3.3333 |
+| Syracuse (4) | 0.0333 | 0.011 | 0.0223 | 3.0303 |
+| Michigan (4) | 0.0555 | 0.02 | 0.0355 | 2.7777 |
+| Michigan State (3) | 0.0666 | 0.025 | 0.0416 | 2.6666 |
+| Illinois (7) | 0.005 | 0.002 | 0.003 | 2.5 |
+| Ole Miss (12) | 0.002 | 0.001 | 0.001 | 2.0 |
+| Georgetown (2) | 0.0555 | 0.029 | 0.0265 | 1.9157 |
+| Duke (2) | 0.125 | 0.073 | 0.052 | 1.7123 |
+| Gonzaga (1) | 0.1 | 0.066 | 0.034 | 1.5151 |
+| Kansas (1) | 0.125 | 0.093 | 0.032 | 1.3440 |
+| Miami (FL) (2) | 0.125 | 0.094 | 0.031 | 1.3297 |
+| Ohio State (2) | 0.0666 | 0.056 | 0.0106 | 1.1904 |
+| Indiana (1) | 0.1428 | 0.171 | -0.028 | 0.8354 |
+| Louisville (1) | 0.2222 | 0.284 | -0.061 | 0.7824 |
+
+## Feedback Please
+
+We'd appreciate feedback on the strategy and your thoughts on how you might use it to make picks!

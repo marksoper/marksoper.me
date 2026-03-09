@@ -1,0 +1,26 @@
+---
+title: "What I Learned from a JQuery Mobile Project - Pros and Cons"
+description: "Lessons learned from using JQuery Mobile in a 4-week Node.js mobile web app project, covering device independence, touch interaction, and navigation concerns."
+date: 2011-05-04
+tags: ["jquery", "mobile", "javascript", "node.js"]
+---
+
+I used [JQuery Mobile](http://jquerymobile.com) in a 4-week project building a basic mobile web app on Node.js. Here's what I learned about it, what I liked and didn't like.
+
+JQuery Mobile is a mobile interface system based on the JQuery UI and JQuery javascript libraries. It's main goals are:
+
+- **Device and Browser Independence** - allow you to write one app that will run on any smartphone or tablet
+- **Provide Touch Interaction** - layer touch interaction on top of your app without hassle
+- **CSS/HTML Markup Oriented** - you can build powerful mobile web apps by modifying your HTML and CSS only with little Javascript coding required - if more flexibility is required, the underlying JQuery library makes for familiar Javascript customization.
+
+I found JQuery Mobile very easy to learn. Getting started with a basic page is easy using a [boilerplate template](http://jquerymobile.com/demos/1.0a4.1/#docs/pages/docs-pages.html). The [demos/docs section](http://jquerymobile.com/demos/1.0a4.1/) gives you an easy index to figuring out how to work with links, buttons, forms, etc.
+
+JQuery Mobile gave us a number of wins in this project:
+
+- The default page template gave us a decent-looking shell layout for the app
+- The out-of-the-box forms, links, and buttons were easy to set up, have a standard iPhone-inspired aesthetic, and are easily customized
+- Touch interaction worked out-of-the-box with no work required
+
+During the course of the project, I developed a serious concern about the [JQuery Mobile navigation and linking scheme](http://jquerymobile.com/demos/1.0a4.1/#docs/pages/docs-navmodel.html). The default in JQuery Mobile is that it will take over navigation and apply its own Ajax navigation to all links unless you do something like use a *rel=external* attribute in the link tag. Though this configuration is easy to do, in order to use JQuery Mobile as intended, you may have to rethink your navigation scheme and introduce a new organizational aspect involving how pages are grouped together for multi-page loads.
+
+At times I noticed unpredictable behavior in using the browser back button and in manually (by entering url in address bar) navigating to other pages on the site. While writing this, I visited a half-dozen pages in the [demos](http://jquerymobile.com/demos/1.0a4.1/) section and then tried to get back to the [root](http://jquerymobile.com) using the back button and manually entering the url using Chrome 11. Neither method worked. Either the root page redirected to the demos page, or the browser tried unsuccessfully to load the root page via an AJAX call. I had to switch over to Safari to access the root page and get into the forum to submit [a post about this problem](http://forum.jquery.com/topic/navigation-problem-on-jquery-mobile-website-s-root-page-after-visiting-demos-page). I'd recommend taking a close look at the navigation and linking model for any site involving more that a couple of pages. My experience suggests that the model can cause some unexpected dependencies between pages that can make navigation problematic if not handled carefully.

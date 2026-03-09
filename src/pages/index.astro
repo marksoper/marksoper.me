@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 8);
+---
+
+<Base title="Mark Soper — Product Leader, Engineer, Entrepreneur">
+  <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)]">
+
+    <!-- Hero -->
+    <section class="py-16 sm:py-24 border-b border-[var(--color-border-light)]">
+      <div class="max-w-2xl">
+        <h1 class="text-3xl sm:text-4xl font-semibold mb-6 leading-tight">
+          Product leader and engineer building at the intersection of data infrastructure and AI.
+        </h1>
+        <div class="space-y-4 text-[var(--color-text-secondary)]">
+          <p>
+            I've spent 20+ years going deeper on this problem — from BI systems and ML platforms, to distributed databases, to building products that help AI agents understand infrastructure.
+          </p>
+          <p>
+            Previously Product Manager at <a href="https://cockroachlabs.com" class="text-[var(--color-accent)] no-underline hover:underline">Cockroach Labs</a> (CockroachDB Cloud) and Software Engineer on <a href="https://azure.microsoft.com/en-us/products/machine-learning" class="text-[var(--color-accent)] no-underline hover:underline">Azure Machine Learning</a> at Microsoft. Earlier in my career I founded startups and ran a software consultancy helping early-stage companies build their first products.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-6">
+          <span class="tag">Product Management</span>
+          <span class="tag">Data Infrastructure</span>
+          <span class="tag">AI/ML</span>
+          <span class="tag">Distributed Systems</span>
+          <span class="tag">Startups</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Now Section -->
+    <section class="py-10 border-b border-[var(--color-border-light)]">
+      <div class="bg-[var(--color-warm-light)] rounded-lg p-6">
+        <h2 class="font-[var(--font-mono)] text-xs tracking-widest uppercase text-[var(--color-warm)] mb-3">
+          Now — March 2026
+        </h2>
+        <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+          Exploring product leadership opportunities in the observability and AI infrastructure space. Building tools at the intersection of telemetry data and AI agents. Writing about what I've learned building database products at scale.
+        </p>
+      </div>
+    </section>
+
+    <!-- Recent Writing -->
+    <section class="py-12">
+      <h2 class="font-[var(--font-mono)] text-xs tracking-widest uppercase text-[var(--color-text-muted)] mb-6">
+        Writing
+      </h2>
+      <div class="divide-y divide-[var(--color-border-light)]">
+        {posts.map(post => (
+          <a href={`/blog/${post.id}/`} class="flex justify-between items-baseline py-4 no-underline group">
+            <span class="text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors font-medium">
+              {post.data.title}
+            </span>
+            <span class="font-[var(--font-mono)] text-xs text-[var(--color-text-muted)] ml-4 shrink-0">
+              {post.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+            </span>
+          </a>
+        ))}
+      </div>
+      <a href="/blog" class="inline-block mt-6 text-sm text-[var(--color-accent)] no-underline hover:underline">
+        All posts &rarr;
+      </a>
+    </section>
+
+  </div>
+</Base>

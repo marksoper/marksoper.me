@@ -1,0 +1,22 @@
+---
+title: "Node.js Client for Runkeeper's Health Graph API"
+description: "Building an open-source Node.js module to interface with Runkeeper's Health Graph API for a fitness-related startup project."
+date: 2011-08-25
+tags: ["node.js", "api", "runkeeper", "open-source", "fitness"]
+---
+
+[Runkeeper](http://runkeeper.com) is a service that improves your fitness experience through the mobile device you probably already carry when you go for a run, bike ride, etc. It tracks your workout in a bunch of helpful ways, but really excels at making solo sports training a more social experience. Runkeeper is used heavily by a group of Boston tech cyclists and on a recent ride we cooked up an idea for a service that combines charitable donation with fitness training in a new way. With the recently announced [Health Graph API](http://blog.runkeeper.com/new-feature/health-graph) opening Runkeeper to development, we set out to hack something up.
+
+## Why Node.js for a Startup Project?
+
+Having used [Node.js for a couple of contract projects](/Server-side-DOM-manipulation-in-Nodejs-with-JSDOM-JQuery-and-Mustache-Templates-April-25-2011.html), it seemed well-suited for this, a startupish side-project with a lot of uncertainty about the target we're trying to hit. [Node.js](https://github.com/joyent/node) is great for this situation because it means I can think about the overall architecture for the service in a single, javascript-based context. Why is this valuable? For example, decisions like whether to build a single-page app or a render pages more traditionally from the server can be made with less concern for future switching-costs because (if done carefully) most of the page-building logic can be re-used between browser and server.
+
+## Creating a Node.js Module for the API
+
+We needed to create a way to bind to the [Health Graph API](http://developer.runkeeper.com/healthgraph) from Node.js, so it made sense to package this wrapper as an open-source Node.js module. The [Node.js Client for the Runkeeper Health Graph API](https://github.com/marksoper/node-runkeeper) is now available in an immature but functional state [via Github](https://github.com/marksoper/node-runkeeper), with npm distribution likely to follow. I welcome comments, feedback, bug reports, enhancement pull requests, etc.
+
+## What's the Startup Idea?
+
+We're keeping the idea very hush-hush. The only thing we can talk about right now is that the user experience will not require or even encourage the wearing of mobile phone outfits for long endurance workouts.
+
+![Jason Jacobs of Runkeeper](/media/images/Jason-Jacobs.png)

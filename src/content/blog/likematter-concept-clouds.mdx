@@ -1,0 +1,25 @@
+---
+title: "New Likematter Release Features Concept Clouds For Better Control and Understanding"
+description: "Announcing a new Likematter release with color-highlighted content relevance, concept clouds, and improved profile management."
+date: 2009-04-01
+tags: ["likematter", "product-launch", "nlp", "personalization", "startups"]
+---
+
+A new release of Likematter is available now. The most common suggestions we've gotten from users to this point and the steps taken in this release to respond to them.
+
+![Likematter](/media/images/likematter.png)
+
+**1. I want more understanding and control of how new content is matched to the things I like.**
+
+The most noticeable aspect of the new interface is the color-highlighting of content based on it's relevance to my interest profile - thanks to [Aaron VanDerlip of Jazkarta](http://jazkarta.com/news/aaron-vanderlip-joins-jazkarta) for suggesting this enhancement. Numeric scores are also displayed with a red score indicator - clicking on the score displays detail about the source and specific concepts that factored in to the score. These improvements will make it easier to understand how content is prioritized for each user.
+
+User also have more control over how the system works with this new interface. As shown in the screenshot, the like button now offers a preview/edit window. By default, the source and all key concepts are added to your profile. You can edit these selections and tag the article with concepts we failed to capture automatically. And each user's profile now displays an overview of the collection and a tag cloud tracking the concept present in the material you've collected (see screenshot). Concepts are sized to estimate the strength and uniqueness to this individual user, using a calculation based on [term frequency-inverse document frequency(tf-idf)](http://en.wikipedia.org/wiki/Tf-idf) weighting. In the near future, users will be able to use this cloud to modify their profiles, control how the system is working for them, and manage their collections to easily refer back to items they've bookmarked in the past.
+
+**2. As a new user, the experience is frustrating because I'm not seeing articles that I like fast enough - is this thing working?**
+
+In the new release, we've increased the sensitivity of the matching algorithm so that results should appear immediately, and we'll continue to make improvements in how well it performs with profiles that have only a few liked items. The engine works better as profiles grow, sometimes requiring 10 or more items to reach a steady level. To overcome this, we're working on two new features that will make it easier to build up a new profile.
+
+*Coming soon:*
+
+- Search Box - A search box, which can be used to focus on specific topics and populate your profile with much wider range of concepts
+- Import Favorite Content - bring in your bookmarks and more from other sites you use to collect stuff you like

@@ -1,0 +1,86 @@
+---
+title: "Data-Focused UI Design"
+description: "Exploring whether acceptable user interfaces can be derived from the schema of the data that powers an application, addressing problems with typical UI design processes."
+date: 2015-07-14
+tags: ["ui-design", "data-modeling", "product-design", "software-architecture"]
+---
+
+*Can acceptable user interfaces be derived from the schema of the data that powers an application?*
+
+## Two Problems with Typical UI Design and Development
+
+New application design typically means producing a visual representation ([wireframes](https://en.wikipedia.org/wiki/Website_wireframe), [mockups](https://en.wikipedia.org/wiki/Mockup), [clickable prototypes](http://www.invisionapp.com/)) of UI and UX that serves as a design specification for the subsequent development phase.
+
+There are **two major problems** with the typical approach:
+
+### Visual designs are not a blueprint
+
+As development evolves, the product increasingly deviates from the design, meaning there's no longer a definitive specification that product owners, developers, designers, QA, etc. can use for a shared understanding of the product.
+
+One symptom of this problem is that there isn't a single consistent and precise notion of the product that can be used in [instrumenting for analytics](https://en.wikipedia.org/wiki/Instrumentation) (reasoning about the production system for business and technical purposes). The team may lack a common language for referring to the various screens, components, features, etc. involved in the UI, making it hard to map analytics events back to specific behaviors the user executed in the product.
+
+Turing award-winner and distributed systems expert [Leslie Lamport](https://en.wikipedia.org/wiki/Leslie_Lamport) describes the problem of [building a house without blueprints](http://cacm.acm.org/magazines/2015/4/184705-who-builds-a-house-without-drawing-blueprints/fulltext). *Too often in front-end engineering we rely on the software equivalent of a [scale model](https://en.wikipedia.org/wiki/Scale_model) instead of a blueprint.*
+
+### Visual designs often encourage focus on unimportant details coupled to a specific user environment
+
+The typical visual formats (wireframes, mockups, clickable prototypes) encourage the team to think about details of the UI that aren't critical to early user acceptance. Much effort goes into decisions about layout, navigation, aesthetics, and many other issues that may not improve user experience.
+
+As an example, consider a team deciding between whether (a) the user composes a new message within the visual context of the message thread, or (b) the user is taken to a different screen for composing new messages. In my experience with early-stage development, this kind of design issue can be a source of lot of lateral movement in the project - debates among the team, prototyping it one way and then the other way - that cost valuable time. Often the right answer isn't knowable without user testing.
+
+The problem is compounded by the extent to which design decisions are **highly coupled with the user environment**. The right answer varies with screen-size: perhaps (a) is right for desktop while (b) is right for smartphone.
+
+Ideally the initial design would deal with this issue at a higher level: "users must be able to compose new messages" and leave the rest to platform-specific implementation.
+
+## A Proposed Data-Focused Approach To UI Design
+
+Let's consider a different approach that solves these problems and has the potential for big gains in speed to implement, quality, and malleability of the resulting application.
+
+### Step 1: Visual UI/UX Design
+
+Similar to the first step in the traditional approach, design begins with product owner, developer, and designer working together to get the product vision out of the owners' heads and into a visual representation of the UI and UX. [The Product Design Sprint process as described by Thoughbot](http://playbook.thoughtbot.com/#product-design-sprint) provides a good overview of the considerations involved in this step.
+
+The difference here is that this step needn't have all of rigor required when the goal is to produce a requirements specification. The team can deal with a high-level representation of the product's user experience and work quickly by deferring details. While digital tools like Invision can be used, whiteboard, pen/paper, simple wireframes should be sufficient.
+
+### Step 2: Software System Design
+
+Using the output of Step 1 as a guide, the team works together to produce a functional software design specification for the data that drives the system. I propose that two data-description formats are sufficient as a design specification from which to infer functionally conformative UI variations: **Conceptual Schema** and **User and System Events**.
+
+#### Example: Messaging App with Relevancy Ranking
+
+Let's consider an example of a basic text and photo messaging app which uses an algorithm to emphasize the most important messages.
+
+##### Conceptual Schema
+
+- **User** which has properties name, email, etc.
+- **Message** which has properties text, timestamp, photos, etc., and has one-to-one relationship with User as sender, has one-to-many relationship with User as recipient, etc.
+- **Photo** which has properties url, height, width, etc., and has many-to-many relationship with Message as attached, has many-to-one relationship with User as uploader, etc.
+
+##### User and System Events
+
+- **User** *creates* a new **Message**
+- **User** *sends* a **Message** to one or more **Users**
+- **User** *views* a received **Message**
+- **User** *views a list* of received **Messages**
+- **User** creates a new **Photo**
+- **User** *updates* **Message** by appending **Photo** to **Message**.photos
+- **System** scores messages according to a relevancy algorithm
+
+These two design formats should be familiar:
+
+- **Conceptual Schema** [models](https://en.wikipedia.org/wiki/Data_modeling) the [attributes of and relationships between the key concepts in a system](https://en.wikipedia.org/wiki/Conceptual_schema). This could be specified using a pattern like [Active Record](http://guides.rubyonrails.org/active_record_basics.html).
+- **User and System Events** are very much like the kind of user and system behaviors an instrumented product would be kicking off to [Mixpanel](http://mixpanel.com) or the like. Note that many of the Event types follow from basic [CRUD functionality](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) for the Entities, UI for which is already automatically generated for scaffolded admin UI in [Rails](http://rubyonrails.org/) and [Django MVC](https://www.djangoproject.com/) frameworks.
+
+### Step 3: Rapidly Generate UI that Conforms to the Software System Design
+
+Drawing upon existing precedents such as Active Record model view/edit UI scaffolding and incorporating proven UI design patterns, middleware can be created that rapidly generates UI components and layout variations that conform to the rules. The team can evaluate these variations and make initial choices for initial testing with early users. Initial UI choices can potentially be customized based on the feedback from this testing.
+
+## Open Questions
+
+This approach assumes that for a certain significant class of applications (new development, CRUD-heavy, basic UI requirements), product owners are better served by selecting from a set of arbitrary application UI variations that conform to all relevant constraints as stated in the formats above.
+
+1. Do you agree that this approach will produce better results?
+2. If not, what additional design formats must be considered in order to sufficiently specify an application?
+3. What business and engineering benefits could this approach produce?
+4. What are concerns and pitfalls of this approach?
+
+Thanks to [Isaac Cambron](http://twitter.com/icambron), [Steve Richmond](http://twitter.com/sriche), [Cort Johnson](https://twitter.com/cortlandt), [Dan Choi](http://danielchoi.com/software/), [Philippe Bosshart](http://philippebosshart.com/), [Eric Richmond](https://twitter.com/eric_richmond), [Dan Croak](http://twitter.com/croaky), [Saadiq Rodgers King](http://twitter.com/saadiq), [Erik Price](http://twitter.com/erik_price), [Russ Richmond](http://twitter.com/richmorb), [Dan Adams](http://twitter.com/danadams) for feedback and help with the idea.

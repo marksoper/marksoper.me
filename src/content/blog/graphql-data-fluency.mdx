@@ -1,0 +1,37 @@
+---
+title: "\"Easier to Reason About\" for the Entire Product Team with GraphQL"
+description: "How GraphQL can improve data fluency across entire product teams, not just engineers, by making data schemas and queries more accessible."
+date: 2016-01-22
+tags: ["graphql", "data", "product-teams", "api", "react"]
+originalUrl: "https://medium.com/@marksoper/graphql-and-data-fluency-for-the-entire-product-team-92d9687c4309"
+---
+
+*Better programming models for managing system complexity are taking hold in the software engineering community, but we're not doing enough to spread these benefits beyond engineering. Let's look at how we can do a better job of serving designers, analysts, end users, product owners and others who work with the technology we create, and specifically how an emerging API pattern called GraphQL can play a role.*
+
+As a freelance software engineer I've had the opportunity to work with [many early-stage teams](http://marksoper.me/#projects) over the past few years. I've become especially interested in the overall collaboration among these teams: product owners, designers, engineers, QA, analysts, etc. I'm convinced, perhaps it's obvious, that how the entire team works together is critically important to the success of the product. I'm also convinced that there's a growing need for improvement in the process and tools teams use to collaborate, especially with respect to a shared understanding of the data model and fundamental system design of the product. We need a way for everyone to reason about the product.
+
+I think we in the engineering community already get this. We hear the term "easier to reason about" used frequently to explain major software development trends (e.g. [functional programming](https://www.quora.com/How-does-functional-programming-help-me-reason-about-my-code-better-than-OOP)) and technologies (e.g. [React.js](https://medium.com/@joaomilho/arguing-for-reactjs-7b80aafc6493)) whose popularity has exploded in recent years. Collectively we've realized the cost of incidental complexity and are taking steps to fight it. But I question whether everyone else involved in software products is benefitting from these anti-complexity efforts. Is it any easier for a designer, product manager, or analyst to "reason about" an API written in a type-checked language or a web app made with React vs another framework.
+
+We in the engineering profession can do a better job of communicating and making available our anti-complexity advancements more broadly to the business interests we serve and the everyone else involved the product lifecycle. I believe that the best way to do this is to pursue technology and process improvements that increase *data fluency* within teams and companies. Long gone are the days when data models were an implementation detail closely guarded by a few DBAs in a basement office. Increasingly everyone on the team and everyone in the company must be able to understand and manage the data that powers the product and ultimately the business.
+
+## GraphQL as a platform for data fluency
+
+Expanding data fluency beyond engineering requires a more declarative, comprehensive approach to describing and processing data, a way to work with the DNA of a system that's approachable without programming experience. In 2015 Facebook made available [GraphQL](https://facebook.github.io/react/blog/2015/05/01/graphql-introduction.html), a technology with promising implications for developing such an approach. I believe GraphQL is promising because it provides a expressive *type system* that's not tied to any programming language or DBMS. It's well suited to maintaining a central data model that works with various front-end languages, in any back-end language environment, and with data from multiple disparate databases. GraphQL also supports UI-specific queries, expressions of data requirements directly aligned with UI features. The type system is a declarative way to describe the shape of data system-wide, and the query language represents a declarative way to describe the shape of user interfaces to that data. Together these two aspects make GraphQL a promising foundation for data fluency.
+
+In addition to learning more about and contributing to existing efforts in the GraphQL ecosystem, I'm researching several specific areas where I believe GraphQL will begin to improve data fluency among entire product teams.
+
+## Making data schema accessible to entire teams
+
+The GraphQL type system involves managing a schema of data types (e.g. User, Product, Transaction) in terms of their properties (User has name, email, etc.) and relationships (e.g. Transaction involves multiple Products). These definitions are implemented as code in whatever server-side programming language the team chooses - [implementations are fast emerging](https://github.com/chentsulin/awesome-graphql) in all major languages. Using the building blocks the schema provides, programmers create feature-specific *queries* for retrieving data and *mutations* for updating data.
+
+The engineering team owns the schema design process. It forms the DNA for the rest of the code and can limit future flexibility if not done thoughtfully. But the schema also has profound implications for the UX. In my experience, many product owners and designers don't appreciate this. A common symptom is a premature emphasis on pixels leading to a disconnect between visual UI/UX design and the actual design (i.e. system design - a comprehensive development plan) for the product.
+
+I believe the whole team can benefit from understanding how information is organized in the product, and that many product owners see this benefit. But good tools and processes to support this aren't yet available. GraphQL is conducive to graphical UIs that can help non-programmers understand and in some cases manage the evolving data model. Facebook is developing a primitive graphical IDE called [GraphiQL](https://github.com/graphql/graphiql) for programmers that could form the basis or inspiration for a more advanced interface that moves the whole team closer to being able to "reason about" the product.
+
+## Admin UIs with which entire teams can manage system data
+
+In addition to understanding the shape of the data, increasingly wider groups of people need direct real-time access to the data itself in a variety of ways, ranging from populating test data in the early stages to analyzing and measuring the product in production. GraphQL's UI-specific queries and introspection capability, a way to query the schema on the fly to learn how data can be accessed, create potential for more product-oriented administration interfaces that improve upon the scaffolding-based admin functionality popularized by web frameworks like Rails and Django.
+
+There's also interesting potential to improve analytics available to the entire team. Too often analytics and measurement are arranged as an afterthought. With the ship data rapidly approaching, a hasty effort is made to instrument the product and slap in a third-party package that implements schema, storage, and reporting as a separate system from the product itself. I believe analytics should emerge more naturally from the product itself, and am eager to explore how GraphQL's type-system orientation might lend itself to this goal.
+
+[Also published on Medium](https://medium.com/@marksoper/graphql-and-data-fluency-for-the-entire-product-team-92d9687c4309)

@@ -1,0 +1,39 @@
+---
+const pathname = Astro.url.pathname;
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/about', label: 'About' },
+];
+---
+
+<nav class="border-b border-[var(--color-border-light)]">
+  <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] py-5 flex items-center justify-between">
+    <a href="/" class="font-[var(--font-display)] text-xl font-semibold text-[var(--color-text)] no-underline hover:text-[var(--color-accent)]">
+      Mark Soper
+    </a>
+    <div class="flex items-center gap-6">
+      {links.map(link => (
+        <a
+          href={link.href}
+          class:list={[
+            'text-sm no-underline transition-colors',
+            pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))
+              ? 'text-[var(--color-text)] font-medium'
+              : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="/rss.xml"
+        class="text-sm text-[var(--color-warm)] no-underline hover:text-[var(--color-accent)]"
+        title="RSS Feed"
+      >
+        RSS
+      </a>
+    </div>
+  </div>
+</nav>

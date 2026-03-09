@@ -1,0 +1,17 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--color-border-light)] mt-16">
+  <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-[var(--color-text-muted)]">
+      &copy; {currentYear} Mark Soper
+    </p>
+    <div class="flex items-center gap-5">
+      <a href="https://linkedin.com/in/marksoper" class="text-sm text-[var(--color-text-muted)] no-underline hover:text-[var(--color-text)]" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/marksoper" class="text-sm text-[var(--color-text-muted)] no-underline hover:text-[var(--color-text)]" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://twitter.com/marksoper" class="text-sm text-[var(--color-text-muted)] no-underline hover:text-[var(--color-text)]" target="_blank" rel="noopener">Twitter</a>
+      <a href="/rss.xml" class="text-sm text-[var(--color-text-muted)] no-underline hover:text-[var(--color-text)]">RSS</a>
+    </div>
+  </div>
+</footer>

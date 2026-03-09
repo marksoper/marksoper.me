@@ -1,0 +1,51 @@
+---
+title: "Node.js Analytics - Part 1: State of the Art"
+description: "Exploring the state of real-time and historical analytics options available in the Node.js ecosystem, and proposing improvements."
+date: 2011-06-02
+tags: ["node.js", "analytics", "javascript", "logging"]
+---
+
+Part 1 in a series of articles exploring real-time and historical analytics for Node.js, covering analytics options currently available in the [Node.js ecosystem](https://github.com/joyent/node/wiki/modules). I think there's a need for better analytics in the Node.js ecosystem to support engineers and business folks. I'm researching and writing to stimulate feedback on this, and to explore what if anything needs to be developed in terms of open source modules, APIs, etc.
+
+I've been working with server-side javascript and Node.js for about 6 months, including [some work with server side DOM manipulation](http://news.ycombinator.com/item?id=2510671) and [static site generation](/My-New-Blog-Using-Petrify-Static-Website-Generator-and-Nodejs.html). I've been working on [consumer internet startups](http://rallyplan.com) for about 4 years, and before that I was in the business intelligence and analytics world. Having not quite rid myself of the analytics bug, I've been thinking a lot about how the practice of analytics might evolve in the Node.js world and tinkering with two open source contributions toward analytics:
+
+- [Adding event counters to the winston logging module](https://github.com/indexzero/winston/issues/11)
+- [Instrumentation of Node.js request data to support analytics](https://github.com/marksoper/analog)
+
+Let's go through what's available currently to implement analytics in Node.js.
+
+### Logging
+
+If you're developing with Node.js, chances are you're doing some kind of persistent logging. You might be logging critical events to make troubleshooting and development testing easier, logging outcomes of test suites like [Vows](http://vowsjs.org), or keeping logs of requests and responses to understand how your server(s) are being used. You might be using a logging module like [Nodejitsu's](http://nodejitsu.com) [Winston](https://github.com/indexzero/winston) and/or PaaS offerings designed specifically for logging like [Splunk](http://splunk.com) or [Loggly](http://loggly.com), or may have a customized approach to logging. And hosting / deployment platforms like [Heroku](http://blog.heroku.com/archives/2011/5/31/celadon_cedar/), [Joyent](http://joyent.com), [Nodejitsu](http://nodejitsu.com), etc. often provide additional logging capabilities.
+
+How logs are retrieved and analyzed is dictated by the method in which the logs are written. Developers analyze filesystem-based logs in an ad hoc way during development using *grep* or other powerful basic methods. Hosting environments may come with analysis tools, like [Heroku's revamped logging](http://devcenter.heroku.com/articles/logging) and [Joyent's Cloud Analytics](http://www.joyent.com/software/smartdatacenter/cloud-analytics/). Cloud logging services provide APIs that are specialized for log retrieval and analysis, like [Loggly's Retrieve API](http://wiki.loggly.com/retrieve_events). Analysis tools for log data primarily focus on serving engineering needs, like troubleshooting, performance tuning, provisioning, testing, etc. with two basic functions:
+
+- **search** - search-engine-style query to retrieve log entries containing keywords
+- **find** - database-style query to find or count log entries based on metadata such as date, server, severity level, etc.
+
+The value of logs isn't limited to engineering - there's a long history of log data being used more broadly to make marketing and other business decisions - e.g. Apache logs providing an early foundation for the what would become the multi-billion dollar [web analytics](http://en.wikipedia.org/wiki/Web_analytics#Web_server_logfile_analysis) industry. While this industry has evolved to rely more on client-side analytics and less on server-side data like logfiles, there's an interesting case to be made for the importance of server-side approaches in Node.js applications, supported most obviously by widespread use of Node.js in API servers (e.g. serving JSON to other servers via REST) and other situations where "clients" don't support client-side analytics.
+
+### Client-side Analytics on the Server
+
+Because Node.js supports reuse of code between browser and server, Javascript developers can now embed some of the most popular client-based web analytics services into server applications to take advantage of many of the powerful features these services offer.
+
+- [Google Analytics](https://github.com/ncb000gt/node-googleanalytics)
+- [Mixpanel](https://github.com/carlsverre/mixpanel-node)
+
+This approach does not seem to have taken off yet judging by the apparently limited adoption of these two modules. The case for using Google Analytics in this way is diminished by the extent to which some of it's key features rely on cookies that aren't available in this server-side context. I'm curious to learn more about why there doesn't seem to be more interest in using Mixpanel, a more generalized approach to capturing javascript-defined events that seems readily applicable to the server.
+
+### Server-side Analytics on the Server
+
+The analytics (software that helps engineers and business people understand what's happening with their product) available for Node.js is limited to the two categories above. As far as I know. If there are other options out there I'd love to hear about it.
+
+A new category that makes sense to me is software that's designed specifically for the Node.js server with the following characteristics:
+
+1. Makes the collection of metadata about the sending and receiving of data as automatic as possible, e.g. add three lines of code and it's done
+2. This metadata is instrumented in a way that's standardized and optimized for analytics
+3. A REST API exists on top of this metadata to support the use of this metadata in a variety of analytics clients
+
+I've made a small amount of progress toward this by taking a stab at the [instrumentation of a Node.js request object for analytics](https://github.com/marksoper/analog).
+
+I'd love to hear feedback, corrections, etc. on my take on the state of analytics in the Node.js ecosystem and on this specific proposal for an additions to it.
+
+Stay tuned for coverage of real-time analytics next week.

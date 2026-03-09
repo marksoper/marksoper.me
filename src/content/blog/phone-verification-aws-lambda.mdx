@@ -1,0 +1,174 @@
+---
+title: "Phone Number Verification with Event-Driven Microservices Using AWS Lambda, Kinesis Streams, React.js"
+description: "A prototype web app that performs phone number verification using an event-driven architecture pattern in Node.js on AWS Lambda with AWS Kinesis streams."
+date: 2017-09-18
+tags: ["aws", "lambda", "kinesis", "react", "microservices", "serverless", "node.js"]
+originalUrl: "https://medium.com/@marksoper/phone-number-verification-with-aws-lambda-microservices-kinesis-dynamodb-node-js-and-react-js-bba0eb08ef92"
+---
+
+![AWS Lambda + CloudFront + Kinesis + DynamoDB architecture -- phone number verification Web App & SMS](/media/images/verif.png)
+
+I recently built a [prototype web app that performs *phone number verification*](https://github.com/marksoper/phone-verification) using an event-driven architecture pattern in Node.js on AWS Lambda with AWS Kinesis streams. This might be interesting if you are:
+
+- looking for an example implementation of [phone number verification](https://en.wikipedia.org/wiki/Telephone_number_verification)
+  ***For learning purposes, code not meant to be used in production!***
+- interested in [event-driven microservices](https://www.oreilly.com/ideas/the-evolution-of-scalable-microservices)
+- building [serverless](https://martinfowler.com/articles/serverless.html) ([FaaS](https://en.wikipedia.org/wiki/Function_as_a_Service)) functions with [AWS Lambda](https://aws.amazon.com/lambda/)
+- using [event-driven architecture](https://en.wikipedia.org/wiki/Event-driven_architecture) patterns with [AWS Kinesis Streams](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
+
+### Source Code
+
+[**phone-verification** -- phone number verification example project on Github](https://github.com/marksoper/phone-verification)
+
+### Full-stack Architecture
+
+#### Front-end Web UI
+
+- a [React](https://facebook.github.io/react/) web app in Javascript
+- [react-phone-number-input](https://github.com/catamphetamine/react-phone-number-input) -- React component for phone number entry
+- Build process: [create-react-app](https://github.com/facebookincubator/create-react-app), [prettier](https://github.com/prettier/prettier-eslint), etc.
+
+#### Back-end Services
+
+- [Node.js](https://nodejs.org)
+- [AWS Lambda](https://aws.amazon.com/lambda/) Microservices
+- [Serverless framework](https://serverless.com/)
+- [AWS Kinesis Streams](https://aws.amazon.com/kinesis/streams/)
+- [AWS DynamoDB](https://aws.amazon.com/dynamodb/)
+- [Plivo SMS Gateway](https://www.plivo.com/)
+- [AWS S3 + Cloudfront Static Site Hosting](https://www.davidbaumgold.com/tutorials/host-static-site-aws-s3-cloudfront/)
+
+### Step-by-step guide to implementation
+
+#### 0. Prerequisites
+
+- AWS Account
+- Install and configure the [AWS CLI](https://aws.amazon.com/cli/)
+
+#### 1. Deploy the web app
+
+1. In the AWS Console, [configure AWS S3](https://console.aws.amazon.com/s3) and [AWS Route53](https://console.aws.amazon.com/route53) to establish static website hosting using a custom domain -- see [detailed instructions](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html).
+2. Setup AWS CloudFront to serve the static website. See [Host a Static Site on AWS, using S3 and CloudFront](https://www.davidbaumgold.com/tutorials/host-static-site-aws-s3-cloudfront/) and then establish secure communication between the browser and web server [Using HTTPS with CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-https.html).
+
+3. Clone, install, build, and deploy the web app.
+
+```bash
+$ git clone https://github.com/marksoper/phone-verification
+$ cd phone-verification
+$ cd webapp
+$ yarn install
+$ yarn build
+$ cd build
+$ aws s3 cp ./ s3://<your bucket/domain name>/ --recursive
+```
+
+#### 2. Setup the database in DynamoDB
+
+In the AWS console, [create a DynamoDB table](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SQLtoNoSQL.CreateTable.html)
+
+**Table name**: VerificationChallenges
+**Primary partition key**: createdDate (String)
+**Primary sort key**: smsCode (Number)
+
+#### 3. Create a Kinesis Event Stream
+
+In the AWS console, [create a Kinesis stream](https://console.aws.amazon.com/kinesis/)
+
+**Table name**: phone-verification-event-stream
+**Number of shards**: 1
+
+#### 4. Create an "event log" Log Group in CloudWatch
+
+This is essentially optional. If you don't want this you'll need to remove the code in each of the Lambda functions that logs to this CloudWatch Log Group.
+
+**Log group name**: verificationEventLog
+
+#### 5. Create Three Lambda services with Serverless framework
+
+The send-sms-verification-code Lambda function requires access to the Plivo API. Plivo API account authentication credentials are kept out of version control in a file called config.js. See the instructions in the project README for the expected format of this file.
+
+You should also consider using [AWS Lambda's environment variables](http://docs.aws.amazon.com/lambda/latest/dg/tutorial-env_console.html) feature to make these credentials available. For this size app it probably doesn't really matter, but for larger projects I would look carefully at both options.
+
+Before creating the Lambda functions, you must edit the serverless.yml file, replacing &lt; region &gt; with your AWS region and &lt; AWS Account ID &gt; with your AWS account ID.
+
+To create all 3 Lambda functions, from the repo root ...
+
+```bash
+$ cd auth
+$ serverless deploy -v
+```
+
+This will also create new [roles and policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) for these Lambda functions.
+
+*NOTE --* at present Lambda does not support Node.js 7.x, so [asyncawait](https://github.com/yortus/asyncawait) is used to allow async await capability a la es7 in the Lambda functions.
+
+#### Lambda function -- auth-request-verification-code
+
+Once created, test the auth-request-verification-code function in the AWS Console Lambda page by choosing *Actions > Configure Test Event* and entering input JSON:
+
+```json
+{
+    "httpMethod": "POST",
+    "body": {
+        "phoneNumber": "< your testing phone number here >"
+    }
+}
+```
+
+#### Lambda function -- auth-send-sms-verification-code
+
+The Serverless framework covers AWS Lambda definitions and associated roles/policies. But AFAIK it doesn't deal with Kinesis mappings to those functions. Once both your auth-send-sms-verification-code Lambda function and your Kinesis stream are defined, you'll need to update your Lambda to be invoked when stream records occur in Kinesis.
+
+```bash
+$ aws lambda create-event-source-mapping \
+    --region < enter your region here > \
+    --function-name auth-send-sms-verification-code \
+    --event-source < enter your kinesis stream ARN here > \
+    --starting-position TRIM_HORIZON
+```
+
+Once the mapping is created, it can be tested in the AWS Console using Actions > Configure Test Event OR by running the auth-request-verification-code function and using the CloudWatch logs to debug the flow through Kinesis.
+
+#### Lambda function -- auth-verify-verification-code
+
+```json
+{
+    "httpMethod": "POST",
+    "body": {
+        "phoneNumber": "< your testing phone number >",
+        "verificationCode": "< your verification code >"
+    }
+}
+```
+
+#### 6. Testing
+
+#### Front-end Web UI
+
+Use standard [create-react-app testing methodologies](https://facebook.github.io/jest/docs/en/tutorial-react.html), including unit tests and the local web deployment feature (*yarn start*) for dev and testing of the web app.
+
+```bash
+$ cd webapp
+$ yarn install
+$ npm test
+$ yarn start
+```
+
+#### Lambda Functions
+
+Lambda functions can be [tested manually using both the CLI and AWS Console](http://docs.aws.amazon.com/lambda/latest/dg/get-started-invoke-manually.html). I used the AWS Console's Lambda test invoke feature and CloudWatch Logs. A CloudWatch Log Group should be created automatically when you create the Lambda function.
+
+Unit testing is challenging in AWS Lambda. I didn't write any unit tests for this project. The are important implications on overall code organization -- see this [Unit testing guide from Serverless](https://serverless.com/framework/docs/providers/aws/guide/testing/) for example -- that I would pay attention to in larger production projects.
+
+### Further Reading
+
+#### Event-driven microservices
+
+- [MapR -- Event-driven microservices patterns](https://mapr.com/blog/event-driven-microservices-patterns/)
+- [Pivotal -- Messaging Patterns for Event-Driven Microservices](https://content.pivotal.io/blog/messaging-patterns-for-event-driven-microservices)
+
+#### Event-driven architecture
+
+- [Wikipedia -- Event-driven architecture](https://en.wikipedia.org/wiki/Event-driven_architecture)
+- [Java design patterns -- Event-driven architecture](https://github.com/iluwatar/java-design-patterns/tree/master/event-driven-architecture)
+- [Evaluating Message Brokers: Kafka vs. Kinesis vs. SQS](https://dzone.com/articles/evaluating-message-brokers-kafka-vs-kinesis-vs-sqs)
