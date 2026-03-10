@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <style>
+      .trace { fill: none; stroke: #eeece8; stroke-width: 0.75; stroke-linecap: round; }
+      .trace-thin { fill: none; stroke: #f0eee9; stroke-width: 0.4; stroke-linecap: round; }
+      .pad { fill: #f0eee9; }
+      .pad-ring { fill: none; stroke: #eeece8; stroke-width: 0.5; }
+      .ic { fill: none; stroke: #eeece8; stroke-width: 0.75; rx: 2; }
+      .via { fill: #efeде9; }
+    </style>
+  </defs>
+
+  <!-- Horizontal traces -->
+  <path class="trace" d="M0,40 H80 L95,55 H160"/>
+  <path class="trace-thin" d="M0,65 H45 L55,75 H120 L130,65 H200"/>
+  <path class="trace" d="M200,40 H280 L295,25 H400"/>
+  <path class="trace-thin" d="M240,65 H320 L335,80 H400"/>
+  <path class="trace" d="M0,120 H60 L75,135 H140"/>
+  <path class="trace-thin" d="M0,145 H90 L100,155 H180"/>
+  <path class="trace" d="M220,120 H300 L310,130 H400"/>
+  <path class="trace-thin" d="M260,145 H340 L350,135 H400"/>
+
+  <!-- Vertical traces -->
+  <path class="trace" d="M80,0 V60 L95,75 V140"/>
+  <path class="trace-thin" d="M120,0 V35 L130,45 V100"/>
+  <path class="trace" d="M320,0 V50 L305,65 V120"/>
+  <path class="trace-thin" d="M350,0 V80 L340,90 V150"/>
+  <path class="trace" d="M80,260 V320 L95,335 V400"/>
+  <path class="trace-thin" d="M120,280 V340 L130,350 V400"/>
+  <path class="trace" d="M320,260 V310 L335,325 V400"/>
+  <path class="trace-thin" d="M350,250 V330 L340,340 V400"/>
+
+  <!-- IC package (center) -->
+  <rect class="ic" x="155" y="165" width="90" height="70" rx="3"/>
+  <rect fill="#f0f0f0" x="160" y="170" width="80" height="60" rx="2"/>
+  <!-- IC pins left -->
+  <path class="trace" d="M155,180 H130 L120,170 H60"/>
+  <path class="trace" d="M155,195 H125 L115,205 H50"/>
+  <path class="trace" d="M155,210 H140 L130,220 H80"/>
+  <path class="trace-thin" d="M155,225 H135 V260 H100"/>
+  <!-- IC pins right -->
+  <path class="trace" d="M245,180 H270 L280,170 H340"/>
+  <path class="trace" d="M245,195 H275 L285,205 H360"/>
+  <path class="trace" d="M245,210 H260 L270,220 H330"/>
+  <path class="trace-thin" d="M245,225 H265 V260 H310"/>
+  <!-- IC pins top -->
+  <path class="trace" d="M180,165 V140 L170,130 V80"/>
+  <path class="trace" d="M200,165 V130 L210,120 V70"/>
+  <path class="trace" d="M220,165 V145 L230,135 V90"/>
+  <!-- IC pins bottom -->
+  <path class="trace" d="M180,235 V260 L170,270 V320"/>
+  <path class="trace" d="M200,235 V270 L190,280 V340"/>
+  <path class="trace" d="M220,235 V255 L230,265 V310"/>
+
+  <!-- Small IC (top-right) -->
+  <rect class="ic" x="290" y="85" width="45" height="30" rx="2"/>
+  <path class="trace-thin" d="M290,95 H270 L260,105 H220"/>
+  <path class="trace-thin" d="M290,105 H275 V130"/>
+  <path class="trace-thin" d="M335,95 H360 L370,85 H400"/>
+  <path class="trace-thin" d="M335,105 H355 V140"/>
+
+  <!-- Small IC (bottom-left) -->
+  <rect class="ic" x="55" y="285" width="45" height="30" rx="2"/>
+  <path class="trace-thin" d="M55,295 H30 L20,305 H0"/>
+  <path class="trace-thin" d="M55,305 H35 V340 H0"/>
+  <path class="trace-thin" d="M100,295 H130 L140,285 V260"/>
+  <path class="trace-thin" d="M100,305 H120 V340"/>
+
+  <!-- Pads / vias -->
+  <circle class="via" cx="160" cy="40" r="3"/>
+  <circle class="pad-ring" cx="160" cy="40" r="5"/>
+  <circle class="via" cx="60" cy="120" r="2.5"/>
+  <circle class="pad-ring" cx="60" cy="120" r="4.5"/>
+  <circle class="via" cx="300" cy="25" r="3"/>
+  <circle class="pad-ring" cx="300" cy="25" r="5"/>
+  <circle class="via" cx="340" cy="180" r="3"/>
+  <circle class="pad-ring" cx="340" cy="180" r="5"/>
+  <circle class="via" cx="60" cy="205" r="2.5"/>
+  <circle class="pad-ring" cx="60" cy="205" r="4.5"/>
+  <circle class="via" cx="80" cy="320" r="3"/>
+  <circle class="pad-ring" cx="80" cy="320" r="5"/>
+  <circle class="via" cx="330" cy="310" r="2.5"/>
+  <circle class="pad-ring" cx="330" cy="310" r="4.5"/>
+  <circle class="via" cx="140" cy="270" r="3"/>
+  <circle class="pad-ring" cx="140" cy="270" r="5"/>
+  <circle class="via" cx="260" cy="260" r="2.5"/>
+  <circle class="pad-ring" cx="260" cy="260" r="4.5"/>
+  <circle class="via" cx="170" cy="130" r="2.5"/>
+  <circle class="pad-ring" cx="170" cy="130" r="4.5"/>
+  <circle class="via" cx="230" cy="135" r="2.5"/>
+  <circle class="pad-ring" cx="230" cy="135" r="4.5"/>
+
+  <!-- Capacitor pads (small rectangles) -->
+  <rect class="pad" x="38" y="72" width="8" height="5" rx="1"/>
+  <rect class="pad" x="48" y="72" width="8" height="5" rx="1"/>
+  <rect class="pad" x="278" y="152" width="8" height="5" rx="1"/>
+  <rect class="pad" x="288" y="152" width="8" height="5" rx="1"/>
+  <rect class="pad" x="108" y="342" width="8" height="5" rx="1"/>
+  <rect class="pad" x="118" y="342" width="8" height="5" rx="1"/>
+  <rect class="pad" x="348" y="252" width="5" height="8" rx="1"/>
+  <rect class="pad" x="348" y="262" width="5" height="8" rx="1"/>
+
+  <!-- Extra corner traces for seamless tiling -->
+  <path class="trace-thin" d="M0,200 H25 L35,210 H70"/>
+  <path class="trace" d="M0,340 H40 L50,350 H90 L100,340 H150"/>
+  <path class="trace-thin" d="M300,340 H360 L370,350 H400"/>
+  <path class="trace" d="M0,380 H100 L110,370 H200"/>
+  <path class="trace-thin" d="M280,380 H350 L360,390 H400"/>
+  <path class="trace-thin" d="M200,0 V30 L210,40 V70"/>
+  <path class="trace-thin" d="M200,350 V380 L210,390 V400"/>
+</svg>
