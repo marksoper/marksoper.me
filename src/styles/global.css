@@ -38,25 +38,41 @@ html {
 }
 
 /* ─── Subliminal background ─────────────────────────────────────────────────── */
-/* Tier 1: Glacially slow drifting gradient (GPU-composited, ~zero perf cost) */
-/* Tier 2: SVG noise grain overlay for tactile "paper" feel                    */
+/* Layer 1 (bottom): Circuit board texture — fixed, subtle                     */
+/* Layer 2 (middle): Drifting color gradient overlay (group.ai style)          */
+/* Layer 3 (top):    SVG noise grain for tactile feel                          */
 
 body {
   position: relative;
-  background:
-    radial-gradient(ellipse at 20% 50%, #F8F6F1, transparent 70%),
-    radial-gradient(ellipse at 80% 20%, #F5F0EA, transparent 60%),
-    radial-gradient(ellipse at 50% 80%, #F7F5F0, transparent 65%),
-    var(--color-bg);
-  background-size: 200% 200%;
-  animation: bg-drift 120s ease infinite;
+  /* Circuit board texture as the base background */
+  background-color: var(--color-bg);
+  background-image: url('/img/circuit-bg.png');
+  background-repeat: repeat;
+  background-size: auto;
+  background-attachment: fixed;
+}
+
+/* Drifting gradient overlay — soft blue/pink washes that slowly move */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(191, 219, 254, 0.4), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 50%, rgba(196, 181, 253, 0.25), transparent),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(252, 211, 211, 0.2), transparent);
+  background-size: 300% 300%;
+  animation: bg-drift 45s ease-in-out infinite;
 }
 
 @keyframes bg-drift {
-  0%, 100% { background-position: 0% 0%; }
-  25% { background-position: 50% 30%; }
-  50% { background-position: 100% 60%; }
-  75% { background-position: 30% 100%; }
+  0% { background-position: 0% 0%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 50% 100%; }
+  75% { background-position: 0% 50%; }
+  100% { background-position: 0% 0%; }
 }
 
 /* SVG noise texture overlay — static grain at ~4% opacity */
@@ -65,11 +81,17 @@ body::after {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 9999;
-  opacity: 0.035;
+  z-index: 2;
+  opacity: 0.03;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
+}
+
+/* Ensure page content sits above the background layers */
+body > * {
+  position: relative;
+  z-index: 3;
 }
 
 /* Typography */
