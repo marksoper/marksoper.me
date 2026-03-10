@@ -19,7 +19,7 @@ export const projects: Project[] = [
     role: 'Founder',
     years: '2024–present',
     current: true,
-    description: 'Building an AI venture at schema.ai. Originally acquired as the brand name for a project exploring how AI agents can better understand and work with structured data and infrastructure.',
+    description: 'Infrastructure product intelligence for SRE agents. Schema MCP Server delivers current, source-grounded insights that drive reliability and cost improvements. Keep your operational AI well-informed on the infra software/services you depend on.',
     links: [
       { label: 'schema.ai', url: 'https://schema.ai' },
     ],
