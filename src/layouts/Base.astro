@@ -1,5 +1,6 @@
 ---
 import Nav from '../components/Nav.astro';
+import HeroHeader from '../components/HeroHeader.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
@@ -7,9 +8,10 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  hideNav?: boolean;
 }
 
-const { title, description = 'Mark Soper — Product leader, engineer, and entrepreneur building at the intersection of data infrastructure and AI.', image } = Astro.props;
+const { title, description = 'Mark Soper — Product leader, engineer, and entrepreneur building at the intersection of data infrastructure and AI.', image, hideNav = false } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -38,16 +40,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="Mark Soper's Blog" href="/rss.xml" />
 </head>
 <body class="min-h-screen flex flex-col">
-  <Nav />
-  <main class="flex-1">
-    <slot />
-  </main>
-  <Footer />
+  {!hideNav && <HeroHeader />}
+  <div class="body-gradient flex-1 flex flex-col">
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </div>
 </body>
 </html>

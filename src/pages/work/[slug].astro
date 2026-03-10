@@ -1,0 +1,123 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map(project => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+
+// Find adjacent projects for prev/next navigation
+const idx = projects.findIndex(p => p.slug === project.slug);
+const prev = idx > 0 ? projects[idx - 1] : null;
+const next = idx < projects.length - 1 ? projects[idx + 1] : null;
+---
+
+<Base title={`${project.company} — Mark Soper`}>
+  <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] py-12">
+
+    <Breadcrumbs items={[
+      { label: 'Mark Soper', href: '/' },
+      { label: 'Work', href: '/#work' },
+      { label: project.company },
+    ]} />
+
+    <article>
+      <!-- Header -->
+      <div class="flex flex-col sm:flex-row gap-8 items-start mb-10">
+        {/* Image — larger version */}
+        {(project.logo || project.screenshot) && (
+          <div class="shrink-0">
+            {project.logo ? (
+              <img
+                src={project.logo}
+                alt={`${project.company} logo`}
+                class="w-28 h-28 object-contain"
+              />
+            ) : project.screenshot ? (
+              <img
+                src={project.screenshot}
+                alt={`${project.company} screenshot`}
+                class="w-full max-w-xs rounded-lg border border-[var(--color-border)]"
+              />
+            ) : null}
+          </div>
+        )}
+
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <h1 class="text-3xl sm:text-4xl font-semibold">{project.parent ? project.company.replace(project.parent.name + ' ', '') : project.company}</h1>
+            {project.current && (
+              <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[var(--color-accent)] text-white">Current</span>
+            )}
+          </div>
+          {project.parent && (
+            <p class="flex items-center gap-2 mb-2">
+              {project.parent.icon && (
+                <img src={project.parent.icon} alt={project.parent.name} class="w-5 h-5 object-contain" />
+              )}
+              <a href={project.parent.url} target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline no-underline font-medium">{project.parent.name}</a>
+            </p>
+          )}
+          <p class="text-lg font-medium text-[var(--color-warm)] mb-1">{project.role}</p>
+          <p class="font-[var(--font-mono)] text-sm text-[var(--color-text-muted)]">{project.years}</p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="max-w-2xl mb-10">
+        <p class="text-base text-[var(--color-text-secondary)] leading-relaxed">{project.description}</p>
+      </div>
+
+      <!-- Screenshot (show full-size if there's also a logo) -->
+      {project.logo && project.screenshot && (
+        <div class="mb-10">
+          <img
+            src={project.screenshot}
+            alt={`${project.company} screenshot`}
+            class="w-full max-w-2xl rounded-lg border border-[var(--color-border)]"
+          />
+        </div>
+      )}
+
+      <!-- Links -->
+      {project.links && project.links.length > 0 && (
+        <div class="flex flex-wrap gap-4 mb-10">
+          {project.links.map(link => (
+            <a
+              href={link.url}
+              class="inline-flex items-center gap-1.5 text-sm text-[var(--color-accent)] no-underline hover:underline font-medium"
+              target={link.url.startsWith('/') ? undefined : '_blank'}
+              rel={link.url.startsWith('/') ? undefined : 'noopener'}
+            >
+              {link.label}
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+            </a>
+          ))}
+        </div>
+      )}
+
+      <!-- Prev / Next navigation -->
+      <div class="border-t border-[var(--color-border-light)] pt-8 flex justify-between items-center">
+        {prev ? (
+          <a href={`/work/${prev.slug}/`} class="group flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors no-underline">
+            <svg class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+            {prev.company}
+          </a>
+        ) : <div />}
+        {next ? (
+          <a href={`/work/${next.slug}/`} class="group flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors no-underline">
+            {next.company}
+            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+          </a>
+        ) : <div />}
+      </div>
+    </article>
+
+  </div>
+</Base>

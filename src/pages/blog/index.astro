@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
@@ -22,7 +23,17 @@ const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 <Base title="Blog — Mark Soper">
   <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] py-12">
 
-    <h1 class="text-3xl font-semibold mb-4">Writing</h1>
+    <Breadcrumbs items={[
+      { label: 'Mark Soper', href: '/' },
+      { label: 'Blog' },
+    ]} />
+
+    <div class="flex items-center gap-3 mb-4">
+      <h1 class="text-3xl font-semibold">Writing</h1>
+      <a href="/rss.xml" class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors" aria-label="RSS Feed" title="RSS Feed">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+      </a>
+    </div>
     <p class="text-[var(--color-text-muted)] mb-8 max-w-xl">
       On software engineering, product management, data infrastructure, startups, and more.
     </p>

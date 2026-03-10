@@ -1,237 +1,124 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { projects } from '../data/projects';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 5);
 
-const projects = [
-  {
-    company: 'Cockroach Labs',
-    role: 'Product Manager',
-    years: '2021–2024',
-    logo: '/img/Cockroach_Labs_Logo.png',
-    description: 'Led product for CockroachDB Cloud operational tooling (API, Terraform Provider, CLI) and CockroachDB Cloud Serverless — an autoscaling, multi-tenant distributed SQL database.',
-    links: [
-      { label: 'CockroachDB Cloud API', url: 'https://www.cockroachlabs.com/docs/api/cloud/v1' },
-      { label: 'Terraform Provider', url: 'https://registry.terraform.io/providers/cockroachdb/cockroach/latest/docs' },
-      { label: 'Cloud Serverless', url: 'https://www.cockroachlabs.com/lp/serverless/' },
-    ],
-  },
-  {
-    company: 'Microsoft Azure Machine Learning',
-    role: 'Software Engineer',
-    years: '2018–2021',
-    logo: '/img/aml.jpeg',
-    description: 'Built cloud platform software at Microsoft\'s NERD Center in Cambridge, MA, improving how data scientists develop and operationalize machine learning models.',
-    links: [
-      { label: 'Azure ML', url: 'https://azure.microsoft.com/en-us/products/machine-learning' },
-    ],
-  },
-  {
-    company: 'Rocket Insights / Brightcove',
-    role: 'API Tech Lead (Contract)',
-    years: '2017–2018',
-    logo: '/img/rocket.png',
-    description: 'Led a team of 5 engineers developing the backend API for a Fortune 500 media company\'s web/mobile application, scaled for millions of users globally.',
-    links: [],
-  },
-  {
-    company: 'GetHuman',
-    role: 'Contract Engineer & Tech Lead',
-    years: '2015–2017',
-    logo: '/img/logo-gethuman.png',
-    description: 'Built a workflow scheduling backend and UI for automated customer service problem solving. Node.js, TypeScript, RxJS, Angular, React, Redux, and React Native.',
-    links: [],
-  },
-  {
-    company: 'VMware',
-    role: 'Web UI Developer (Contract)',
-    years: '2016',
-    logo: '/img/vs.jpg',
-    description: 'Built the Angular web application for the vSphere Docker Volume Driver, enabling Docker container administrators to manage vSphere Storage access.',
-    links: [
-      { label: 'GitHub', url: 'https://github.com/vmware/docker-volume-vsphere' },
-    ],
-  },
-  {
-    company: 'Scratch',
-    role: 'Full-stack Developer',
-    years: '2015',
-    logo: '/img/scratchlogo.png',
-    screenshot: '/img/scratch.png',
-    description: 'Built and launched an expert shopping service funded by Bessemer Venture Partners. iOS, web, Angular, Ionic, Node.js, Firebase, ElasticSearch, PostgreSQL.',
-    links: [],
-  },
-  {
-    company: 'FinMason',
-    role: 'Web Application UI Development',
-    years: '2014–2015',
-    screenshot: '/img/fm1.png',
-    description: 'Led a team building the initial web UI for this financial services startup — a comprehensive Angular SPA for portfolio risk management and data visualization.',
-    links: [],
-  },
-  {
-    company: 'Invite Education',
-    role: 'Product Management, Design & Development',
-    years: '2013–2014',
-    screenshot: '/img/ie-college.png',
-    description: 'Translated the founders\' vision for a better college planning experience into a successful product. Led a team of three to design and build the initial version with Rails, Angular, and D3.',
-    links: [],
-  },
-  {
-    company: 'Harvard CATCH',
-    role: 'Javascript UI Developer',
-    years: '2013',
-    screenshot: '/img/catch.png',
-    description: 'Developed a Javascript Web UI library for exploring W3C Open Annotation Data, working with Harvard\'s CATCH project team for research peer review.',
-    links: [],
-  },
-  {
-    company: 'Oxfam America',
-    role: 'Python & Django Engineer',
-    years: '2013',
-    screenshot: '/img/oxfam.png',
-    description: 'Built the next-generation web platform for publishing and fundraising using Python, Django, and Mezzanine CMS.',
-    links: [],
-  },
-  {
-    company: 'Aquto',
-    role: 'UI/UX Developer',
-    years: '2012',
-    screenshot: '/img/aq.jpg',
-    description: 'Led front-end development of Kickbit, a mobile app for this startup (funded by North Bridge and Matrix Partners) pioneering mobile data as virtual currency.',
-    links: [],
-  },
-  {
-    company: 'Connected Sports',
-    role: 'Co-Founder & Developer',
-    years: '2011–2012',
-    screenshot: '/img/csv.png',
-    description: 'Primary developer for Rumble Football — a real-time social second-screen companion game for NFL viewing. Web Sockets, Socket.io, Backbone, Node.js, MongoDB, Redis. Backed by Avalon Ventures.',
-    links: [],
-  },
-  {
-    company: 'Collaborate.com (Kibits)',
-    role: 'UI/UX & Node.js Developer',
-    years: '2011',
-    screenshot: '/img/kibits.jpg',
-    description: 'Built initial prototype of HTML5 mobile web experience and Node.js API for this real-time collaboration startup funded by Google Ventures.',
-    links: [],
-  },
-  {
-    company: 'Rally',
-    role: 'Founder, CTO, Designer & Developer',
-    years: '2009–2010',
-    screenshot: '/img/rally.jpg',
-    description: 'Founded and built a service that mined Twitter for local events data using NLP and machine learning to help people make casual plans. Designed and developed all aspects — Python, Django, Twitter Streaming API, MongoDB, Redis, AWS.',
-    links: [
-      { label: 'Post-mortem', url: '/blog/requiem-for-a-startup/' },
-    ],
-  },
-  {
-    company: 'Likematter',
-    role: 'Founder, CTO, Designer & Developer',
-    years: '2008–2009',
-    screenshot: '/img/likematter.jpg',
-    description: 'Founded and led a team building a personalized news and job discovery engine using NLP and machine learning on the OpenCalais platform.',
-    links: [
-      { label: 'About Likematter', url: '/blog/find-news-jobs-likematter/' },
-    ],
-  },
-  {
-    company: 'MicroStrategy / SAS Institute',
-    role: 'Software Engineer',
-    years: '1998–2007',
-    description: 'Built data management, business intelligence, and machine learning systems at two enterprise software companies.',
-    links: [],
-  },
-];
+const currentProjects = projects.filter(p => p.current);
+const pastProjects = projects.filter(p => !p.current);
 ---
 
 <Base title="Mark Soper — Product Leader, Engineer, Entrepreneur">
+
+  <script>
+    // Slowly rotate the body gradient angle
+    const body = document.querySelector('.body-gradient');
+    if (body) {
+      let start = performance.now();
+      function tick(now) {
+        const t = (now - start) / 1000;
+        const bodyAngle = 140 + 10 * Math.sin(t * 2 * Math.PI / 50);
+        body.style.setProperty('--body-grad-angle', bodyAngle + 'deg');
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+  </script>
   <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)]">
 
-    <!-- Hero -->
-    <section class="py-16 sm:py-24 border-b border-[var(--color-border-light)]">
-      <div class="max-w-2xl">
-        <img src="/img/mark_soper.png" alt="Mark Soper" class="w-24 h-24 rounded-full object-cover mb-6" />
-        <h1 class="text-3xl sm:text-4xl font-semibold mb-6 leading-tight">
-          Product leader and engineer building at the intersection of data infrastructure and AI.
-        </h1>
-        <div class="space-y-4 text-[var(--color-text-secondary)]">
-          <p>
-            I've spent 20+ years going deeper on this problem — from BI systems and ML platforms, to distributed databases, to building products that help AI agents understand infrastructure.
-          </p>
-          <p>
-            Previously Product Manager at <a href="https://cockroachlabs.com" class="text-[var(--color-accent)] no-underline hover:underline">Cockroach Labs</a> (CockroachDB Cloud) and Software Engineer on <a href="https://azure.microsoft.com/en-us/products/machine-learning" class="text-[var(--color-accent)] no-underline hover:underline">Azure Machine Learning</a> at Microsoft. Earlier in my career I founded startups and ran a software consultancy helping early-stage companies build their first products.
-          </p>
-        </div>
-        <div class="flex items-center gap-5 mt-6">
-          <a href="https://linkedin.com/in/marksoper" class="text-sm text-[var(--color-accent)] no-underline hover:underline" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/marksoper" class="text-sm text-[var(--color-accent)] no-underline hover:underline" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://twitter.com/marksoper" class="text-sm text-[var(--color-accent)] no-underline hover:underline" target="_blank" rel="noopener">Twitter</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Now Section -->
-    <section class="py-10 border-b border-[var(--color-border-light)]">
-      <div class="bg-[var(--color-warm-light)] rounded-lg p-6">
-        <h2 class="font-[var(--font-mono)] text-xs tracking-widest uppercase text-[var(--color-warm)] mb-3">
-          Now — March 2026
-        </h2>
-        <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-          Exploring product leadership opportunities in the observability and AI infrastructure space. Building tools at the intersection of telemetry data and AI agents. Writing about what I've learned building database products at scale.
-        </p>
-      </div>
-    </section>
-
     <!-- Work -->
-    <section class="py-12 border-b border-[var(--color-border-light)]">
-      <h2 class="font-[var(--font-mono)] text-xs tracking-widest uppercase text-[var(--color-text-muted)] mb-8">
-        What I've Built
-      </h2>
-
-      <div class="space-y-10">
-        {projects.map(project => (
-          <div class="flex flex-col sm:flex-row gap-6 pb-10 border-b border-[var(--color-border-light)] last:border-b-0 last:pb-0">
-            {/* Visual */}
-            <div class="sm:w-44 shrink-0">
-              {project.logo ? (
+    <section id="work" class="py-12">
+      {/* Current projects */}
+      <div class="space-y-1">
+        {currentProjects.map(project => (
+          <a
+            href={`/work/${project.slug}/`}
+            class="group flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg no-underline transition-all duration-150 bg-[var(--color-accent)]/[0.04] hover:bg-[var(--color-accent)]/[0.07]"
+          >
+            {/* Icon */}
+            <div class="w-10 h-10 shrink-0 rounded-lg overflow-hidden bg-[var(--color-surface-alt)] flex items-center justify-center">
+              {(project.icon || project.logo) ? (
                 <img
-                  src={project.logo}
-                  alt={`${project.company} logo`}
-                  class="w-20 h-20 object-contain"
+                  src={project.icon || project.logo}
+                  alt={`${project.company}`}
+                  class="w-7 h-7 object-contain"
                 />
               ) : project.screenshot ? (
                 <img
                   src={project.screenshot}
-                  alt={`${project.company} screenshot`}
-                  class="w-full rounded-lg border border-[var(--color-border)]"
+                  alt={`${project.company}`}
+                  class="w-full h-full object-cover"
                 />
-              ) : null}
-            </div>
-            {/* Content */}
-            <div class="flex-1">
-              <div class="flex items-baseline gap-3 mb-1">
-                <h3 class="text-lg font-semibold font-[var(--font-body)]">{project.company}</h3>
-                <span class="font-[var(--font-mono)] text-xs text-[var(--color-text-muted)]">{project.years}</span>
-              </div>
-              <p class="text-sm font-medium text-[var(--color-warm)] mb-2">{project.role}</p>
-              <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">{project.description}</p>
-              {project.links && project.links.length > 0 && (
-                <div class="flex flex-wrap gap-3 mt-3">
-                  {project.links.map(link => (
-                    <a href={link.url} class="text-xs text-[var(--color-accent)] no-underline hover:underline" target={link.url.startsWith('/') ? undefined : '_blank'} rel={link.url.startsWith('/') ? undefined : 'noopener'}>
-                      {link.label} &rarr;
-                    </a>
-                  ))}
-                </div>
+              ) : (
+                <span class="text-sm font-semibold text-[var(--color-text-muted)]">
+                  {project.company.charAt(0)}
+                </span>
               )}
             </div>
-          </div>
+
+            {/* Info */}
+            <div class="flex-1 min-w-0">
+              <p class="leading-snug line-clamp-1">
+                <span class="font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">{project.company}</span>
+                <span class="text-xs text-[var(--color-text-muted)]"> &middot; {project.role}</span>
+                <span class="font-[var(--font-mono)] text-xs text-[var(--color-text-muted)]"> {project.years}</span>
+                <span class="text-sm text-[var(--color-text-secondary)]"> — {project.description}</span>
+              </p>
+            </div>
+
+            {/* Arrow */}
+            <svg class="w-4 h-4 text-[var(--color-text-muted)] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+          </a>
+        ))}
+      </div>
+
+      {/* Past work */}
+      <h2 class="font-[var(--font-mono)] text-xs tracking-widest uppercase text-[var(--color-text-muted)] mt-10 mb-4">
+        Past work
+      </h2>
+      <div class="space-y-1">
+        {pastProjects.map(project => (
+          <a
+            href={`/work/${project.slug}/`}
+            class="group flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg no-underline transition-all duration-150 hover:bg-[var(--color-surface-alt)]"
+          >
+            {/* Icon */}
+            <div class="w-10 h-10 shrink-0 rounded-lg overflow-hidden bg-[var(--color-surface-alt)] flex items-center justify-center">
+              {(project.icon || project.logo) ? (
+                <img
+                  src={project.icon || project.logo}
+                  alt={`${project.company}`}
+                  class="w-7 h-7 object-contain"
+                />
+              ) : project.screenshot ? (
+                <img
+                  src={project.screenshot}
+                  alt={`${project.company}`}
+                  class="w-full h-full object-cover"
+                />
+              ) : (
+                <span class="text-sm font-semibold text-[var(--color-text-muted)]">
+                  {project.company.charAt(0)}
+                </span>
+              )}
+            </div>
+
+            {/* Info */}
+            <div class="flex-1 min-w-0">
+              <p class="leading-snug line-clamp-1">
+                <span class="font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">{project.company}</span>
+                <span class="text-xs text-[var(--color-text-muted)]"> &middot; {project.role}</span>
+                <span class="font-[var(--font-mono)] text-xs text-[var(--color-text-muted)]"> {project.years}</span>
+                <span class="text-sm text-[var(--color-text-secondary)]"> — {project.description}</span>
+              </p>
+            </div>
+
+            {/* Arrow */}
+            <svg class="w-4 h-4 text-[var(--color-text-muted)] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+          </a>
         ))}
       </div>
     </section>
@@ -260,3 +147,4 @@ const projects = [
 
   </div>
 </Base>
+
