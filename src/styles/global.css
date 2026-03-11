@@ -41,127 +41,40 @@ body {
   background-color: var(--color-bg);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════ */
-/* SECTION 1: Dark hero (group.ai style)                                     */
-/* Deep dark bg with drifting purple/blue mesh radials + noise grain          */
-/* ═══════════════════════════════════════════════════════════════════════════ */
-.hero-gradient {
-  position: relative;
-  background-color: #0a0a14;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.3), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 50%, rgba(59, 130, 246, 0.18), transparent),
-    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(168, 85, 247, 0.14), transparent);
-  background-size: 300% 300%;
-  animation: bgDrift 45s ease-in-out infinite;
-  color: #f0f0f5;
+/* Hero section — light theme */
+.hero-section .photo-ring {
+  --tw-ring-color: var(--color-border);
+}
+.hero-section .photo-ring:hover {
+  --tw-ring-color: var(--color-text-muted);
 }
 
-/* Noise grain overlay */
-.hero-gradient::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.08;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
+.hero-section a[aria-label] {
+  color: var(--color-text-muted);
+}
+.hero-section a[aria-label]:hover {
+  color: var(--color-text);
 }
 
-.hero-gradient > * {
-  position: relative;
-  z-index: 1;
+.hero-section .btn-contact {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+.hero-section .btn-contact:hover {
+  background: var(--color-border-light);
+  border-color: var(--color-text-muted);
 }
 
-/* Dark-mode text overrides */
-.hero-gradient h1,
-.hero-gradient p {
-  color: #f0f0f5;
-}
-.hero-gradient .text-muted-override {
-  color: rgba(240, 240, 245, 0.5);
+.hero-section .divider-line {
+  background: var(--color-border);
 }
 
-/* Social icons */
-.hero-gradient a[aria-label] {
-  color: rgba(240, 240, 245, 0.5);
+.hero-section .blog-link {
+  color: var(--color-text-muted);
 }
-.hero-gradient a[aria-label]:hover {
-  color: #f0f0f5;
-}
-
-/* Contact button — frosted glass */
-.hero-gradient .btn-contact {
-  background: rgba(255, 255, 255, 0.12);
-  color: #f0f0f5;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-}
-.hero-gradient .btn-contact:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Photo ring */
-.hero-gradient .photo-ring {
-  --tw-ring-color: rgba(255, 255, 255, 0.15);
-}
-.hero-gradient .photo-ring:hover {
-  --tw-ring-color: rgba(255, 255, 255, 0.4);
-}
-
-/* Divider */
-.hero-gradient .divider-line {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-/* Blog link */
-.hero-gradient .blog-link {
-  color: rgba(240, 240, 245, 0.5);
-}
-.hero-gradient .blog-link:hover {
-  color: #f0f0f5;
-}
-
-/* Form inputs */
-.hero-gradient input,
-.hero-gradient textarea {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  color: #f0f0f5 !important;
-}
-.hero-gradient input::placeholder,
-.hero-gradient textarea::placeholder {
-  color: rgba(240, 240, 245, 0.35) !important;
-}
-.hero-gradient input:focus,
-.hero-gradient textarea:focus {
-  --tw-ring-color: rgba(99, 102, 241, 0.5);
-  border-color: rgba(99, 102, 241, 0.5) !important;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════ */
-/* SECTION 2: Light body (schema.ai style)                                   */
-/* Soft pastel radials on a light base, drifting slowly                       */
-/* ═══════════════════════════════════════════════════════════════════════════ */
-.body-gradient {
-  background-color: #eef5ff;
-  background-image:
-    radial-gradient(circle at 10% 15%, rgba(227, 242, 253, 0.9), transparent 40%),
-    radial-gradient(circle at 80% 20%, rgba(255, 235, 238, 0.7), transparent 45%),
-    linear-gradient(var(--body-grad-angle, 140deg), #eef5ff, #f6f2ff 45%, #fff8f1);
-  background-size: 300% 300%;
-  animation: bgDrift 45s ease-in-out infinite;
-  animation-delay: -15s; /* offset so it's not in sync with hero */
-}
-
-@keyframes bgDrift {
-  0% { background-position: 0% 0%; }
-  25% { background-position: 100% 50%; }
-  50% { background-position: 50% 100%; }
-  75% { background-position: 0% 50%; }
-  100% { background-position: 0% 0%; }
+.hero-section .blog-link:hover {
+  color: var(--color-text);
 }
 
 /* Typography */

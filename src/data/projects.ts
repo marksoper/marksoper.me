@@ -5,6 +5,7 @@ export interface Project {
   role: string;
   years: string;
   current?: boolean;
+  featured?: boolean;
   icon?: string;
   logo?: string;
   screenshot?: string;
@@ -29,6 +30,7 @@ export const projects: Project[] = [
     company: 'Cockroach Labs',
     role: 'Product Manager',
     years: '2021–2024',
+    featured: true,
     icon: '/img/icons/cockroach-labs.png',
     logo: '/img/Cockroach_Labs_Logo.png',
     description: 'Led product for CockroachDB Cloud operational tooling (API, Terraform Provider, CLI) and CockroachDB Cloud Serverless — an autoscaling, multi-tenant distributed SQL database.',
@@ -44,6 +46,7 @@ export const projects: Project[] = [
     parent: { name: 'Microsoft', icon: '/img/icons/microsoft.png', url: 'https://microsoft.com' },
     role: 'Software Engineer',
     years: '2018–2021',
+    featured: true,
     icon: '/img/icons/microsoft.png',
     logo: '/img/aml.jpeg',
     description: 'Built cloud platform software at Microsoft\'s NERD Center in Cambridge, MA, improving how data scientists develop and operationalize machine learning models.',
@@ -76,6 +79,7 @@ export const projects: Project[] = [
     company: 'VMware',
     role: 'Web UI Developer (Contract)',
     years: '2016',
+    featured: true,
     icon: '/img/icons/vmware.png',
     logo: '/img/vs.jpg',
     description: 'Built the Angular web application for the vSphere Docker Volume Driver, enabling Docker container administrators to manage vSphere Storage access.',
@@ -111,6 +115,7 @@ export const projects: Project[] = [
     company: 'Invite Education',
     role: 'Product Management, Design & Development',
     years: '2013–2014',
+    featured: true,
     icon: '/img/icons/invite-education.png',
     screenshot: '/img/ie-college.png',
     description: 'Translated the founders\' vision for a better college planning experience into a successful product. Led a team of three to design and build the initial version with Rails, Angular, and D3.',
@@ -121,6 +126,7 @@ export const projects: Project[] = [
     company: 'Harvard CATCH',
     role: 'Javascript UI Developer',
     years: '2013',
+    featured: true,
     icon: '/img/icons/harvard.png',
     screenshot: '/img/catch.png',
     description: 'Developed a Javascript Web UI library for exploring W3C Open Annotation Data, working with Harvard\'s CATCH project team for research peer review.',
@@ -168,6 +174,7 @@ export const projects: Project[] = [
     company: 'Rally',
     role: 'Founder, CTO, Designer & Developer',
     years: '2009–2010',
+    featured: true,
     screenshot: '/img/rally.jpg',
     description: 'Founded and built a service that mined Twitter for local events data using NLP and machine learning to help people make casual plans. Designed and developed all aspects — Python, Django, Twitter Streaming API, MongoDB, Redis, AWS.',
     links: [
@@ -179,6 +186,7 @@ export const projects: Project[] = [
     company: 'Likematter',
     role: 'Founder, CTO, Designer & Developer',
     years: '2008–2009',
+    featured: true,
     screenshot: '/img/likematter.jpg',
     description: 'Founded and led a team building a personalized news and job discovery engine using NLP and machine learning on the OpenCalais platform.',
     links: [
@@ -190,6 +198,7 @@ export const projects: Project[] = [
     company: 'MicroStrategy',
     role: 'Software Engineer',
     years: '1998–2002',
+    featured: true,
     icon: '/img/icons/microstrategy.svg',
     description: 'Built business intelligence and data analytics platform software at this enterprise BI company in McLean, VA.',
     links: [],
@@ -199,6 +208,7 @@ export const projects: Project[] = [
     company: 'SAS Institute',
     role: 'Software Engineer',
     years: '2002–2007',
+    featured: true,
     icon: '/img/icons/sas.png',
     description: 'Built data management and machine learning systems at the world\'s largest privately held software company in Cary, NC.',
     links: [],

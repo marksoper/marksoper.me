@@ -77,6 +77,48 @@ resource "cloudflare_record" "www" {
   proxied = true
 }
 
+# ─── D1 Database ────────────────────────────────────────────────────────────────
+
+resource "cloudflare_d1_database" "contact_form" {
+  account_id = var.cloudflare_account_id
+  name       = "marksoper-contact-form"
+}
+
+# ─── Contact Form Worker ────────────────────────────────────────────────────────
+
+resource "cloudflare_workers_script" "contact_form" {
+  account_id = var.cloudflare_account_id
+  name       = "marksoper-contact-form"
+  content    = file("${path.module}/../workers/contact-form/worker.js")
+  module     = true
+
+  d1_database_binding {
+    name        = "DB"
+    database_id = cloudflare_d1_database.contact_form.id
+  }
+
+  secret_text_binding {
+    name = "TURNSTILE_SECRET_KEY"
+    text = var.turnstile_secret_key
+  }
+
+  secret_text_binding {
+    name = "RESEND_API_KEY"
+    text = var.resend_api_key
+  }
+
+  plain_text_binding {
+    name = "NOTIFICATION_EMAIL"
+    text = var.notification_email
+  }
+}
+
+resource "cloudflare_worker_route" "contact_form" {
+  zone_id     = data.cloudflare_zone.site.id
+  pattern     = "marksoper.me/api/contact"
+  script_name = cloudflare_workers_script.contact_form.name
+}
+
 # ─── Outputs ────────────────────────────────────────────────────────────────────
 
 output "pages_url" {

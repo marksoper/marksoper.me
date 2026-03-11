@@ -8,33 +8,14 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .slice(0, 5);
 
 const currentProjects = projects.filter(p => p.current);
-const pastProjects = projects.filter(p => !p.current);
+const pastProjects = projects.filter(p => !p.current && p.featured);
 ---
 
 <Base title="Mark Soper — Product Leader, Engineer, Entrepreneur">
 
-  <script>
-    // Slowly rotate the body gradient angle
-    const body = document.querySelector('.body-gradient');
-    if (body) {
-      let start = performance.now();
-      function tick(now) {
-        const t = (now - start) / 1000;
-        const bodyAngle = 140 + 10 * Math.sin(t * 2 * Math.PI / 50);
-        body.style.setProperty('--body-grad-angle', bodyAngle + 'deg');
-        requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-  </script>
   <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)]">
 
-    <!-- Intro -->
-    <section class="py-12 pb-0">
-      <p class="text-base text-[var(--color-text-secondary)] leading-relaxed">
-        Like so many of us who build software products for a living, I'm scrambling to adapt to life on a new planet as reasoning language models and autonomous agents revolutionize everything. Having worked with customers to better operate data infrastructure, most recently <a href="/work/cockroach-labs/" class="text-[var(--color-accent)] hover:underline no-underline">CockroachDB</a>, I'm studying how this discipline is evolving. I think AI-based development is out in front of AI-based operations, so there are lots of opportunities there. Observability is especially interesting, as its purview expands from being about doing things right to doing the right things in the world. Working at <a href="/work/microsoft-azure-ml/" class="text-[var(--color-accent)] hover:underline no-underline">Microsoft</a> on responsible AI outcomes I gained appreciation for how challenging this is. To explore this new observability frontier, I'm developing <a href="https://schema.ai" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline no-underline">Schema</a>, an MCP Server that SRE agents synchronize with for technical intelligence about infrastructure products. I'm also eager to explore product leadership roles with teams doing related work.
-      </p>
-    </section>
+
 
     <!-- Work -->
     <section id="work" class="py-12">
@@ -46,25 +27,23 @@ const pastProjects = projects.filter(p => !p.current);
             class="group flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg no-underline transition-all duration-150 bg-[var(--color-accent)]/[0.04] hover:bg-[var(--color-accent)]/[0.07]"
           >
             {/* Icon */}
-            <div class="w-10 h-10 shrink-0 rounded-lg overflow-hidden bg-[var(--color-surface-alt)] flex items-center justify-center">
-              {(project.icon || project.logo) ? (
-                <img
-                  src={project.icon || project.logo}
-                  alt={`${project.company}`}
-                  class="w-7 h-7 object-contain"
-                />
-              ) : project.screenshot ? (
-                <img
-                  src={project.screenshot}
-                  alt={`${project.company}`}
-                  class="w-full h-full object-cover"
-                />
-              ) : (
-                <span class="text-sm font-semibold text-[var(--color-text-muted)]">
-                  {project.company.charAt(0)}
-                </span>
-              )}
-            </div>
+            {(project.icon || project.logo || project.screenshot) && (
+              <div class="w-10 h-10 shrink-0 rounded-lg overflow-hidden bg-[var(--color-surface-alt)] flex items-center justify-center">
+                {(project.icon || project.logo) ? (
+                  <img
+                    src={project.icon || project.logo}
+                    alt={`${project.company}`}
+                    class="w-7 h-7 object-contain"
+                  />
+                ) : project.screenshot ? (
+                  <img
+                    src={project.screenshot}
+                    alt={`${project.company}`}
+                    class="w-full h-full object-cover"
+                  />
+                ) : null}
+              </div>
+            )}
 
             {/* Info */}
             <div class="flex-1 min-w-0">
@@ -82,9 +61,9 @@ const pastProjects = projects.filter(p => !p.current);
         ))}
       </div>
 
-      {/* Past work */}
+      {/* Products */}
       <h2 class="font-[var(--font-mono)] text-xs tracking-widest uppercase text-[var(--color-text-muted)] mt-10 mb-4">
-        Past work
+        Products
       </h2>
       <div class="space-y-1">
         {pastProjects.map(project => (
@@ -128,6 +107,9 @@ const pastProjects = projects.filter(p => !p.current);
           </a>
         ))}
       </div>
+      <a href="/work" class="inline-block mt-6 text-sm text-[var(--color-accent)] no-underline hover:underline">
+        All products &rarr;
+      </a>
     </section>
 
     <!-- Writing -->
