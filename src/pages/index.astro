@@ -27,23 +27,21 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
             class="group flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg no-underline transition-all duration-150 bg-[var(--color-accent)]/[0.04] hover:bg-[var(--color-accent)]/[0.07]"
           >
             {/* Icon */}
-            {(project.icon || project.logo || project.screenshot) && (
-              <div class="w-10 h-10 shrink-0 rounded-lg overflow-hidden bg-[var(--color-surface-alt)] flex items-center justify-center">
-                {(project.icon || project.logo) ? (
-                  <img
-                    src={project.icon || project.logo}
-                    alt={`${project.company}`}
-                    class="w-7 h-7 object-contain"
-                  />
-                ) : project.screenshot ? (
-                  <img
-                    src={project.screenshot}
-                    alt={`${project.company}`}
-                    class="w-full h-full object-cover"
-                  />
-                ) : null}
-              </div>
-            )}
+            <div class="w-10 h-10 shrink-0 rounded-lg overflow-hidden bg-[var(--color-surface-alt)] flex items-center justify-center">
+              {(project.icon || project.logo) ? (
+                <img
+                  src={project.icon || project.logo}
+                  alt={`${project.company}`}
+                  class="w-7 h-7 object-contain"
+                />
+              ) : project.screenshot ? (
+                <img
+                  src={project.screenshot}
+                  alt={`${project.company}`}
+                  class="w-full h-full object-cover"
+                />
+              ) : null}
+            </div>
 
             {/* Info */}
             <div class="flex-1 min-w-0">
