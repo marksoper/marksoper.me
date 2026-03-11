@@ -18,7 +18,7 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
 
 
     <!-- Work -->
-    <section id="work" class="py-12">
+    <section id="work" class="py-12 text-lg">
       {/* Current projects */}
       <div class="space-y-1">
         {currentProjects.map(project => (
@@ -27,12 +27,12 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
             class="group flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg no-underline transition-all duration-150 bg-[var(--color-accent)]/[0.04] hover:bg-[var(--color-accent)]/[0.07]"
           >
             {/* Icon */}
-            <div class="w-10 h-10 shrink-0 rounded-lg overflow-hidden bg-[var(--color-surface-alt)] flex items-center justify-center">
+            <div class="w-14 h-14 shrink-0 rounded-lg overflow-hidden bg-[var(--color-surface-alt)] flex items-center justify-center">
               {(project.icon || project.logo) ? (
                 <img
                   src={project.icon || project.logo}
                   alt={`${project.company}`}
-                  class="w-7 h-7 object-contain"
+                  class="w-10 h-10 object-contain"
                 />
               ) : project.screenshot ? (
                 <img
@@ -45,22 +45,22 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
 
             {/* Info */}
             <div class="flex-1 min-w-0">
-              <p class="leading-snug line-clamp-1">
+              <p class="leading-snug line-clamp-2">
                 <span class="font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">{project.company}</span>
-                <span class="text-xs text-[var(--color-text-muted)]"> &middot; {project.role}</span>
-                <span class="font-[var(--font-mono)] text-xs text-[var(--color-text-muted)]"> {project.years}</span>
-                <span class="text-sm text-[var(--color-text-secondary)]"> — {project.description}</span>
+                <span class="text-sm text-[var(--color-text-muted)]"> &middot; {project.role}</span>
+                <span class="font-[var(--font-mono)] text-sm text-[var(--color-text-muted)]"> {project.years}</span>
+                <span class="text-base text-[var(--color-text-secondary)]"> — {project.description}</span>
               </p>
             </div>
 
             {/* Arrow */}
-            <svg class="w-4 h-4 text-[var(--color-text-muted)] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+            <svg class="w-5 h-5 text-[var(--color-text-muted)] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
           </a>
         ))}
       </div>
 
       {/* Products */}
-      <h2 class="font-[var(--font-mono)] text-xs tracking-widest uppercase text-[var(--color-text-muted)] mt-10 mb-4">
+      <h2 class="font-[var(--font-mono)] text-sm tracking-widest uppercase text-[var(--color-text-muted)] mt-10 mb-4">
         Products
       </h2>
       <div class="space-y-1">
@@ -70,12 +70,12 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
             class="group flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg no-underline transition-all duration-150 hover:bg-[var(--color-surface-alt)]"
           >
             {/* Icon */}
-            <div class="w-10 h-10 shrink-0 rounded-lg overflow-hidden bg-[var(--color-surface-alt)] flex items-center justify-center">
+            <div class="w-14 h-14 shrink-0 rounded-lg overflow-hidden bg-[var(--color-surface-alt)] flex items-center justify-center">
               {(project.icon || project.logo) ? (
                 <img
                   src={project.icon || project.logo}
                   alt={`${project.company}`}
-                  class="w-7 h-7 object-contain"
+                  class="w-10 h-10 object-contain"
                 />
               ) : project.screenshot ? (
                 <img
@@ -84,7 +84,7 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
                   class="w-full h-full object-cover"
                 />
               ) : (
-                <span class="text-sm font-semibold text-[var(--color-text-muted)]">
+                <span class="text-base font-semibold text-[var(--color-text-muted)]">
                   {project.company.charAt(0)}
                 </span>
               )}
@@ -92,27 +92,27 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
 
             {/* Info */}
             <div class="flex-1 min-w-0">
-              <p class="leading-snug line-clamp-1">
+              <p class="leading-snug line-clamp-2">
                 <span class="font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">{project.company}</span>
-                <span class="text-xs text-[var(--color-text-muted)]"> &middot; {project.role}</span>
-                <span class="font-[var(--font-mono)] text-xs text-[var(--color-text-muted)]"> {project.years}</span>
-                <span class="text-sm text-[var(--color-text-secondary)]"> — {project.description}</span>
+                <span class="text-sm text-[var(--color-text-muted)]"> &middot; {project.role}</span>
+                <span class="font-[var(--font-mono)] text-sm text-[var(--color-text-muted)]"> {project.years}</span>
+                <span class="text-base text-[var(--color-text-secondary)]"> — {project.description}</span>
               </p>
             </div>
 
             {/* Arrow */}
-            <svg class="w-4 h-4 text-[var(--color-text-muted)] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+            <svg class="w-5 h-5 text-[var(--color-text-muted)] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
           </a>
         ))}
       </div>
-      <a href="/work" class="inline-block mt-6 text-sm text-[var(--color-accent)] no-underline hover:underline">
+      <a href="/work" class="inline-block mt-6 text-base text-[var(--color-accent)] no-underline hover:underline">
         All products &rarr;
       </a>
     </section>
 
     <!-- Writing -->
-    <section class="py-12">
-      <h2 class="font-[var(--font-mono)] text-xs tracking-widest uppercase text-[var(--color-text-muted)] mb-6">
+    <section class="py-12 text-lg">
+      <h2 class="font-[var(--font-mono)] text-sm tracking-widest uppercase text-[var(--color-text-muted)] mb-6">
         Writing
       </h2>
       <div class="divide-y divide-[var(--color-border-light)]">
@@ -121,13 +121,13 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
             <span class="text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors font-medium">
               {post.data.title}
             </span>
-            <span class="font-[var(--font-mono)] text-xs text-[var(--color-text-muted)] ml-4 shrink-0">
+            <span class="font-[var(--font-mono)] text-sm text-[var(--color-text-muted)] ml-4 shrink-0">
               {post.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
             </span>
           </a>
         ))}
       </div>
-      <a href="/blog" class="inline-block mt-6 text-sm text-[var(--color-accent)] no-underline hover:underline">
+      <a href="/blog" class="inline-block mt-6 text-base text-[var(--color-accent)] no-underline hover:underline">
         All posts &rarr;
       </a>
     </section>
