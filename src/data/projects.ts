@@ -58,7 +58,7 @@ export const projects: Project[] = [
     role: 'API Tech Lead (Contract)',
     years: '2017–2018',
     featured: true,
-    icon: '/img/icons/brightcove.png',
+    icon: '/img/icons/brightcove.svg',
     description: 'Led a team of 5 engineers developing the backend API for a Fortune 500 media company\'s web/mobile application, scaled for millions of users globally.',
     links: [],
   },
