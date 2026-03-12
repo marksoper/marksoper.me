@@ -2,14 +2,15 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="Mark Soper - Mark Soper">
+<Base title="Mark Soper - Mark Soper" breadcrumbs={[
+  { label: 'Mark Soper' },
+]}>
   <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] py-12">
 
     <section class="max-w-2xl">
       <div class="flex items-start gap-6 mb-8">
         <img src="/img/mark_soper.png" alt="Mark Soper" class="w-20 h-20 rounded-full object-cover shrink-0" />
         <div>
-          <h1 class="text-3xl font-semibold mb-2">Mark Soper</h1>
           <p class="text-[var(--color-text-muted)]">Cambridge, MA</p>
         </div>
       </div>

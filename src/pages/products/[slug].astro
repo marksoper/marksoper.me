@@ -20,7 +20,7 @@ const next = idx < projects.length - 1 ? projects[idx + 1] : null;
 <Base title={`${project.parent ? project.company.replace(project.parent.name + ' ', '') : project.company} - Mark Soper`} breadcrumbs={[
   { label: 'Mark Soper', href: '/' },
   { label: 'Products', href: '/products/' },
-  { label: project.company },
+  { label: project.parent ? project.company.replace(project.parent.name + ' ', '') : project.company },
 ]}>
   <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] py-12">
 
@@ -47,12 +47,6 @@ const next = idx < projects.length - 1 ? projects[idx + 1] : null;
         )}
 
         <div class="flex-1">
-          <div class="flex items-center gap-3 mb-2">
-            <h1 class="text-3xl sm:text-4xl font-semibold">{project.parent ? project.company.replace(project.parent.name + ' ', '') : project.company}</h1>
-            {project.current && (
-              <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[var(--color-accent)] text-white">Current</span>
-            )}
-          </div>
           {project.parent && (
             <p class="flex items-center gap-2 mb-2">
               {project.parent.icon && (
@@ -61,7 +55,12 @@ const next = idx < projects.length - 1 ? projects[idx + 1] : null;
               <a href={project.parent.url} target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline no-underline font-medium">{project.parent.name}</a>
             </p>
           )}
-          <p class="text-lg font-medium text-[var(--color-warm)] mb-1">{project.role}</p>
+          <div class="flex flex-wrap items-center gap-3 mb-1">
+            <p class="text-lg font-medium text-[var(--color-warm)]">{project.role}</p>
+            {project.current && (
+              <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[var(--color-accent)] text-white">Current</span>
+            )}
+          </div>
           <p class="font-[var(--font-mono)] text-sm text-[var(--color-text-muted)]">{project.years}</p>
         </div>
       </div>
