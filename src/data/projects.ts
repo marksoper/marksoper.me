@@ -55,8 +55,8 @@ export const projects: Project[] = [
   },
   {
     slug: 'rocket-insights-brightcove',
-    company: 'Rocket Insights / Brightcove',
-    role: 'API Tech Lead (Contract)',
+    company: 'Brightcove',
+    role: 'Tech Lead',
     years: '2017–2018',
     featured: true,
     icon: '/img/icons/brightcove.svg',
@@ -66,7 +66,7 @@ export const projects: Project[] = [
   {
     slug: 'gethuman',
     company: 'GetHuman',
-    role: 'Contract Engineer & Tech Lead',
+    role: 'Tech Lead',
     years: '2015–2017',
     icon: '/img/icons/gethuman.png',
     logo: '/img/logo-gethuman.png',
@@ -76,7 +76,7 @@ export const projects: Project[] = [
   {
     slug: 'vmware',
     company: 'VMware',
-    role: 'Web UI Developer (Contract)',
+    role: 'Software Engineer',
     years: '2016',
     featured: true,
     icon: '/img/icons/vmware.png',
@@ -88,8 +88,8 @@ export const projects: Project[] = [
   },
   {
     slug: 'helloshopper',
-    company: 'HelloShopper (formerly Scratch)',
-    role: 'Full-stack Developer',
+    company: 'HelloShopper',
+    role: 'Tech Lead',
     years: '2015',
     icon: '/img/scratchlogo.png',
     logo: '/img/scratchlogo.png',
@@ -102,7 +102,7 @@ export const projects: Project[] = [
   {
     slug: 'finmason',
     company: 'FinMason',
-    role: 'Web Application UI Development',
+    role: 'Tech Lead',
     years: '2014–2015',
     icon: '/img/icons/finmason.png',
     screenshot: '/img/fm1.png',
@@ -112,7 +112,7 @@ export const projects: Project[] = [
   {
     slug: 'invite-education',
     company: 'Invite Education',
-    role: 'Product Management, Design & Development',
+    role: 'Product Lead',
     years: '2013–2014',
     featured: true,
     icon: '/img/icons/invite-education.png',
