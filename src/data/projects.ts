@@ -123,7 +123,7 @@ export const projects: Project[] = [
   {
     slug: 'harvard-catch',
     company: 'Harvard CATCH',
-    role: 'Software Engineer (Consulting engagement)',
+    role: 'Software Engineer (Consult)',
     years: '2013',
     icon: '/img/icons/harvard.png',
     screenshot: '/img/catch.png',
@@ -133,7 +133,7 @@ export const projects: Project[] = [
   {
     slug: 'oxfam-america',
     company: 'Oxfam America',
-    role: 'Software Engineer (Consulting engagement)',
+    role: 'Software Engineer (Consult)',
     years: '2013',
     icon: '/img/icons/oxfam.png',
     screenshot: '/img/oxfam.png',
@@ -143,7 +143,7 @@ export const projects: Project[] = [
   {
     slug: 'aquto',
     company: 'Aquto',
-    role: 'Software Engineer (Consulting engagement)',
+    role: 'Software Engineer (Consult)',
     years: '2012',
     screenshot: '/img/aq.jpg',
     description: 'Led front-end development of Kickbit, a mobile app for this startup (funded by North Bridge and Matrix Partners) pioneering mobile data as virtual currency.',
@@ -161,7 +161,7 @@ export const projects: Project[] = [
   {
     slug: 'collaborate-kibits',
     company: 'Collaborate.com (Acq by Cisco)',
-    role: 'Software Engineer (Consulting engagement)',
+    role: 'Software Engineer (Consult)',
     years: '2011',
     screenshot: '/img/kibits.jpg',
     description: 'Built initial prototype of HTML5 mobile web experience and Node.js API for this real-time collaboration startup funded by Google Ventures.',
