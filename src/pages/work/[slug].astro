@@ -1,6 +1,5 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { projects } from '../../data/projects';
 
 export function getStaticPaths() {
@@ -18,14 +17,12 @@ const prev = idx > 0 ? projects[idx - 1] : null;
 const next = idx < projects.length - 1 ? projects[idx + 1] : null;
 ---
 
-<Base title={`${project.company} — Mark Soper`}>
+<Base title={`${project.parent ? project.company.replace(project.parent.name + ' ', '') : project.company} - Mark Soper`} breadcrumbs={[
+  { label: 'Mark Soper', href: '/' },
+  { label: 'Work', href: '/work/' },
+  { label: project.company },
+]}>
   <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] py-12">
-
-    <Breadcrumbs items={[
-      { label: 'Mark Soper', href: '/' },
-      { label: 'Work', href: '/work/' },
-      { label: project.company },
-    ]} />
 
     <article>
       <!-- Header -->

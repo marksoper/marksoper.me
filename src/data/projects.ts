@@ -20,6 +20,7 @@ export const projects: Project[] = [
     role: 'Founder',
     years: '2024–present',
     current: true,
+    icon: 'https://schema.ai/favicon.svg',
     description: 'Infrastructure product intelligence for SRE agents. Schema MCP Server delivers current, source-grounded insights that drive reliability and cost improvements. Keep your operational AI well-informed on the infra software/services you depend on.',
     links: [
       { label: 'schema.ai', url: 'https://schema.ai' },
@@ -159,7 +160,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'collaborate-kibits',
-    company: 'Collaborate.com (Kibits)',
+    company: 'Collaborate.com (Acq by Cisco)',
     role: 'UI/UX & Node.js Developer',
     years: '2011',
     screenshot: '/img/kibits.jpg',

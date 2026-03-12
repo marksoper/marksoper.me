@@ -11,14 +11,14 @@ const currentProjects = projects.filter(p => p.current);
 const pastProjects = projects.filter(p => !p.current && p.featured);
 ---
 
-<Base title="Mark Soper — Product Leader, Engineer, Entrepreneur">
+<Base title="Mark Soper - Data, cloud, and AI infrastructure engineer and product">
 
   <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)]">
 
 
 
     <!-- Work -->
-    <section id="work" class="py-12 text-lg">
+    <section id="work" class="pt-0 pb-12 text-lg">
       {/* Current projects */}
       <div class="space-y-1">
         {currentProjects.map(project => (
@@ -60,7 +60,7 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
       </div>
 
       {/* Products */}
-      <h2 class="font-[var(--font-mono)] text-sm tracking-widest uppercase text-[var(--color-text-muted)] mt-10 mb-4">
+      <h2 class="font-[var(--font-mono)] text-xl tracking-[0.16em] uppercase text-[var(--color-text-muted)] mt-10 mb-4">
         Products
       </h2>
       <div class="space-y-1">
@@ -105,14 +105,16 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
           </a>
         ))}
       </div>
-      <a href="/work" class="inline-block mt-6 text-base text-[var(--color-accent)] no-underline hover:underline">
-        All products &rarr;
-      </a>
+      <div class="mt-6 text-center">
+        <a href="/work" class="inline-block text-lg font-semibold text-[var(--color-accent)] no-underline hover:underline">
+          All products &rarr;
+        </a>
+      </div>
     </section>
 
     <!-- Writing -->
-    <section class="py-12 text-lg">
-      <h2 class="font-[var(--font-mono)] text-sm tracking-widest uppercase text-[var(--color-text-muted)] mb-6">
+    <section class="pt-0 pb-12 text-lg">
+      <h2 class="font-[var(--font-mono)] text-xl tracking-[0.16em] uppercase text-[var(--color-text-muted)] mb-6">
         Writing
       </h2>
       <div class="divide-y divide-[var(--color-border-light)]">
@@ -127,11 +129,12 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
           </a>
         ))}
       </div>
-      <a href="/blog" class="inline-block mt-6 text-base text-[var(--color-accent)] no-underline hover:underline">
-        All posts &rarr;
-      </a>
+      <div class="mt-6 text-center">
+        <a href="/blog" class="inline-block text-lg font-semibold text-[var(--color-accent)] no-underline hover:underline">
+          All writing &rarr;
+        </a>
+      </div>
     </section>
 
   </div>
 </Base>
-

@@ -1,6 +1,5 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
@@ -20,13 +19,11 @@ const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a));
 const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 ---
 
-<Base title="Blog — Mark Soper">
+<Base title="Writing - Mark Soper" breadcrumbs={[
+  { label: 'Mark Soper', href: '/' },
+  { label: 'Blog' },
+]}>
   <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] py-12">
-
-    <Breadcrumbs items={[
-      { label: 'Mark Soper', href: '/' },
-      { label: 'Blog' },
-    ]} />
 
     <div class="flex items-center gap-3 mb-4">
       <h1 class="text-3xl font-semibold">Writing</h1>

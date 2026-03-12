@@ -1,19 +1,16 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { projects } from '../../data/projects';
 
 const currentProjects = projects.filter(p => p.current);
 const pastProjects = projects.filter(p => !p.current);
 ---
 
-<Base title="Work — Mark Soper">
+<Base title="Work - Mark Soper" breadcrumbs={[
+  { label: 'Mark Soper', href: '/' },
+  { label: 'Work' },
+]}>
   <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] py-12">
-
-    <Breadcrumbs items={[
-      { label: 'Mark Soper', href: '/' },
-      { label: 'Work' },
-    ]} />
 
     <h1 class="text-3xl font-semibold mb-4">Work</h1>
     <p class="text-[var(--color-text-muted)] mb-8">

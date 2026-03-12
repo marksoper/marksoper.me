@@ -66,6 +66,32 @@
   --container-wide: 960px;
 }
 
+/* Static background treatment */
+.bg-gradient {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(180, 180, 190, 0.18), transparent),
+    radial-gradient(ellipse 60% 40% at 85% 50%, rgba(160, 165, 175, 0.12), transparent),
+    radial-gradient(ellipse 50% 50% at 15% 80%, rgba(170, 170, 180, 0.10), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-gradient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(122, 156, 68, 0.07), transparent 38%),
+    radial-gradient(circle at 82% 16%, rgba(212, 176, 44, 0.07), transparent 34%),
+    url('/img/noise.svg');
+  background-repeat: repeat;
+  background-size: auto, auto, 220px 220px;
+  opacity: 0.7;
+  mix-blend-mode: multiply;
+}
+
 /* Base styles */
 html {
   font-family: var(--font-body);
@@ -77,6 +103,12 @@ html {
 
 body {
   background-color: var(--color-bg);
+  position: relative;
+}
+
+body > *:not(.bg-gradient):not(svg[aria-hidden]) {
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero section — light theme */
@@ -95,13 +127,13 @@ body {
 }
 
 .hero-section .btn-contact {
-  background: var(--color-surface-alt);
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--color-accent);
+  border: 1px solid rgba(37, 99, 235, 0.22);
 }
 .hero-section .btn-contact:hover {
-  background: var(--color-border-light);
-  border-color: var(--color-text-muted);
+  background: rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.34);
 }
 
 .hero-section .divider-line {

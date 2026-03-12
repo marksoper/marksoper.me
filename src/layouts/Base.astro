@@ -2,6 +2,7 @@
 import Nav from '../components/Nav.astro';
 import HeroHeader from '../components/HeroHeader.astro';
 import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -9,10 +10,12 @@ interface Props {
   description?: string;
   image?: string;
   hideNav?: boolean;
+  breadcrumbs?: { label: string; href?: string }[];
 }
 
-const { title, description = 'Mark Soper — Product leader, engineer, and entrepreneur building at the intersection of data infrastructure and AI.', image, hideNav = false } = Astro.props;
+const { title, description = 'Mark Soper — Product leader, engineer, and entrepreneur building at the intersection of data infrastructure and AI.', image, hideNav = false, breadcrumbs = [] } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const showHeroPhoto = Astro.url.pathname === '/';
 ---
 
 <!DOCTYPE html>
@@ -45,8 +48,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <link rel="alternate" type="application/rss+xml" title="Mark Soper's Blog" href="/rss.xml" />
 </head>
 <body class="min-h-screen flex flex-col">
-  {!hideNav && <HeroHeader />}
+  <!-- Static background treatment -->
+  <div class="bg-gradient" aria-hidden="true"></div>
   <main class="flex-1">
+    {!hideNav && <HeroHeader showPhoto={showHeroPhoto} />}
+    {breadcrumbs.length > 0 && (
+      <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)]">
+        <Breadcrumbs items={breadcrumbs} />
+      </div>
+    )}
     <slot />
   </main>
   <Footer />
