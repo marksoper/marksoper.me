@@ -50,5 +50,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <slot />
   </main>
   <Footer />
+
+  <!-- GA4 — loaded after page render -->
+  <script is:inline>
+    window.addEventListener('load', function () {
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2SB46X7HFE';
+      s.async = true;
+      document.head.appendChild(s);
+      s.onload = function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-2SB46X7HFE');
+      };
+    });
+  </script>
 </body>
 </html>
