@@ -86,7 +86,6 @@
   </section>
 </div>
 
-<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
   const toggle = document.getElementById('contact-toggle');
   const formWrapper = document.getElementById('contact-form');
@@ -95,7 +94,18 @@
   const status = document.getElementById('contact-status');
   const submitBtn = document.getElementById('contact-submit');
 
+  let turnstileLoaded = false;
+  function loadTurnstile() {
+    if (turnstileLoaded) return;
+    turnstileLoaded = true;
+    const script = document.createElement('script');
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
   function openForm() {
+    loadTurnstile();
     formWrapper.style.maxHeight = formWrapper.scrollHeight + 200 + 'px';
     formWrapper.style.opacity = '1';
     toggle.style.display = 'none';
