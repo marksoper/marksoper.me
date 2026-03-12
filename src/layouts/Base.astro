@@ -17,6 +17,7 @@ const { title, description = 'Mark Soper — Product leader, engineer, and entre
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const showHeroPhoto = Astro.url.pathname === '/';
 const useHeroHeading = Astro.url.pathname === '/';
+const showHeroTagline = Astro.url.pathname === '/';
 ---
 
 <!DOCTYPE html>
@@ -52,9 +53,9 @@ const useHeroHeading = Astro.url.pathname === '/';
   <!-- Static background treatment -->
   <div class="bg-gradient" aria-hidden="true"></div>
   <main class="flex-1">
-    {!hideNav && <HeroHeader showPhoto={showHeroPhoto} useHeading={useHeroHeading} />}
+    {!hideNav && <HeroHeader showPhoto={showHeroPhoto} useHeading={useHeroHeading} showTagline={showHeroTagline} />}
     {breadcrumbs.length > 0 && (
-      <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)]">
+      <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] -mt-3 sm:-mt-4">
         <Breadcrumbs items={breadcrumbs} />
       </div>
     )}

@@ -3,12 +3,13 @@
 interface Props {
   showPhoto?: boolean;
   useHeading?: boolean;
+  showTagline?: boolean;
 }
 
-const { showPhoto = false, useHeading = false } = Astro.props;
+const { showPhoto = false, useHeading = false, showTagline = false } = Astro.props;
 ---
 
-<section class="hero-section max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] pt-[82px] pb-8 sm:pt-[98px] sm:pb-12 w-full">
+<section class={`hero-section max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] pt-[82px] w-full ${showTagline ? 'pb-8 sm:pb-12' : 'pb-4 sm:pb-5'}`}>
   <div class={showPhoto ? 'flex flex-col sm:flex-row gap-8 items-start' : 'flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5'}>
       {showPhoto && (
         <a href="/">
@@ -28,9 +29,11 @@ const { showPhoto = false, useHeading = false } = Astro.props;
             <p class="text-2xl sm:text-3xl font-semibold mb-1 text-[var(--color-text)]">Mark Soper</p>
           )}
         </a>
-        <p class={showPhoto ? 'text-lg text-[var(--color-text-secondary)] mb-2' : 'text-base sm:text-lg text-[var(--color-text-secondary)]'}>
-          Builder of data, cloud, and AI infrastructure products
-        </p>
+        {showTagline && (
+          <p class={showPhoto ? 'text-lg text-[var(--color-text-secondary)] mb-2' : 'text-base sm:text-lg text-[var(--color-text-secondary)]'}>
+            Builder of data, cloud, and AI infrastructure products
+          </p>
+        )}
         {showPhoto && (
           <div class="mt-5">
             <button
