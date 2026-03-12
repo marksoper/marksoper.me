@@ -19,7 +19,7 @@ const next = idx < projects.length - 1 ? projects[idx + 1] : null;
 
 <Base title={`${project.parent ? project.company.replace(project.parent.name + ' ', '') : project.company} - Mark Soper`} breadcrumbs={[
   { label: 'Mark Soper', href: '/' },
-  { label: 'Work', href: '/work/' },
+  { label: 'Products', href: '/products/' },
   { label: project.company },
 ]}>
   <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] py-12">
@@ -102,13 +102,13 @@ const next = idx < projects.length - 1 ? projects[idx + 1] : null;
       <!-- Prev / Next navigation -->
       <div class="border-t border-[var(--color-border-light)] pt-8 flex justify-between items-center">
         {prev ? (
-          <a href={`/work/${prev.slug}/`} class="group flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors no-underline">
+          <a href={`/products/${prev.slug}/`} class="group flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors no-underline">
             <svg class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
             {prev.company}
           </a>
         ) : <div />}
         {next ? (
-          <a href={`/work/${next.slug}/`} class="group flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors no-underline">
+          <a href={`/products/${next.slug}/`} class="group flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors no-underline">
             {next.company}
             <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
           </a>

@@ -23,7 +23,7 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
       <div class="space-y-1">
         {currentProjects.map(project => (
           <a
-            href={`/work/${project.slug}/`}
+            href={`/products/${project.slug}/`}
             class="group flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg no-underline transition-all duration-150 bg-[var(--color-accent)]/[0.04] hover:bg-[var(--color-accent)]/[0.07]"
           >
             {/* Icon */}
@@ -66,7 +66,7 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
       <div class="space-y-1">
         {pastProjects.map(project => (
           <a
-            href={`/work/${project.slug}/`}
+            href={`/products/${project.slug}/`}
             class="group flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg no-underline transition-all duration-150 hover:bg-[var(--color-surface-alt)]"
           >
             {/* Icon */}
@@ -106,7 +106,7 @@ const pastProjects = projects.filter(p => !p.current && p.featured);
         ))}
       </div>
       <div class="mt-6 text-right">
-        <a href="/work" class="inline-block text-lg font-semibold text-[var(--color-accent)] no-underline hover:underline">
+        <a href="/products" class="inline-block text-lg font-semibold text-[var(--color-accent)] no-underline hover:underline">
           All products &rarr;
         </a>
       </div>

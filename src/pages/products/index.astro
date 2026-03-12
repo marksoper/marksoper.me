@@ -6,16 +6,11 @@ const currentProjects = projects.filter(p => p.current);
 const pastProjects = projects.filter(p => !p.current);
 ---
 
-<Base title="Work - Mark Soper" breadcrumbs={[
+<Base title="Products - Mark Soper" breadcrumbs={[
   { label: 'Mark Soper', href: '/' },
-  { label: 'Work' },
+  { label: 'Products' },
 ]}>
   <div class="max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] py-12">
-
-    <h1 class="text-3xl font-semibold mb-4">Work</h1>
-    <p class="text-[var(--color-text-muted)] mb-8">
-      Products and teams I've worked with.
-    </p>
 
     <!-- Current -->
     {currentProjects.length > 0 && (
@@ -24,7 +19,7 @@ const pastProjects = projects.filter(p => !p.current);
         <div class="space-y-1">
           {currentProjects.map(project => (
             <a
-              href={`/work/${project.slug}/`}
+              href={`/products/${project.slug}/`}
               class="group flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg no-underline transition-all duration-150 bg-[var(--color-accent)]/[0.04] hover:bg-[var(--color-accent)]/[0.07]"
             >
               <div class="w-10 h-10 shrink-0 rounded-lg overflow-hidden bg-[var(--color-surface-alt)] flex items-center justify-center">
@@ -58,7 +53,7 @@ const pastProjects = projects.filter(p => !p.current);
         <div class="space-y-1">
           {pastProjects.map(project => (
             <a
-              href={`/work/${project.slug}/`}
+              href={`/products/${project.slug}/`}
               class="group flex items-center gap-4 py-3 px-3 -mx-3 rounded-lg no-underline transition-all duration-150 hover:bg-[var(--color-surface-alt)]"
             >
               <div class="w-10 h-10 shrink-0 rounded-lg overflow-hidden bg-[var(--color-surface-alt)] flex items-center justify-center">
