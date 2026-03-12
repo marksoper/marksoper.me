@@ -123,7 +123,7 @@ export const projects: Project[] = [
   {
     slug: 'harvard-catch',
     company: 'Harvard CATCH',
-    role: 'Javascript UI Developer',
+    role: 'Software Engineer (Consulting engagement)',
     years: '2013',
     icon: '/img/icons/harvard.png',
     screenshot: '/img/catch.png',
@@ -133,7 +133,7 @@ export const projects: Project[] = [
   {
     slug: 'oxfam-america',
     company: 'Oxfam America',
-    role: 'Python & Django Engineer',
+    role: 'Software Engineer (Consulting engagement)',
     years: '2013',
     icon: '/img/icons/oxfam.png',
     screenshot: '/img/oxfam.png',
@@ -143,7 +143,7 @@ export const projects: Project[] = [
   {
     slug: 'aquto',
     company: 'Aquto',
-    role: 'UI/UX Developer',
+    role: 'Software Engineer (Consulting engagement)',
     years: '2012',
     screenshot: '/img/aq.jpg',
     description: 'Led front-end development of Kickbit, a mobile app for this startup (funded by North Bridge and Matrix Partners) pioneering mobile data as virtual currency.',
@@ -152,7 +152,7 @@ export const projects: Project[] = [
   {
     slug: 'connected-sports',
     company: 'Connected Sports',
-    role: 'Co-Founder & Developer',
+    role: 'Founding Engineer',
     years: '2011–2012',
     screenshot: '/img/csv.png',
     description: 'Primary developer for Rumble Football — a real-time social second-screen companion game for NFL viewing. Web Sockets, Socket.io, Backbone, Node.js, MongoDB, Redis. Backed by Avalon Ventures.',
@@ -161,7 +161,7 @@ export const projects: Project[] = [
   {
     slug: 'collaborate-kibits',
     company: 'Collaborate.com (Acq by Cisco)',
-    role: 'UI/UX & Node.js Developer',
+    role: 'Software Engineer (Consulting engagement)',
     years: '2011',
     screenshot: '/img/kibits.jpg',
     description: 'Built initial prototype of HTML5 mobile web experience and Node.js API for this real-time collaboration startup funded by Google Ventures.',
@@ -170,7 +170,7 @@ export const projects: Project[] = [
   {
     slug: 'rally',
     company: 'Rally',
-    role: 'Founder, CTO, Designer & Developer',
+    role: 'Founder',
     years: '2009–2010',
     featured: true,
     screenshot: '/img/rally.jpg',
@@ -182,7 +182,7 @@ export const projects: Project[] = [
   {
     slug: 'likematter',
     company: 'Likematter',
-    role: 'Founder, CTO, Designer & Developer',
+    role: 'Founder',
     years: '2008–2009',
     featured: true,
     screenshot: '/img/likematter.jpg',
