@@ -2,9 +2,10 @@
 // Hero section — used on every page
 interface Props {
   showPhoto?: boolean;
+  useHeading?: boolean;
 }
 
-const { showPhoto = false } = Astro.props;
+const { showPhoto = false, useHeading = false } = Astro.props;
 ---
 
 <section class="hero-section max-w-[var(--container-wide)] mx-auto px-[var(--spacing-page)] pt-[82px] pb-8 sm:pt-[98px] sm:pb-12 w-full">
@@ -20,7 +21,13 @@ const { showPhoto = false } = Astro.props;
       )}
 
       <div class={showPhoto ? 'flex-1' : 'flex-1 min-w-0'}>
-        <a href="/" class="no-underline"><h1 class="text-2xl sm:text-3xl font-semibold mb-1">Mark Soper</h1></a>
+        <a href="/" class="no-underline">
+          {useHeading ? (
+            <h1 class="text-2xl sm:text-3xl font-semibold mb-1">Mark Soper</h1>
+          ) : (
+            <p class="text-2xl sm:text-3xl font-semibold mb-1 text-[var(--color-text)]">Mark Soper</p>
+          )}
+        </a>
         <p class={showPhoto ? 'text-lg text-[var(--color-text-secondary)] mb-2' : 'text-base sm:text-lg text-[var(--color-text-secondary)]'}>
           Builder of data, cloud, and AI infrastructure products
         </p>
