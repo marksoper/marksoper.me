@@ -1,0 +1,8 @@
+name = "marksoper-me"
+compatibility_date = "2024-12-01"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "marksoper-contact-form"
+database_id = "9cecaf9e-39aa-4697-a736-fbda55f3561f"
